@@ -1,0 +1,135 @@
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+public class StudentSystemPrototype {
+	public static void main(String[]args) {	
+	Scanner input = new Scanner(System.in);
+	System.out.println("Welcome to the management system");
+	System.out.println("Pick either of the two(Student/Teacher)");
+	String userType = input.nextLine();
+	
+	if(userType.equals("Student")){
+		DisplayStudentManagementSystem();
+	}else if(userType.equals("Teacher")) {
+		System.out.println("Teacher's management system is still being worked on");
+		System.exit(0);
+	}else {
+		System.out.println("invalid input");
+	}
+	
+}
+private static void DisplayStudentManagementSystem() {
+	JFrame frame = new JFrame("Student management system");
+	frame.setSize(1000,900);
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	JPanel panel = new JPanel();
+	frame.add(panel);
+	placeComponents(panel);
+	frame.setVisible(true);
+	
+}
+private static void placeComponents(JPanel panel) {
+	panel.setLayout(null);
+	
+	//Labels and text fields
+	
+	// Labels and text fields
+
+	// Label for the first name
+	JLabel firstNameLabel = new JLabel("First name");
+	firstNameLabel.setBounds(100, 20, 200, 25);
+	panel.add(firstNameLabel);
+
+	// Text field for the first name
+	JTextField firstNameText = new JTextField(20);
+	firstNameText.setBounds(300, 20, 165, 25);
+	panel.add(firstNameText);
+
+	// Label and text field for the last name
+	JLabel lastNameLabel = new JLabel("Last name");
+	lastNameLabel.setBounds(100, 60, 200, 25);
+	panel.add(lastNameLabel);
+
+	JTextField lastNameText = new JTextField(20);
+	lastNameText.setBounds(300, 60, 165, 25);
+	panel.add(lastNameText);
+
+	// Label and text field for the course being done
+	JLabel CourseLabel = new JLabel("Course");
+	CourseLabel.setBounds(100, 100, 200, 25);
+	panel.add(CourseLabel);
+
+	JTextField CourseText = new JTextField(20);
+	CourseText.setBounds(300, 100, 165, 25);
+	panel.add(CourseText);
+
+	// Label and text field for Fee Status
+	JLabel FeeStatusLabel = new JLabel("Fee Status");
+	FeeStatusLabel.setBounds(100, 140, 300, 25);
+	panel.add(FeeStatusLabel);
+
+	JTextField FeeStatusText = new JTextField(20);
+	FeeStatusText.setBounds(300, 140, 165, 25);
+	panel.add(FeeStatusText);
+
+	// Label and text field for Course Status
+	JLabel CourseStatusLabel = new JLabel("Course status");
+	CourseStatusLabel.setBounds(100, 180, 300, 25);
+	panel.add(CourseStatusLabel);
+
+	JTextField CourseStatusText = new JTextField(20);
+	CourseStatusText.setBounds(300, 180, 165, 25);
+	panel.add(CourseStatusText);
+
+	// Save button
+	JButton saveButton = new JButton("Save");
+	saveButton.setBounds(300, 220, 80, 25);
+	panel.add(saveButton);
+
+	saveButton.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String firstName = firstNameText.getText();
+			String lastName = lastNameText.getText();
+			String Course = CourseText.getText();
+		    String FeeStatus = FeeStatusText.getText();
+		    String CourseStatus = CourseStatusText.getText();
+		    //Save to the database
+			savetoDatabase(firstName, lastName, Course, FeeStatus, CourseStatus);
+		}
+	});
+}
+//Saving to the database
+private static void savetoDatabase(String firstName, String lastName, String Course, String FeeStatus, String CourseStatus) {
+	String url = "jdbc:mysql://localhost:3306/student management system";
+	String username = "root";
+	String password = "";
+	try(Connection connection = DriverManager.getConnection(url, username,password)){
+		String sql = "INSERT INTO Student (FirstName, LastName, Course, FeeStatus, CourseStatus) VALUES(?,?,?,?,?)";
+try (PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+	preparedStatement.setString(1, firstName);
+	preparedStatement.setString(2, lastName);
+	preparedStatement.setString(3, Course);
+	preparedStatement.setString(4, FeeStatus);
+	preparedStatement.setString(5, CourseStatus);
+	
+	int rowsInserted = preparedStatement.executeUpdate();
+	if(rowsInserted > 0) {
+		JOptionPane.showMessageDialog(null, "Student record saved successfully");
+	}
+} catch (SQLException ex) {
+	ex.printStackTrace();
+	JOptionPane.showMessageDialog(null, "Error saving student record: " +ex.getMessage());
+}
+} catch (SQLException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
+}
+}
+
