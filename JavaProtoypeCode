@@ -1,135 +1,1692 @@
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
+
 public class StudentSystemPrototype {
-	public static void main(String[]args) {	
-	Scanner input = new Scanner(System.in);
-	System.out.println("Welcome to the management system");
-	System.out.println("Pick either of the two(Student/Teacher)");
-	String userType = input.nextLine();
-	
-	if(userType.equals("Student")){
-		DisplayStudentManagementSystem();
-	}else if(userType.equals("Teacher")) {
-		System.out.println("Teacher's management system is still being worked on");
-		System.exit(0);
-	}else {
-		System.out.println("invalid input");
-	}
-	
-}
-private static void DisplayStudentManagementSystem() {
-	JFrame frame = new JFrame("Student management system");
-	frame.setSize(1000,900);
-	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	JPanel panel = new JPanel();
-	frame.add(panel);
-	placeComponents(panel);
-	frame.setVisible(true);
-	
-}
-private static void placeComponents(JPanel panel) {
-	panel.setLayout(null);
-	
-	//Labels and text fields
-	
-	// Labels and text fields
+    private static JFrame frame;
 
-	// Label for the first name
-	JLabel firstNameLabel = new JLabel("First name");
-	firstNameLabel.setBounds(100, 20, 200, 25);
-	panel.add(firstNameLabel);
+    public static void main(String[] args) {
+        System.out.println("Enter choice (Student/Staff):");
+        Scanner input = new Scanner(System.in);
+        String userType = input.nextLine();
+        //User type
+        if (userType.equalsIgnoreCase("Student")) {
+            System.out.println("Enter a course (Cyber Security,Data Science,PowerBI,Marketing Analytics,Sales Analytics,Supply Chain Analytics,"
+            		+ "HR Analytics,Finance Analytics,Banking Analytics,Coding for kids,Excel,Data law and Governance):");
+            String courseCategory = input.nextLine();
 
-	// Text field for the first name
-	JTextField firstNameText = new JTextField(20);
-	firstNameText.setBounds(300, 20, 165, 25);
-	panel.add(firstNameText);
+            if (courseCategory.equalsIgnoreCase("Cyber Security")) {
+                displayStudentManagementSystemCyberSecurity();
+            } else if (courseCategory.equalsIgnoreCase("Data Science")) {
+                displayStudentManagementSystemDataScience();
+            }else if(courseCategory.equalsIgnoreCase("PowerBI")) {
+            	displayStudentManagementSystemPowerBI();
+            }else if(courseCategory.equalsIgnoreCase("Marketing Analytics")) {
+            	displayStudentManagementSystemMarketingAnalytics();
+            }else if(courseCategory.equalsIgnoreCase("Sales Analytics")) {
+            	displayStudentManagementSystemSalesAnalytics();
+            }else if(courseCategory.equalsIgnoreCase("Supply Chain Analytics")) {
+            	displayStudentManagementSystemSupplyChainAnalytics();
+            }else if(courseCategory.equalsIgnoreCase("HR Analytics")) {
+            	displayStudentManagementSystemHR_Analytics();
+            }else if(courseCategory.equalsIgnoreCase("Finance Analytics")) {
+            	displayStudentManagementSystemFinanceAnalytics();
+            }else if(courseCategory.equalsIgnoreCase("Banking Analytics")) {
+            	displayStudentManagementSystemBankingAnalytics();
+            }else if(courseCategory.equalsIgnoreCase("Coding for kids")) {
+            	displayStudentManagementSystemCodingForKids();
+            }else if(courseCategory.equalsIgnoreCase("Excel")) {
+            	displayStudentManagementSystemExcel();
+            }else if(courseCategory.equalsIgnoreCase("Data law and Governance")) {
+            	displayStudentManagementSystemDataLawAndGov();
+            }
+            
+            else {
+                JOptionPane.showMessageDialog(null, "Invalid course. Please enter a valid course (Check spelling)");
+            }
+        } else if (userType.equalsIgnoreCase("Staff")) {
+            JOptionPane.showMessageDialog(null, "Staff functionalities are not implemented yet.");
+        } else {
+            JOptionPane.showMessageDialog(null, "Invalid user type. Please enter 'Student' or 'Staff'.");
+        }
+    }
 
-	// Label and text field for the last name
-	JLabel lastNameLabel = new JLabel("Last name");
-	lastNameLabel.setBounds(100, 60, 200, 25);
-	panel.add(lastNameLabel);
+    // Display for Data Science
+    private static void displayStudentManagementSystemDataScience() {
+        frame = new JFrame("Data Science");
+        frame.setSize(700, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-	JTextField lastNameText = new JTextField(20);
-	lastNameText.setBounds(300, 60, 165, 25);
-	panel.add(lastNameText);
+        JPanel panel = new JPanel();
+        frame.add(panel);
 
-	// Label and text field for the course being done
-	JLabel CourseLabel = new JLabel("Course");
-	CourseLabel.setBounds(100, 100, 200, 25);
-	panel.add(CourseLabel);
+        placeComponentsForDataScience(panel);
+        frame.setVisible(true);
+    }
 
-	JTextField CourseText = new JTextField(20);
-	CourseText.setBounds(300, 100, 165, 25);
-	panel.add(CourseText);
+    private static void placeComponentsForDataScience(JPanel panel) {
+        panel.setLayout(null);
 
-	// Label and text field for Fee Status
-	JLabel FeeStatusLabel = new JLabel("Fee Status");
-	FeeStatusLabel.setBounds(100, 140, 300, 25);
-	panel.add(FeeStatusLabel);
+     // First Name
+        JLabel firstNameLabel = new JLabel("First name:");
+        firstNameLabel.setBounds(150, 20, 200, 25);
+        panel.add(firstNameLabel);
 
-	JTextField FeeStatusText = new JTextField(20);
-	FeeStatusText.setBounds(300, 140, 165, 25);
-	panel.add(FeeStatusText);
+        JTextField firstNameText = new JTextField(20);
+        firstNameText.setBounds(350, 20, 200, 25);
+        panel.add(firstNameText);
 
-	// Label and text field for Course Status
-	JLabel CourseStatusLabel = new JLabel("Course status");
-	CourseStatusLabel.setBounds(100, 180, 300, 25);
-	panel.add(CourseStatusLabel);
+        // Last Name
+        JLabel lastNameLabel = new JLabel("Last name:");
+        lastNameLabel.setBounds(150, 60, 200, 25);
+        panel.add(lastNameLabel);
 
-	JTextField CourseStatusText = new JTextField(20);
-	CourseStatusText.setBounds(300, 180, 165, 25);
-	panel.add(CourseStatusText);
+        JTextField lastNameText = new JTextField(20);
+        lastNameText.setBounds(350, 60, 200, 25);
+        panel.add(lastNameText);
 
-	// Save button
-	JButton saveButton = new JButton("Save");
-	saveButton.setBounds(300, 220, 80, 25);
-	panel.add(saveButton);
+        // Fee Status
+        JLabel feeStatusLabel = new JLabel("Fee Status:");
+        feeStatusLabel.setBounds(150, 100, 200, 25);
+        panel.add(feeStatusLabel);
 
-	saveButton.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			String firstName = firstNameText.getText();
-			String lastName = lastNameText.getText();
-			String Course = CourseText.getText();
-		    String FeeStatus = FeeStatusText.getText();
-		    String CourseStatus = CourseStatusText.getText();
-		    //Save to the database
-			savetoDatabase(firstName, lastName, Course, FeeStatus, CourseStatus);
-		}
-	});
-}
-//Saving to the database
-private static void savetoDatabase(String firstName, String lastName, String Course, String FeeStatus, String CourseStatus) {
-	String url = "jdbc:mysql://localhost:3306/student management system";
-	String username = "root";
-	String password = "";
-	try(Connection connection = DriverManager.getConnection(url, username,password)){
-		String sql = "INSERT INTO Student (FirstName, LastName, Course, FeeStatus, CourseStatus) VALUES(?,?,?,?,?)";
-try (PreparedStatement preparedStatement = connection.prepareStatement(sql)){
-	preparedStatement.setString(1, firstName);
-	preparedStatement.setString(2, lastName);
-	preparedStatement.setString(3, Course);
-	preparedStatement.setString(4, FeeStatus);
-	preparedStatement.setString(5, CourseStatus);
-	
-	int rowsInserted = preparedStatement.executeUpdate();
-	if(rowsInserted > 0) {
-		JOptionPane.showMessageDialog(null, "Student record saved successfully");
-	}
-} catch (SQLException ex) {
-	ex.printStackTrace();
-	JOptionPane.showMessageDialog(null, "Error saving student record: " +ex.getMessage());
-}
-} catch (SQLException e) {
-	// TODO Auto-generated catch block
-	e.printStackTrace();
-}
-}
+        JTextField feeStatusText = new JTextField(20);
+        feeStatusText.setBounds(350, 100, 200, 25);
+        panel.add(feeStatusText);
+
+        // Completion Date
+        JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
+        startDateLabel.setBounds(150, 140, 200, 25);
+        panel.add(startDateLabel);
+
+        JTextField startDateText = new JTextField(20);
+        startDateText.setBounds(350, 140, 200, 25);
+        panel.add(startDateText);
+
+        // Class Attendance
+        JLabel attendanceLabel = new JLabel("Class Attendance:");
+        attendanceLabel.setBounds(150, 180, 200, 25);
+        panel.add(attendanceLabel);
+
+        JTextField attendanceText = new JTextField(20);
+        attendanceText.setBounds(350, 180, 200, 25);
+        panel.add(attendanceText);
+
+        // Cohort Number
+        JLabel cohortLabel = new JLabel("Cohort Number:");
+        cohortLabel.setBounds(150, 220, 200, 25);
+        panel.add(cohortLabel);
+
+        JTextField cohortText = new JTextField(20);
+        cohortText.setBounds(350, 220, 200, 25);
+        panel.add(cohortText);
+
+        // Buttons
+        JButton saveButton = new JButton("Save");
+        saveButton.setBounds(200, 280, 80, 25);
+        panel.add(saveButton);
+
+        JButton cancelButton = new JButton("Cancel");
+        cancelButton.setBounds(300, 280, 80, 25);
+        panel.add(cancelButton);
+
+        JButton clearButton = new JButton("Clear");
+        clearButton.setBounds(400, 280, 80, 25);
+        panel.add(clearButton);
+
+        // Button Actions
+        saveButton.addActionListener(e -> {
+            try {
+                int cohort = Integer.parseInt(cohortText.getText());
+                saveToDatabaseForDataScience(
+                    firstNameText.getText(),
+                    lastNameText.getText(),
+                    feeStatusText.getText(),
+                    startDateText.getText(),
+                    attendanceText.getText(),
+                    cohort
+                );
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Invalid cohort number. Please enter a valid integer.");
+            }
+        });
+
+        cancelButton.addActionListener(e -> System.exit(0));
+
+        clearButton.addActionListener(e -> {
+            firstNameText.setText("");
+            lastNameText.setText("");
+            feeStatusText.setText("");
+            startDateText.setText("");
+            attendanceText.setText("");
+            cohortText.setText("");
+        });
+    }
+
+    private static void saveToDatabaseForDataScience(String firstName, String lastName, String feeStatus, String StartDate, String classAttendance, int Cohort) {
+        String url = "jdbc:mysql://localhost:3306/Prototype";
+        String username = "root";
+        String password = "";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String sql = "INSERT INTO DataScienceStudents (FirstName, LastName, FeeStatus, StartDate, ClassAttendance, Cohort) VALUES (?, ?, ?, ?, ?,?)";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, firstName);
+                preparedStatement.setString(2, lastName);
+                preparedStatement.setString(3, feeStatus);
+                preparedStatement.setString(4, StartDate);
+                preparedStatement.setString(5, classAttendance);
+                preparedStatement.setInt(6, Cohort);
+
+                int rowsInserted = preparedStatement.executeUpdate();
+                if (rowsInserted > 0) {
+                    JOptionPane.showMessageDialog(null, "Student record saved successfully!");
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error saving student record: " + ex.getMessage());
+        }
+    }
+
+    // Display forCcyber Security
+    private static void displayStudentManagementSystemCyberSecurity() {
+        frame = new JFrame("Cyber Security");
+        frame.setSize(700, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel panel = new JPanel();
+        frame.add(panel);
+
+        placeComponentsForCyberSecurity(panel);
+        frame.setVisible(true);
+    }
+
+    private static void placeComponentsForCyberSecurity(JPanel panel) {
+        panel.setLayout(null);
+
+        // First Name
+        JLabel firstNameLabel = new JLabel("First name:");
+        firstNameLabel.setBounds(150, 20, 200, 25);
+        panel.add(firstNameLabel);
+
+        JTextField firstNameText = new JTextField(20);
+        firstNameText.setBounds(350, 20, 200, 25);
+        panel.add(firstNameText);
+
+        // Last Name
+        JLabel lastNameLabel = new JLabel("Last name:");
+        lastNameLabel.setBounds(150, 60, 200, 25);
+        panel.add(lastNameLabel);
+
+        JTextField lastNameText = new JTextField(20);
+        lastNameText.setBounds(350, 60, 200, 25);
+        panel.add(lastNameText);
+
+        // Fee Status
+        JLabel feeStatusLabel = new JLabel("Fee Status:");
+        feeStatusLabel.setBounds(150, 100, 200, 25);
+        panel.add(feeStatusLabel);
+
+        JTextField feeStatusText = new JTextField(20);
+        feeStatusText.setBounds(350, 100, 200, 25);
+        panel.add(feeStatusText);
+
+        // Completion Date
+        JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
+        startDateLabel.setBounds(150, 140, 200, 25);
+        panel.add(startDateLabel);
+
+        JTextField startDateText = new JTextField(20);
+        startDateText.setBounds(350, 140, 200, 25);
+        panel.add(startDateText);
+
+        // Class Attendance
+        JLabel attendanceLabel = new JLabel("Class Attendance:");
+        attendanceLabel.setBounds(150, 180, 200, 25);
+        panel.add(attendanceLabel);
+
+        JTextField attendanceText = new JTextField(20);
+        attendanceText.setBounds(350, 180, 200, 25);
+        panel.add(attendanceText);
+
+        // Cohort Number
+        JLabel cohortLabel = new JLabel("Cohort Number:");
+        cohortLabel.setBounds(150, 220, 200, 25);
+        panel.add(cohortLabel);
+
+        JTextField cohortText = new JTextField(20);
+        cohortText.setBounds(350, 220, 200, 25);
+        panel.add(cohortText);
+
+        // Buttons
+        JButton saveButton = new JButton("Save");
+        saveButton.setBounds(200, 280, 80, 25);
+        panel.add(saveButton);
+
+        JButton cancelButton = new JButton("Cancel");
+        cancelButton.setBounds(300, 280, 80, 25);
+        panel.add(cancelButton);
+
+        JButton clearButton = new JButton("Clear");
+        clearButton.setBounds(400, 280, 80, 25);
+        panel.add(clearButton);
+
+        // Button Actions
+        saveButton.addActionListener(e -> {
+            try {
+                int cohort = Integer.parseInt(cohortText.getText());
+                saveToDatabaseForCyberSecurity(
+                    firstNameText.getText(),
+                    lastNameText.getText(),
+                    feeStatusText.getText(),
+                    startDateText.getText(),
+                    attendanceText.getText(),
+                    cohort
+                );
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Invalid cohort number. Please enter a valid integer.");
+            }
+        });
+
+        cancelButton.addActionListener(e -> System.exit(0));
+
+        clearButton.addActionListener(e -> {
+            firstNameText.setText("");
+            lastNameText.setText("");
+            feeStatusText.setText("");
+            startDateText.setText("");
+            attendanceText.setText("");
+            cohortText.setText("");
+        });
+    }
+
+    private static void saveToDatabaseForCyberSecurity(String firstName, String lastName, String feeStatus, String StartDate, String classAttendance, int Cohort) {
+        String url = "jdbc:mysql://localhost:3306/Prototype";
+        String username = "root";
+        String password = "";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String sql = "INSERT INTO CyberSecurityStudents (FirstName, LastName, FeeStatus, StartDate, ClassAttendance, Cohort) VALUES (?, ?, ?, ?, ?,?)";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, firstName);
+                preparedStatement.setString(2, lastName);
+                preparedStatement.setString(3, feeStatus);
+                preparedStatement.setString(4, StartDate); 
+                preparedStatement.setString(5, classAttendance);
+                preparedStatement.setInt(6, Cohort);
+
+                int rowsInserted = preparedStatement.executeUpdate();
+                if (rowsInserted > 0) {
+                    JOptionPane.showMessageDialog(null, "Student record saved successfully!");
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error saving student record: " + ex.getMessage());
+        }
+    }
+   //Display for PowerBI
+    private static void displayStudentManagementSystemPowerBI() {
+        frame = new JFrame("PowerBI");
+        frame.setSize(700, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel panel = new JPanel();
+        frame.add(panel);
+
+        placeComponentsForPowerBI(panel);
+        frame.setVisible(true);
+    }
+
+    private static void placeComponentsForPowerBI(JPanel panel) {
+        panel.setLayout(null);
+
+       
+        // First Name
+        JLabel firstNameLabel = new JLabel("First name:");
+        firstNameLabel.setBounds(150, 20, 200, 25);
+        panel.add(firstNameLabel);
+
+        JTextField firstNameText = new JTextField(20);
+        firstNameText.setBounds(350, 20, 200, 25);
+        panel.add(firstNameText);
+
+        // Last Name
+        JLabel lastNameLabel = new JLabel("Last name:");
+        lastNameLabel.setBounds(150, 60, 200, 25);
+        panel.add(lastNameLabel);
+
+        JTextField lastNameText = new JTextField(20);
+        lastNameText.setBounds(350, 60, 200, 25);
+        panel.add(lastNameText);
+
+        // Fee Status
+        JLabel feeStatusLabel = new JLabel("Fee Status:");
+        feeStatusLabel.setBounds(150, 100, 200, 25);
+        panel.add(feeStatusLabel);
+
+        JTextField feeStatusText = new JTextField(20);
+        feeStatusText.setBounds(350, 100, 200, 25);
+        panel.add(feeStatusText);
+
+        // Completion Date
+        JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
+        startDateLabel.setBounds(150, 140, 200, 25);
+        panel.add(startDateLabel);
+
+        JTextField startDateText = new JTextField(20);
+        startDateText.setBounds(350, 140, 200, 25);
+        panel.add(startDateText);
+
+        // Class Attendance
+        JLabel attendanceLabel = new JLabel("Class Attendance:");
+        attendanceLabel.setBounds(150, 180, 200, 25);
+        panel.add(attendanceLabel);
+
+        JTextField attendanceText = new JTextField(20);
+        attendanceText.setBounds(350, 180, 200, 25);
+        panel.add(attendanceText);
+
+        // Cohort Number
+        JLabel cohortLabel = new JLabel("Cohort Number:");
+        cohortLabel.setBounds(150, 220, 200, 25);
+        panel.add(cohortLabel);
+
+        JTextField cohortText = new JTextField(20);
+        cohortText.setBounds(350, 220, 200, 25);
+        panel.add(cohortText);
+
+        // Buttons
+        JButton saveButton = new JButton("Save");
+        saveButton.setBounds(200, 280, 80, 25);
+        panel.add(saveButton);
+
+        JButton cancelButton = new JButton("Cancel");
+        cancelButton.setBounds(300, 280, 80, 25);
+        panel.add(cancelButton);
+
+        JButton clearButton = new JButton("Clear");
+        clearButton.setBounds(400, 280, 80, 25);
+        panel.add(clearButton);
+
+        // Button Actions
+        saveButton.addActionListener(e -> {
+            try {
+                int cohort = Integer.parseInt(cohortText.getText());
+                saveToDatabaseForPowerBI(
+                    firstNameText.getText(),
+                    lastNameText.getText(),
+                    feeStatusText.getText(),
+                    startDateText.getText(),
+                    attendanceText.getText(),
+                    cohort
+                );
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Invalid cohort number. Please enter a valid integer.");
+            }
+        });
+
+        cancelButton.addActionListener(e -> System.exit(0));
+
+        clearButton.addActionListener(e -> {
+            firstNameText.setText("");
+            lastNameText.setText("");
+            feeStatusText.setText("");
+            startDateText.setText("");
+            attendanceText.setText("");
+            cohortText.setText("");
+        });
+    }
+
+    private static void saveToDatabaseForPowerBI(String firstName, String lastName, String feeStatus, String StartDate, String classAttendance, int Cohort) {
+        String url = "jdbc:mysql://localhost:3306/Prototype";
+        String username = "root";
+        String password = "";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String sql = "INSERT INTO PowerBIStudents (FirstName, LastName, FeeStatus, StartDate, ClassAttendance, Cohort) VALUES (?, ?, ?, ?, ?,?)";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, firstName);
+                preparedStatement.setString(2, lastName);
+                preparedStatement.setString(3, feeStatus);
+                preparedStatement.setString(4, StartDate);
+                preparedStatement.setString(5, classAttendance);
+                preparedStatement.setInt(6, Cohort);
+
+                int rowsInserted = preparedStatement.executeUpdate();
+                if (rowsInserted > 0) {
+                    JOptionPane.showMessageDialog(null, "Student record saved successfully!");
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error saving student record: " + ex.getMessage());
+        }
+    }
+    private static void displayStudentManagementSystemMarketingAnalytics() {
+        frame = new JFrame("Marketing Analytics");
+        frame.setSize(700, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel panel = new JPanel();
+        frame.add(panel);
+
+        placeComponentsForMarketingAnalytics(panel);
+        frame.setVisible(true);
+    }
+
+    private static void placeComponentsForMarketingAnalytics(JPanel panel) {
+        panel.setLayout(null);
+
+        // First Name
+        JLabel firstNameLabel = new JLabel("First name:");
+        firstNameLabel.setBounds(150, 20, 200, 25);
+        panel.add(firstNameLabel);
+
+        JTextField firstNameText = new JTextField(20);
+        firstNameText.setBounds(350, 20, 200, 25);
+        panel.add(firstNameText);
+
+        // Last Name
+        JLabel lastNameLabel = new JLabel("Last name:");
+        lastNameLabel.setBounds(150, 60, 200, 25);
+        panel.add(lastNameLabel);
+
+        JTextField lastNameText = new JTextField(20);
+        lastNameText.setBounds(350, 60, 200, 25);
+        panel.add(lastNameText);
+
+        // Fee Status
+        JLabel feeStatusLabel = new JLabel("Fee Status:");
+        feeStatusLabel.setBounds(150, 100, 200, 25);
+        panel.add(feeStatusLabel);
+
+        JTextField feeStatusText = new JTextField(20);
+        feeStatusText.setBounds(350, 100, 200, 25);
+        panel.add(feeStatusText);
+
+        // Completion Date
+        JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
+        startDateLabel.setBounds(150, 140, 200, 25);
+        panel.add(startDateLabel);
+
+        JTextField startDateText = new JTextField(20);
+        startDateText.setBounds(350, 140, 200, 25);
+        panel.add(startDateText);
+
+        // Class Attendance
+        JLabel attendanceLabel = new JLabel("Class Attendance:");
+        attendanceLabel.setBounds(150, 180, 200, 25);
+        panel.add(attendanceLabel);
+
+        JTextField attendanceText = new JTextField(20);
+        attendanceText.setBounds(350, 180, 200, 25);
+        panel.add(attendanceText);
+
+        // Cohort Number
+        JLabel cohortLabel = new JLabel("Cohort Number:");
+        cohortLabel.setBounds(150, 220, 200, 25);
+        panel.add(cohortLabel);
+
+        JTextField cohortText = new JTextField(20);
+        cohortText.setBounds(350, 220, 200, 25);
+        panel.add(cohortText);
+
+        // Buttons
+        JButton saveButton = new JButton("Save");
+        saveButton.setBounds(200, 280, 80, 25);
+        panel.add(saveButton);
+
+        JButton cancelButton = new JButton("Cancel");
+        cancelButton.setBounds(300, 280, 80, 25);
+        panel.add(cancelButton);
+
+        JButton clearButton = new JButton("Clear");
+        clearButton.setBounds(400, 280, 80, 25);
+        panel.add(clearButton);
+
+        // Button Actions
+        saveButton.addActionListener(e -> {
+            try {
+                int cohort = Integer.parseInt(cohortText.getText());
+                saveToDatabaseForMarketingAnalytics(
+                    firstNameText.getText(),
+                    lastNameText.getText(),
+                    feeStatusText.getText(),
+                    startDateText.getText(),
+                    attendanceText.getText(),
+                    cohort
+                );
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Invalid cohort number. Please enter a valid integer.");
+            }
+        });
+
+        cancelButton.addActionListener(e -> System.exit(0));
+
+        clearButton.addActionListener(e -> {
+            firstNameText.setText("");
+            lastNameText.setText("");
+            feeStatusText.setText("");
+            startDateText.setText("");
+            attendanceText.setText("");
+            cohortText.setText("");
+        });
+    }
+
+    private static void saveToDatabaseForMarketingAnalytics(String firstName, String lastName, String feeStatus, String StartDate, String classAttendance, int Cohort) {
+        String url = "jdbc:mysql://localhost:3306/Prototype";
+        String username = "root";
+        String password = "";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String sql = "INSERT INTO MarketingAnalyticsStudents (FirstName, LastName, FeeStatus, StartDate, ClassAttendance, Cohort) VALUES (?, ?, ?, ?, ?,?)";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, firstName);
+                preparedStatement.setString(2, lastName);
+                preparedStatement.setString(3, feeStatus);
+                preparedStatement.setString(4, StartDate);
+                preparedStatement.setString(5, classAttendance);
+                preparedStatement.setInt(6, Cohort);
+
+                int rowsInserted = preparedStatement.executeUpdate();
+                if (rowsInserted > 0) {
+                    JOptionPane.showMessageDialog(null, "Student record saved successfully!");
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error saving student record: " + ex.getMessage());
+        }
+    }
+
+    private static void displayStudentManagementSystemSalesAnalytics() {
+        frame = new JFrame("Sales Analytics");
+        frame.setSize(700, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel panel = new JPanel();
+        frame.add(panel);
+
+        placeComponentsForSalesAnalytics(panel);
+        frame.setVisible(true);
+    }
+
+    private static void placeComponentsForSalesAnalytics(JPanel panel) {
+        panel.setLayout(null);
+
+        // First Name
+        JLabel firstNameLabel = new JLabel("First name:");
+        firstNameLabel.setBounds(150, 20, 200, 25);
+        panel.add(firstNameLabel);
+
+        JTextField firstNameText = new JTextField(20);
+        firstNameText.setBounds(350, 20, 200, 25);
+        panel.add(firstNameText);
+
+        // Last Name
+        JLabel lastNameLabel = new JLabel("Last name:");
+        lastNameLabel.setBounds(150, 60, 200, 25);
+        panel.add(lastNameLabel);
+
+        JTextField lastNameText = new JTextField(20);
+        lastNameText.setBounds(350, 60, 200, 25);
+        panel.add(lastNameText);
+
+        // Fee Status
+        JLabel feeStatusLabel = new JLabel("Fee Status:");
+        feeStatusLabel.setBounds(150, 100, 200, 25);
+        panel.add(feeStatusLabel);
+
+        JTextField feeStatusText = new JTextField(20);
+        feeStatusText.setBounds(350, 100, 200, 25);
+        panel.add(feeStatusText);
+
+        // Completion Date
+        JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
+        startDateLabel.setBounds(150, 140, 200, 25);
+        panel.add(startDateLabel);
+
+        JTextField startDateText = new JTextField(20);
+        startDateText.setBounds(350, 140, 200, 25);
+        panel.add(startDateText);
+
+        // Class Attendance
+        JLabel attendanceLabel = new JLabel("Class Attendance:");
+        attendanceLabel.setBounds(150, 180, 200, 25);
+        panel.add(attendanceLabel);
+
+        JTextField attendanceText = new JTextField(20);
+        attendanceText.setBounds(350, 180, 200, 25);
+        panel.add(attendanceText);
+
+        // Cohort Number
+        JLabel cohortLabel = new JLabel("Cohort Number:");
+        cohortLabel.setBounds(150, 220, 200, 25);
+        panel.add(cohortLabel);
+
+        JTextField cohortText = new JTextField(20);
+        cohortText.setBounds(350, 220, 200, 25);
+        panel.add(cohortText);
+
+        // Buttons
+        JButton saveButton = new JButton("Save");
+        saveButton.setBounds(200, 280, 80, 25);
+        panel.add(saveButton);
+
+        JButton cancelButton = new JButton("Cancel");
+        cancelButton.setBounds(300, 280, 80, 25);
+        panel.add(cancelButton);
+
+        JButton clearButton = new JButton("Clear");
+        clearButton.setBounds(400, 280, 80, 25);
+        panel.add(clearButton);
+
+        // Button Actions
+        saveButton.addActionListener(e -> {
+            try {
+                int cohort = Integer.parseInt(cohortText.getText());
+                saveToDatabaseForSalesAnalytics(
+                    firstNameText.getText(),
+                    lastNameText.getText(),
+                    feeStatusText.getText(),
+                    startDateText.getText(),
+                    attendanceText.getText(),
+                    cohort
+                );
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Invalid cohort number. Please enter a valid integer.");
+            }
+        });
+
+        cancelButton.addActionListener(e -> System.exit(0));
+
+        clearButton.addActionListener(e -> {
+            firstNameText.setText("");
+            lastNameText.setText("");
+            feeStatusText.setText("");
+            startDateText.setText("");
+            attendanceText.setText("");
+            cohortText.setText("");
+        });
+    }
+
+    private static void saveToDatabaseForSalesAnalytics(String firstName, String lastName, String feeStatus, String StartDate, String classAttendance, int Cohort) {
+        String url = "jdbc:mysql://localhost:3306/Prototype";
+        String username = "root";
+        String password = "";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String sql = "INSERT INTO SalesAnalyticsStudents (FirstName, LastName, FeeStatus, StartDate, ClassAttendance, Cohort) VALUES (?, ?, ?, ?, ?, ?)";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, firstName);
+                preparedStatement.setString(2, lastName);
+                preparedStatement.setString(3, feeStatus);
+                preparedStatement.setString(4, StartDate);
+                preparedStatement.setString(5, classAttendance);
+                preparedStatement.setInt(6, Cohort);
+
+                int rowsInserted = preparedStatement.executeUpdate();
+                if (rowsInserted > 0) {
+                    JOptionPane.showMessageDialog(null, "Student record saved successfully!");
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error saving student record: " + ex.getMessage());
+        }
+    }
+    
+private static void displayStudentManagementSystemSupplyChainAnalytics() {
+        frame = new JFrame("Supply Chain Analytics");
+        frame.setSize(700, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel panel = new JPanel();
+        frame.add(panel);
+
+        placeComponentsForSupplyChainAnalytics(panel);
+        frame.setVisible(true);
+    }
+
+    private static void placeComponentsForSupplyChainAnalytics(JPanel panel) {
+        panel.setLayout(null);
+
+        // First Name
+        JLabel firstNameLabel = new JLabel("First name:");
+        firstNameLabel.setBounds(150, 20, 200, 25);
+        panel.add(firstNameLabel);
+
+        JTextField firstNameText = new JTextField(20);
+        firstNameText.setBounds(350, 20, 200, 25);
+        panel.add(firstNameText);
+
+        // Last Name
+        JLabel lastNameLabel = new JLabel("Last name:");
+        lastNameLabel.setBounds(150, 60, 200, 25);
+        panel.add(lastNameLabel);
+
+        JTextField lastNameText = new JTextField(20);
+        lastNameText.setBounds(350, 60, 200, 25);
+        panel.add(lastNameText);
+
+        // Fee Status
+        JLabel feeStatusLabel = new JLabel("Fee Status:");
+        feeStatusLabel.setBounds(150, 100, 200, 25);
+        panel.add(feeStatusLabel);
+
+        JTextField feeStatusText = new JTextField(20);
+        feeStatusText.setBounds(350, 100, 200, 25);
+        panel.add(feeStatusText);
+
+        // Completion Date
+        JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
+        startDateLabel.setBounds(150, 140, 200, 25);
+        panel.add(startDateLabel);
+
+        JTextField startDateText = new JTextField(20);
+        startDateText.setBounds(350, 140, 200, 25);
+        panel.add(startDateText);
+
+        // Class Attendance
+        JLabel attendanceLabel = new JLabel("Class Attendance:");
+        attendanceLabel.setBounds(150, 180, 200, 25);
+        panel.add(attendanceLabel);
+
+        JTextField attendanceText = new JTextField(20);
+        attendanceText.setBounds(350, 180, 200, 25);
+        panel.add(attendanceText);
+
+        // Cohort Number
+        JLabel cohortLabel = new JLabel("Cohort Number:");
+        cohortLabel.setBounds(150, 220, 200, 25);
+        panel.add(cohortLabel);
+
+        JTextField cohortText = new JTextField(20);
+        cohortText.setBounds(350, 220, 200, 25);
+        panel.add(cohortText);
+
+        // Buttons
+        JButton saveButton = new JButton("Save");
+        saveButton.setBounds(200, 280, 80, 25);
+        panel.add(saveButton);
+
+        JButton cancelButton = new JButton("Cancel");
+        cancelButton.setBounds(300, 280, 80, 25);
+        panel.add(cancelButton);
+
+        JButton clearButton = new JButton("Clear");
+        clearButton.setBounds(400, 280, 80, 25);
+        panel.add(clearButton);
+
+        // Button Actions
+        saveButton.addActionListener(e -> {
+            try {
+                int cohort = Integer.parseInt(cohortText.getText());
+                saveToDatabaseForSupplyChainAnalytics(
+                    firstNameText.getText(),
+                    lastNameText.getText(),
+                    feeStatusText.getText(),
+                    startDateText.getText(),
+                    attendanceText.getText(),
+                    cohort
+                );
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Invalid cohort number. Please enter a valid integer.");
+            }
+        });
+
+        cancelButton.addActionListener(e -> System.exit(0));
+
+        clearButton.addActionListener(e -> {
+            firstNameText.setText("");
+            lastNameText.setText("");
+            feeStatusText.setText("");
+            startDateText.setText("");
+            attendanceText.setText("");
+            cohortText.setText("");
+        });
+    }
+
+    private static void saveToDatabaseForSupplyChainAnalytics(String firstName, String lastName, String feeStatus, String StartDate, String classAttendance, int Cohort) {
+        String url = "jdbc:mysql://localhost:3306/Prototype";
+        String username = "root";
+        String password = "";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String sql = "INSERT INTO SupplyChainStudents (FirstName, LastName, FeeStatus, StartDate, ClassAttendance, Cohort) VALUES (?, ?, ?, ?, ?,?)";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, firstName);
+                preparedStatement.setString(2, lastName);
+                preparedStatement.setString(3, feeStatus);
+                preparedStatement.setString(4, StartDate);
+                preparedStatement.setString(5, classAttendance);
+                preparedStatement.setInt(6, Cohort);
+
+                int rowsInserted = preparedStatement.executeUpdate();
+                if (rowsInserted > 0) {
+                    JOptionPane.showMessageDialog(null, "Student record saved successfully!");
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error saving student record: " + ex.getMessage());
+        }
+    }
+   
+    private static void displayStudentManagementSystemHR_Analytics() {
+        frame = new JFrame("HR Analytics");
+        frame.setSize(700, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel panel = new JPanel();
+        frame.add(panel);
+
+        placeComponentsForHR_Analytics(panel);
+        frame.setVisible(true);
+    }
+
+    private static void placeComponentsForHR_Analytics(JPanel panel) {
+        panel.setLayout(null);
+
+        // First Name
+        JLabel firstNameLabel = new JLabel("First name:");
+        firstNameLabel.setBounds(150, 20, 200, 25);
+        panel.add(firstNameLabel);
+
+        JTextField firstNameText = new JTextField(20);
+        firstNameText.setBounds(350, 20, 200, 25);
+        panel.add(firstNameText);
+
+        // Last Name
+        JLabel lastNameLabel = new JLabel("Last name:");
+        lastNameLabel.setBounds(150, 60, 200, 25);
+        panel.add(lastNameLabel);
+
+        JTextField lastNameText = new JTextField(20);
+        lastNameText.setBounds(350, 60, 200, 25);
+        panel.add(lastNameText);
+
+        // Fee Status
+        JLabel feeStatusLabel = new JLabel("Fee Status:");
+        feeStatusLabel.setBounds(150, 100, 200, 25);
+        panel.add(feeStatusLabel);
+
+        JTextField feeStatusText = new JTextField(20);
+        feeStatusText.setBounds(350, 100, 200, 25);
+        panel.add(feeStatusText);
+
+        // Completion Date
+        JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
+        startDateLabel.setBounds(150, 140, 200, 25);
+        panel.add(startDateLabel);
+
+        JTextField startDateText = new JTextField(20);
+        startDateText.setBounds(350, 140, 200, 25);
+        panel.add(startDateText);
+
+        // Class Attendance
+        JLabel attendanceLabel = new JLabel("Class Attendance:");
+        attendanceLabel.setBounds(150, 180, 200, 25);
+        panel.add(attendanceLabel);
+
+        JTextField attendanceText = new JTextField(20);
+        attendanceText.setBounds(350, 180, 200, 25);
+        panel.add(attendanceText);
+
+        // Cohort Number
+        JLabel cohortLabel = new JLabel("Cohort Number:");
+        cohortLabel.setBounds(150, 220, 200, 25);
+        panel.add(cohortLabel);
+
+        JTextField cohortText = new JTextField(20);
+        cohortText.setBounds(350, 220, 200, 25);
+        panel.add(cohortText);
+
+        // Buttons
+        JButton saveButton = new JButton("Save");
+        saveButton.setBounds(200, 280, 80, 25);
+        panel.add(saveButton);
+
+        JButton cancelButton = new JButton("Cancel");
+        cancelButton.setBounds(300, 280, 80, 25);
+        panel.add(cancelButton);
+
+        JButton clearButton = new JButton("Clear");
+        clearButton.setBounds(400, 280, 80, 25);
+        panel.add(clearButton);
+
+        // Button Actions
+        saveButton.addActionListener(e -> {
+            try {
+                int cohort = Integer.parseInt(cohortText.getText());
+                saveToDatabaseForHR_Analytics(
+                    firstNameText.getText(),
+                    lastNameText.getText(),
+                    feeStatusText.getText(),
+                    startDateText.getText(),
+                    attendanceText.getText(),
+                    cohort
+                );
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Invalid cohort number. Please enter a valid integer.");
+            }
+        });
+
+        cancelButton.addActionListener(e -> System.exit(0));
+
+        clearButton.addActionListener(e -> {
+            firstNameText.setText("");
+            lastNameText.setText("");
+            feeStatusText.setText("");
+            startDateText.setText("");
+            attendanceText.setText("");
+            cohortText.setText("");
+        });
+    }
+
+    private static void saveToDatabaseForHR_Analytics(String firstName, String lastName, String feeStatus, String StartDate, String classAttendance, int Cohort) {
+        String url = "jdbc:mysql://localhost:3306/Prototype";
+        String username = "root";
+        String password = "";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String sql = "INSERT INTO HRAnalyticsStudents (FirstName, LastName, FeeStatus, StartDate, ClassAttendance, Cohort) VALUES (?, ?, ?, ?, ?,?)";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, firstName);
+                preparedStatement.setString(2, lastName);
+                preparedStatement.setString(3, feeStatus);
+                preparedStatement.setString(4, StartDate);
+                preparedStatement.setString(5, classAttendance);
+                preparedStatement.setInt(6, Cohort);
+
+                int rowsInserted = preparedStatement.executeUpdate();
+                if (rowsInserted > 0) {
+                    JOptionPane.showMessageDialog(null, "Student record saved successfully!");
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error saving student record: " + ex.getMessage());
+        }
+    }
+    
+     private static void displayStudentManagementSystemFinanceAnalytics() {
+        frame = new JFrame("Finance Analytics");
+        frame.setSize(700, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel panel = new JPanel();
+        frame.add(panel);
+
+        placeComponentsForDataScience(panel);
+        frame.setVisible(true);
+    }
+
+    private static void placeComponentsForFinanceAnalytics(JPanel panel) {
+        panel.setLayout(null);
+
+        // First Name
+        JLabel firstNameLabel = new JLabel("First name:");
+        firstNameLabel.setBounds(150, 20, 200, 25);
+        panel.add(firstNameLabel);
+
+        JTextField firstNameText = new JTextField(20);
+        firstNameText.setBounds(350, 20, 200, 25);
+        panel.add(firstNameText);
+
+        // Last Name
+        JLabel lastNameLabel = new JLabel("Last name:");
+        lastNameLabel.setBounds(150, 60, 200, 25);
+        panel.add(lastNameLabel);
+
+        JTextField lastNameText = new JTextField(20);
+        lastNameText.setBounds(350, 60, 200, 25);
+        panel.add(lastNameText);
+
+        // Fee Status
+        JLabel feeStatusLabel = new JLabel("Fee Status:");
+        feeStatusLabel.setBounds(150, 100, 200, 25);
+        panel.add(feeStatusLabel);
+
+        JTextField feeStatusText = new JTextField(20);
+        feeStatusText.setBounds(350, 100, 200, 25);
+        panel.add(feeStatusText);
+
+        // Completion Date
+        JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
+        startDateLabel.setBounds(150, 140, 200, 25);
+        panel.add(startDateLabel);
+
+        JTextField startDateText = new JTextField(20);
+        startDateText.setBounds(350, 140, 200, 25);
+        panel.add(startDateText);
+
+        // Class Attendance
+        JLabel attendanceLabel = new JLabel("Class Attendance:");
+        attendanceLabel.setBounds(150, 180, 200, 25);
+        panel.add(attendanceLabel);
+
+        JTextField attendanceText = new JTextField(20);
+        attendanceText.setBounds(350, 180, 200, 25);
+        panel.add(attendanceText);
+
+        // Cohort Number
+        JLabel cohortLabel = new JLabel("Cohort Number:");
+        cohortLabel.setBounds(150, 220, 200, 25);
+        panel.add(cohortLabel);
+
+        JTextField cohortText = new JTextField(20);
+        cohortText.setBounds(350, 220, 200, 25);
+        panel.add(cohortText);
+
+        // Buttons
+        JButton saveButton = new JButton("Save");
+        saveButton.setBounds(200, 280, 80, 25);
+        panel.add(saveButton);
+
+        JButton cancelButton = new JButton("Cancel");
+        cancelButton.setBounds(300, 280, 80, 25);
+        panel.add(cancelButton);
+
+        JButton clearButton = new JButton("Clear");
+        clearButton.setBounds(400, 280, 80, 25);
+        panel.add(clearButton);
+
+        // Button Actions
+        saveButton.addActionListener(e -> {
+            try {
+                int cohort = Integer.parseInt(cohortText.getText());
+                saveToDatabaseForFinanceAnalytics(
+                    firstNameText.getText(),
+                    lastNameText.getText(),
+                    feeStatusText.getText(),
+                    startDateText.getText(),
+                    attendanceText.getText(),
+                    cohort
+                );
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Invalid cohort number. Please enter a valid integer.");
+            }
+        });
+
+        cancelButton.addActionListener(e -> System.exit(0));
+
+        clearButton.addActionListener(e -> {
+            firstNameText.setText("");
+            lastNameText.setText("");
+            feeStatusText.setText("");
+            startDateText.setText("");
+            attendanceText.setText("");
+            cohortText.setText("");
+        });
+    }
+
+    private static void saveToDatabaseForFinanceAnalytics(String firstName, String lastName, String feeStatus, String StartDate, String classAttendance, int Cohort) {
+        String url = "jdbc:mysql://localhost:3306/Prototype";
+        String username = "root";
+        String password = "";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String sql = "INSERT INTO FinanceAnalyticsStudents (FirstName, LastName, FeeStatus, StartDate, ClassAttendance, Cohort) VALUES (?, ?, ?, ?, ?,?)";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, firstName);
+                preparedStatement.setString(2, lastName);
+                preparedStatement.setString(3, feeStatus);
+                preparedStatement.setString(4, StartDate);
+                preparedStatement.setString(5, classAttendance);
+                preparedStatement.setInt(6, Cohort);
+
+                int rowsInserted = preparedStatement.executeUpdate();
+                if (rowsInserted > 0) {
+                    JOptionPane.showMessageDialog(null, "Student record saved successfully!");
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error saving student record: " + ex.getMessage());
+        }
+    }
+
+    private static void displayStudentManagementSystemBankingAnalytics() {
+        frame = new JFrame("Banking Analytics");
+        frame.setSize(700, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel panel = new JPanel();
+        frame.add(panel);
+
+        placeComponentsForBankingAnalytics(panel);
+        frame.setVisible(true);
+    }
+
+    private static void placeComponentsForBankingAnalytics(JPanel panel) {
+        panel.setLayout(null);
+
+        // First Name
+        JLabel firstNameLabel = new JLabel("First name:");
+        firstNameLabel.setBounds(150, 20, 200, 25);
+        panel.add(firstNameLabel);
+
+        JTextField firstNameText = new JTextField(20);
+        firstNameText.setBounds(350, 20, 200, 25);
+        panel.add(firstNameText);
+
+        // Last Name
+        JLabel lastNameLabel = new JLabel("Last name:");
+        lastNameLabel.setBounds(150, 60, 200, 25);
+        panel.add(lastNameLabel);
+
+        JTextField lastNameText = new JTextField(20);
+        lastNameText.setBounds(350, 60, 200, 25);
+        panel.add(lastNameText);
+
+        // Fee Status
+        JLabel feeStatusLabel = new JLabel("Fee Status:");
+        feeStatusLabel.setBounds(150, 100, 200, 25);
+        panel.add(feeStatusLabel);
+
+        JTextField feeStatusText = new JTextField(20);
+        feeStatusText.setBounds(350, 100, 200, 25);
+        panel.add(feeStatusText);
+
+        // Completion Date
+        JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
+        startDateLabel.setBounds(150, 140, 200, 25);
+        panel.add(startDateLabel);
+
+        JTextField startDateText = new JTextField(20);
+        startDateText.setBounds(350, 140, 200, 25);
+        panel.add(startDateText);
+
+        // Class Attendance
+        JLabel attendanceLabel = new JLabel("Class Attendance:");
+        attendanceLabel.setBounds(150, 180, 200, 25);
+        panel.add(attendanceLabel);
+
+        JTextField attendanceText = new JTextField(20);
+        attendanceText.setBounds(350, 180, 200, 25);
+        panel.add(attendanceText);
+
+        // Cohort Number
+        JLabel cohortLabel = new JLabel("Cohort Number:");
+        cohortLabel.setBounds(150, 220, 200, 25);
+        panel.add(cohortLabel);
+
+        JTextField cohortText = new JTextField(20);
+        cohortText.setBounds(350, 220, 200, 25);
+        panel.add(cohortText);
+
+        // Buttons
+        JButton saveButton = new JButton("Save");
+        saveButton.setBounds(200, 280, 80, 25);
+        panel.add(saveButton);
+
+        JButton cancelButton = new JButton("Cancel");
+        cancelButton.setBounds(300, 280, 80, 25);
+        panel.add(cancelButton);
+
+        JButton clearButton = new JButton("Clear");
+        clearButton.setBounds(400, 280, 80, 25);
+        panel.add(clearButton);
+
+        // Button Actions
+        saveButton.addActionListener(e -> {
+            try {
+                int cohort = Integer.parseInt(cohortText.getText());
+                saveToDatabaseForBankingAnalytics(
+                    firstNameText.getText(),
+                    lastNameText.getText(),
+                    feeStatusText.getText(),
+                    startDateText.getText(),
+                    attendanceText.getText(),
+                    cohort
+                );
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Invalid cohort number. Please enter a valid integer.");
+            }
+        });
+
+        cancelButton.addActionListener(e -> System.exit(0));
+
+        clearButton.addActionListener(e -> {
+            firstNameText.setText("");
+            lastNameText.setText("");
+            feeStatusText.setText("");
+            startDateText.setText("");
+            attendanceText.setText("");
+            cohortText.setText("");
+        });
+    }
+
+    private static void saveToDatabaseForBankingAnalytics(String firstName, String lastName, String feeStatus, String StartDate, String classAttendance, int Cohort) {
+        String url = "jdbc:mysql://localhost:3306/Prototype";
+        String username = "root";
+        String password = "";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String sql = "INSERT INTO BankingAnalyticsStudents (FirstName, LastName, FeeStatus, StartDate, ClassAttendance) VALUES (?, ?, ?, ?, ?,?)";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, firstName);
+                preparedStatement.setString(2, lastName);
+                preparedStatement.setString(3, feeStatus);
+                preparedStatement.setString(4, StartDate);
+                preparedStatement.setString(5, classAttendance);
+                preparedStatement.setInt(6, Cohort);
+                
+
+                int rowsInserted = preparedStatement.executeUpdate();
+                if (rowsInserted > 0) {
+                    JOptionPane.showMessageDialog(null, "Student record saved successfully!");
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error saving student record: " + ex.getMessage());
+        }
+    }
+    private static void displayStudentManagementSystemCodingForKids() {
+        frame = new JFrame("Coding for kids");
+        frame.setSize(700, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel panel = new JPanel();
+        frame.add(panel);
+
+        placeComponentsForDataScience(panel);
+        frame.setVisible(true);
+    }
+
+    private static void placeComponentsForCodingForKids(JPanel panel) {
+        panel.setLayout(null);
+
+        // First Name
+        JLabel firstNameLabel = new JLabel("First name:");
+        firstNameLabel.setBounds(150, 20, 200, 25);
+        panel.add(firstNameLabel);
+
+        JTextField firstNameText = new JTextField(20);
+        firstNameText.setBounds(350, 20, 200, 25);
+        panel.add(firstNameText);
+
+        // Last Name
+        JLabel lastNameLabel = new JLabel("Last name:");
+        lastNameLabel.setBounds(150, 60, 200, 25);
+        panel.add(lastNameLabel);
+
+        JTextField lastNameText = new JTextField(20);
+        lastNameText.setBounds(350, 60, 200, 25);
+        panel.add(lastNameText);
+
+        // Fee Status
+        JLabel feeStatusLabel = new JLabel("Fee Status:");
+        feeStatusLabel.setBounds(150, 100, 200, 25);
+        panel.add(feeStatusLabel);
+
+        JTextField feeStatusText = new JTextField(20);
+        feeStatusText.setBounds(350, 100, 200, 25);
+        panel.add(feeStatusText);
+
+        // Completion Date
+        JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
+        startDateLabel.setBounds(150, 140, 200, 25);
+        panel.add(startDateLabel);
+
+        JTextField startDateText = new JTextField(20);
+        startDateText.setBounds(350, 140, 200, 25);
+        panel.add(startDateText);
+
+        // Class Attendance
+        JLabel attendanceLabel = new JLabel("Class Attendance:");
+        attendanceLabel.setBounds(150, 180, 200, 25);
+        panel.add(attendanceLabel);
+
+        JTextField attendanceText = new JTextField(20);
+        attendanceText.setBounds(350, 180, 200, 25);
+        panel.add(attendanceText);
+
+        // Cohort Number
+        JLabel cohortLabel = new JLabel("Cohort Number:");
+        cohortLabel.setBounds(150, 220, 200, 25);
+        panel.add(cohortLabel);
+
+        JTextField cohortText = new JTextField(20);
+        cohortText.setBounds(350, 220, 200, 25);
+        panel.add(cohortText);
+
+        // Buttons
+        JButton saveButton = new JButton("Save");
+        saveButton.setBounds(200, 280, 80, 25);
+        panel.add(saveButton);
+
+        JButton cancelButton = new JButton("Cancel");
+        cancelButton.setBounds(300, 280, 80, 25);
+        panel.add(cancelButton);
+
+        JButton clearButton = new JButton("Clear");
+        clearButton.setBounds(400, 280, 80, 25);
+        panel.add(clearButton);
+
+        // Button Actions
+        saveButton.addActionListener(e -> {
+            try {
+                int cohort = Integer.parseInt(cohortText.getText());
+                saveToDatabaseForCodingForKids(
+                    firstNameText.getText(),
+                    lastNameText.getText(),
+                    feeStatusText.getText(),
+                    startDateText.getText(),
+                    attendanceText.getText(),
+                    cohort
+                );
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Invalid cohort number. Please enter a valid integer.");
+            }
+        });
+
+        cancelButton.addActionListener(e -> System.exit(0));
+
+        clearButton.addActionListener(e -> {
+            firstNameText.setText("");
+            lastNameText.setText("");
+            feeStatusText.setText("");
+            startDateText.setText("");
+            attendanceText.setText("");
+            cohortText.setText("");
+        });
+    }
+
+    private static void saveToDatabaseForCodingForKids(String firstName, String lastName, String feeStatus, String StartDate, String classAttendance, int Cohort) {
+        String url = "jdbc:mysql://localhost:3306/Prototype";
+        String username = "root";
+        String password = "";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String sql = "INSERT INTO CodingStudents (FirstName, LastName, FeeStatus, StartDate, ClassAttendance, Cohort) VALUES (?, ?, ?, ?, ?,?)";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, firstName);
+                preparedStatement.setString(2, lastName);
+                preparedStatement.setString(3, feeStatus);
+                preparedStatement.setString(4, StartDate);
+                preparedStatement.setString(5, classAttendance);
+                preparedStatement.setInt(6, Cohort);
+
+                int rowsInserted = preparedStatement.executeUpdate();
+                if (rowsInserted > 0) {
+                    JOptionPane.showMessageDialog(null, "Student record saved successfully!");
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error saving student record: " + ex.getMessage());
+        }
+    }
+   
+    private static void displayStudentManagementSystemExcel() {
+        frame = new JFrame("Excel");
+        frame.setSize(700, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel panel = new JPanel();
+        frame.add(panel);
+
+        placeComponentsForExcel(panel);
+        frame.setVisible(true);
+    }
+
+    private static void placeComponentsForExcel(JPanel panel) {
+        panel.setLayout(null);
+
+        // First Name
+        JLabel firstNameLabel = new JLabel("First name:");
+        firstNameLabel.setBounds(150, 20, 200, 25);
+        panel.add(firstNameLabel);
+
+        JTextField firstNameText = new JTextField(20);
+        firstNameText.setBounds(350, 20, 200, 25);
+        panel.add(firstNameText);
+
+        // Last Name
+        JLabel lastNameLabel = new JLabel("Last name:");
+        lastNameLabel.setBounds(150, 60, 200, 25);
+        panel.add(lastNameLabel);
+
+        JTextField lastNameText = new JTextField(20);
+        lastNameText.setBounds(350, 60, 200, 25);
+        panel.add(lastNameText);
+
+        // Fee Status
+        JLabel feeStatusLabel = new JLabel("Fee Status:");
+        feeStatusLabel.setBounds(150, 100, 200, 25);
+        panel.add(feeStatusLabel);
+
+        JTextField feeStatusText = new JTextField(20);
+        feeStatusText.setBounds(350, 100, 200, 25);
+        panel.add(feeStatusText);
+
+        // Completion Date
+        JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
+        startDateLabel.setBounds(150, 140, 200, 25);
+        panel.add(startDateLabel);
+
+        JTextField startDateText = new JTextField(20);
+        startDateText.setBounds(350, 140, 200, 25);
+        panel.add(startDateText);
+
+        // Class Attendance
+        JLabel attendanceLabel = new JLabel("Class Attendance:");
+        attendanceLabel.setBounds(150, 180, 200, 25);
+        panel.add(attendanceLabel);
+
+        JTextField attendanceText = new JTextField(20);
+        attendanceText.setBounds(350, 180, 200, 25);
+        panel.add(attendanceText);
+
+        // Cohort Number
+        JLabel cohortLabel = new JLabel("Cohort Number:");
+        cohortLabel.setBounds(150, 220, 200, 25);
+        panel.add(cohortLabel);
+
+        JTextField cohortText = new JTextField(20);
+        cohortText.setBounds(350, 220, 200, 25);
+        panel.add(cohortText);
+
+        // Buttons
+        JButton saveButton = new JButton("Save");
+        saveButton.setBounds(200, 280, 80, 25);
+        panel.add(saveButton);
+
+        JButton cancelButton = new JButton("Cancel");
+        cancelButton.setBounds(300, 280, 80, 25);
+        panel.add(cancelButton);
+
+        JButton clearButton = new JButton("Clear");
+        clearButton.setBounds(400, 280, 80, 25);
+        panel.add(clearButton);
+
+        // Button Actions
+        saveButton.addActionListener(e -> {
+            try {
+                int cohort = Integer.parseInt(cohortText.getText());
+                saveToDatabaseForExcel(
+                    firstNameText.getText(),
+                    lastNameText.getText(),
+                    feeStatusText.getText(),
+                    startDateText.getText(),
+                    attendanceText.getText(),
+                    cohort
+                );
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Invalid cohort number. Please enter a valid integer.");
+            }
+        });
+
+        cancelButton.addActionListener(e -> System.exit(0));
+
+        clearButton.addActionListener(e -> {
+            firstNameText.setText("");
+            lastNameText.setText("");
+            feeStatusText.setText("");
+            startDateText.setText("");
+            attendanceText.setText("");
+            cohortText.setText("");
+        });
+    }
+
+    private static void saveToDatabaseForExcel(String firstName, String lastName, String feeStatus, String StartDate, String classAttendance, int Cohort) {
+        String url = "jdbc:mysql://localhost:3306/Prototype";
+        String username = "root";
+        String password = "";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String sql = "INSERT INTO ExcelStudents (FirstName, LastName, FeeStatus, StartDate, ClassAttendance) VALUES (?, ?, ?, ?, ?,?)";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, firstName);
+                preparedStatement.setString(2, lastName);
+                preparedStatement.setString(3, feeStatus);
+                preparedStatement.setString(4, StartDate);
+                preparedStatement.setString(5, classAttendance);
+                preparedStatement.setInt(6, Cohort);
+
+                int rowsInserted = preparedStatement.executeUpdate();
+                if (rowsInserted > 0) {
+                    JOptionPane.showMessageDialog(null, "Student record saved successfully!");
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error saving student record: " + ex.getMessage());
+        }
+    }
+   
+    private static void displayStudentManagementSystemDataLawAndGov() {
+        frame = new JFrame("Data Law And Governance");
+        frame.setSize(700, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel panel = new JPanel();
+        frame.add(panel);
+
+        placeComponentsForDataLawAndGov(panel);
+        frame.setVisible(true);
+    }
+
+    private static void placeComponentsForDataLawAndGov(JPanel panel) {
+        panel.setLayout(null);
+
+        // First Name
+        JLabel firstNameLabel = new JLabel("First name:");
+        firstNameLabel.setBounds(150, 20, 200, 25);
+        panel.add(firstNameLabel);
+
+        JTextField firstNameText = new JTextField(20);
+        firstNameText.setBounds(350, 20, 200, 25);
+        panel.add(firstNameText);
+
+        // Last Name
+        JLabel lastNameLabel = new JLabel("Last name:");
+        lastNameLabel.setBounds(150, 60, 200, 25);
+        panel.add(lastNameLabel);
+
+        JTextField lastNameText = new JTextField(20);
+        lastNameText.setBounds(350, 60, 200, 25);
+        panel.add(lastNameText);
+
+        // Fee Status
+        JLabel feeStatusLabel = new JLabel("Fee Status:");
+        feeStatusLabel.setBounds(150, 100, 200, 25);
+        panel.add(feeStatusLabel);
+
+        JTextField feeStatusText = new JTextField(20);
+        feeStatusText.setBounds(350, 100, 200, 25);
+        panel.add(feeStatusText);
+
+        // Completion Date
+        JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
+        startDateLabel.setBounds(150, 140, 200, 25);
+        panel.add(startDateLabel);
+
+        JTextField startDateText = new JTextField(20);
+        startDateText.setBounds(350, 140, 200, 25);
+        panel.add(startDateText);
+
+        // Class Attendance
+        JLabel attendanceLabel = new JLabel("Class Attendance:");
+        attendanceLabel.setBounds(150, 180, 200, 25);
+        panel.add(attendanceLabel);
+
+        JTextField attendanceText = new JTextField(20);
+        attendanceText.setBounds(350, 180, 200, 25);
+        panel.add(attendanceText);
+
+        // Cohort Number
+        JLabel cohortLabel = new JLabel("Cohort Number:");
+        cohortLabel.setBounds(150, 220, 200, 25);
+        panel.add(cohortLabel);
+
+        JTextField cohortText = new JTextField(20);
+        cohortText.setBounds(350, 220, 200, 25);
+        panel.add(cohortText);
+
+        // Buttons
+        JButton saveButton = new JButton("Save");
+        saveButton.setBounds(200, 280, 80, 25);
+        panel.add(saveButton);
+
+        JButton cancelButton = new JButton("Cancel");
+        cancelButton.setBounds(300, 280, 80, 25);
+        panel.add(cancelButton);
+
+        JButton clearButton = new JButton("Clear");
+        clearButton.setBounds(400, 280, 80, 25);
+        panel.add(clearButton);
+
+        // Button Actions
+        saveButton.addActionListener(e -> {
+            try {
+                int cohort = Integer.parseInt(cohortText.getText());
+                saveToDatabaseForDataLawAndGov(
+                    firstNameText.getText(),
+                    lastNameText.getText(),
+                    feeStatusText.getText(),
+                    startDateText.getText(),
+                    attendanceText.getText(),
+                    cohort
+                );
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Invalid cohort number. Please enter a valid integer.");
+            }
+        });
+
+        cancelButton.addActionListener(e -> System.exit(0));
+
+        clearButton.addActionListener(e -> {
+            firstNameText.setText("");
+            lastNameText.setText("");
+            feeStatusText.setText("");
+            startDateText.setText("");
+            attendanceText.setText("");
+            cohortText.setText("");
+        });
+    }
+
+    private static void saveToDatabaseForDataLawAndGov(String firstName, String lastName, String feeStatus, String StartDate, String classAttendance, int cohort) {
+        String url = "jdbc:mysql://localhost:3306/Prototype";
+        String username = "root";
+        String password = "";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String sql = "INSERT INTO DataLawAndGovStudents (FirstName, LastName, FeeStatus, StartDate, ClassAttendance) VALUES (?, ?, ?, ?, ?,?)";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, firstName);
+                preparedStatement.setString(2, lastName);
+                preparedStatement.setString(3, feeStatus);
+                preparedStatement.setString(4, StartDate);
+                preparedStatement.setString(5, classAttendance);
+                preparedStatement.setInt(6, cohort);
+
+                int rowsInserted = preparedStatement.executeUpdate();
+                if (rowsInserted > 0) {
+                    JOptionPane.showMessageDialog(null, "Student record saved successfully!");
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error saving student record: " + ex.getMessage());
+        }
+    }
+
 }
 
