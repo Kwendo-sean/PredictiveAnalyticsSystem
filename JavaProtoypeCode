@@ -5,55 +5,84 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class StudentSystemPrototype {
+public class StudentSystem{
     private static JFrame frame;
 
     public static void main(String[] args) {
-        System.out.println("Enter choice (Student/Staff):");
-        Scanner input = new Scanner(System.in);
-        String userType = input.nextLine();
-        //User type
-        if (userType.equalsIgnoreCase("Student")) {
-            System.out.println("Enter a course (Cyber Security,Data Science,PowerBI,Marketing Analytics,Sales Analytics,Supply Chain Analytics,"
-            		+ "HR Analytics,Finance Analytics,Banking Analytics,Coding for kids,Excel,Data law and Governance):");
-            String courseCategory = input.nextLine();
+        frame = new JFrame("Student Management System");
+        frame.setSize(500, 250);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-            if (courseCategory.equalsIgnoreCase("Cyber Security")) {
-                displayStudentManagementSystemCyberSecurity();
-            } else if (courseCategory.equalsIgnoreCase("Data Science")) {
-                displayStudentManagementSystemDataScience();
-            }else if(courseCategory.equalsIgnoreCase("PowerBI")) {
-            	displayStudentManagementSystemPowerBI();
-            }else if(courseCategory.equalsIgnoreCase("Marketing Analytics")) {
-            	displayStudentManagementSystemMarketingAnalytics();
-            }else if(courseCategory.equalsIgnoreCase("Sales Analytics")) {
-            	displayStudentManagementSystemSalesAnalytics();
-            }else if(courseCategory.equalsIgnoreCase("Supply Chain Analytics")) {
-            	displayStudentManagementSystemSupplyChainAnalytics();
-            }else if(courseCategory.equalsIgnoreCase("HR Analytics")) {
-            	displayStudentManagementSystemHR_Analytics();
-            }else if(courseCategory.equalsIgnoreCase("Finance Analytics")) {
-            	displayStudentManagementSystemFinanceAnalytics();
-            }else if(courseCategory.equalsIgnoreCase("Banking Analytics")) {
-            	displayStudentManagementSystemBankingAnalytics();
-            }else if(courseCategory.equalsIgnoreCase("Coding for kids")) {
-            	displayStudentManagementSystemCodingForKids();
-            }else if(courseCategory.equalsIgnoreCase("Excel")) {
-            	displayStudentManagementSystemExcel();
-            }else if(courseCategory.equalsIgnoreCase("Data law and Governance")) {
-            	displayStudentManagementSystemDataLawAndGov();
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+        frame.add(panel);
+
+        JLabel courseLabel = new JLabel("Select Course:");
+        courseLabel.setBounds(30, 70, 150, 25);
+        panel.add(courseLabel);
+
+        String[] courses = {
+            "Cyber Security", "Data Science", "PowerBI", "Marketing Analytics", "Sales Analytics",
+            "Supply Chain Analytics", "HR Analytics", "Finance Analytics", "Banking Analytics",
+            "Coding for Kids", "Excel", "Data Law and Governance"
+        };
+        JComboBox<String> courseDropdown = new JComboBox<>(courses);
+        courseDropdown.setBounds(200, 70, 250, 25);
+        panel.add(courseDropdown);
+
+        // Submit Button
+        JButton submitButton = new JButton("Next");
+        submitButton.setBounds(200, 120, 100, 25);
+        panel.add(submitButton);
+
+        submitButton.addActionListener(e -> {
+            String courseCategory = (String) courseDropdown.getSelectedItem();
+
+            // Direct the user to the appropriate course management system
+            switch (courseCategory) {
+                case "Cyber Security":
+                    displayStudentManagementSystemCyberSecurity();
+                    break;
+                case "Data Science":
+                    displayStudentManagementSystemDataScience();
+                    break;
+                case "PowerBI":
+                    displayStudentManagementSystemPowerBI();
+                    break;
+                case "Marketing Analytics":
+                    displayStudentManagementSystemMarketingAnalytics();
+                    break;
+                case "Sales Analytics":
+                    displayStudentManagementSystemSalesAnalytics();
+                    break;
+                case "Supply Chain Analytics":
+                    displayStudentManagementSystemSupplyChainAnalytics();
+                    break;
+                case "HR Analytics":
+                    displayStudentManagementSystemHR_Analytics();
+                    break;
+                case "Finance Analytics":
+                    displayStudentManagementSystemFinanceAnalytics();
+                    break;
+                case "Banking Analytics":
+                    displayStudentManagementSystemBankingAnalytics();
+                    break;
+                case "Coding for Kids":
+                    displayStudentManagementSystemCodingForKids();
+                    break;
+                case "Excel":
+                    displayStudentManagementSystemExcel();
+                    break;
+                case "Data Law and Governance":
+                    displayStudentManagementSystemDataLawAndGov();
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(frame, "Invalid course selected. Please select a valid course.");
             }
-            
-            else {
-                JOptionPane.showMessageDialog(null, "Invalid course. Please enter a valid course (Check spelling)");
-            }
-        } else if (userType.equalsIgnoreCase("Staff")) {
-            JOptionPane.showMessageDialog(null, "Staff functionalities are not implemented yet.");
-        } else {
-            JOptionPane.showMessageDialog(null, "Invalid user type. Please enter 'Student' or 'Staff'.");
-        }
+        });
+
+        frame.setVisible(true);
     }
-
     // Display for Data Science
     private static void displayStudentManagementSystemDataScience() {
         frame = new JFrame("Data Science");
@@ -1288,7 +1317,7 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
         JPanel panel = new JPanel();
         frame.add(panel);
 
-        placeComponentsForDataScience(panel);
+        placeComponentsForCodingForKids(panel);
         frame.setVisible(true);
     }
 
