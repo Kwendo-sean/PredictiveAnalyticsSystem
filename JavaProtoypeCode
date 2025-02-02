@@ -24,7 +24,7 @@ public class PredictiveSystemCode{
         String[] courses = {
             "Cyber Security", "Data Science", "PowerBI", "Marketing Analytics", "Sales Analytics",
             "Supply Chain Analytics", "HR Analytics", "Finance Analytics", "Banking Analytics",
-            "Coding for Kids", "Excel", "Data Law and Governance"
+            "Coding for Kids", "Excel", "Data Law and Governance", "Long Program"
         };
         JComboBox<String> courseDropdown = new JComboBox<>(courses);
         courseDropdown.setBounds(200, 70, 250, 25);
@@ -38,7 +38,6 @@ public class PredictiveSystemCode{
         submitButton.addActionListener(e -> {
             String courseCategory = (String) courseDropdown.getSelectedItem();
 
-            // Direct the user to the appropriate course management system
             switch (courseCategory) {
                 case "Cyber Security":
                     displayStudentManagementSystemCyberSecurity();
@@ -76,6 +75,9 @@ public class PredictiveSystemCode{
                 case "Data Law and Governance":
                     displayStudentManagementSystemDataLawAndGov();
                     break;
+                case "Long Program":
+                	displayStudentManagementSystemLongProgram();
+                	break;
                 default:
                     JOptionPane.showMessageDialog(frame, "Invalid course selected. Please select a valid course.");
             }
@@ -83,7 +85,157 @@ public class PredictiveSystemCode{
 
         frame.setVisible(true);
     }
-    // Display for Data Science
+    private static void displayStudentManagementSystemLongProgram() {
+    	 frame = new JFrame("Long Program");
+         frame.setSize(700, 600);
+         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+         JPanel panel = new JPanel();
+         frame.add(panel);
+
+         placeComponentsForLongProgram(panel);
+         frame.setVisible(true);
+		
+	}
+	private static void placeComponentsForLongProgram(JPanel panel) {
+   	 panel.setLayout(null);
+
+	    // First Name
+	    JLabel firstNameLabel = new JLabel("First name:");
+	    firstNameLabel.setBounds(150, 20, 200, 25);
+	    panel.add(firstNameLabel);
+
+	    JTextField firstNameText = new JTextField(20);
+	    firstNameText.setBounds(350, 20, 200, 25);
+	    panel.add(firstNameText);
+
+	    // Last Name
+	    JLabel lastNameLabel = new JLabel("Last name:");
+	    lastNameLabel.setBounds(150, 60, 200, 25);
+	    panel.add(lastNameLabel);
+
+	    JTextField lastNameText = new JTextField(20);
+	    lastNameText.setBounds(350, 60, 200, 25);
+	    panel.add(lastNameText);
+
+	    // Fee Status
+	    JLabel feeBalanceLabel = new JLabel("Fee Balance:");
+	    feeBalanceLabel.setBounds(150, 100, 200, 25);
+	    panel.add(feeBalanceLabel);
+
+	    JTextField feeBalanceText = new JTextField(20);
+	    feeBalanceText.setBounds(350, 100, 200, 25);
+	    panel.add(feeBalanceText);
+
+	    // Start Date
+	    JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
+	    startDateLabel.setBounds(150, 140, 200, 25);
+	    panel.add(startDateLabel);
+
+	    JTextField startDateText = new JTextField(20);
+	    startDateText.setBounds(350, 140, 200, 25);
+	    panel.add(startDateText);
+
+	    // Completion Date
+	    JLabel completionDateLabel = new JLabel("Completion Date (YYYY-MM-DD):");
+	    completionDateLabel.setBounds(150, 180, 200, 25);
+	    panel.add(completionDateLabel);
+
+	    JTextField completionDateText = new JTextField(20);
+	    completionDateText.setBounds(350, 180, 200, 25);
+	    panel.add(completionDateText);
+
+	    // Class Attendance
+	    JLabel attendanceLabel = new JLabel("Class Attendance:");
+	    attendanceLabel.setBounds(150, 220, 200, 25);
+	    panel.add(attendanceLabel);
+
+	    JTextField attendanceText = new JTextField(20);
+	    attendanceText.setBounds(350, 220, 200, 25);
+	    panel.add(attendanceText);
+
+	    // Cohort Number
+	    JLabel cohortLabel = new JLabel("Cohort Number:");
+	    cohortLabel.setBounds(150, 260, 200, 25);
+	    panel.add(cohortLabel);
+
+	    JTextField cohortText = new JTextField(20);
+	    cohortText.setBounds(350, 260, 200, 25);
+	    panel.add(cohortText);
+
+	    // Buttons
+	    JButton saveButton = new JButton("Save");
+	    saveButton.setBounds(200, 320, 80, 25);
+	    panel.add(saveButton);
+
+	    JButton cancelButton = new JButton("Cancel");
+	    cancelButton.setBounds(300, 320, 80, 25);
+	    panel.add(cancelButton);
+
+	    JButton clearButton = new JButton("Clear");
+	    clearButton.setBounds(400, 320, 80, 25);
+	    panel.add(clearButton);
+
+	    // Button Actions
+	    saveButton.addActionListener(e -> {
+	        try {
+	            int cohort = Integer.parseInt(cohortText.getText());
+	            int feeBalance = Integer.parseInt(feeBalanceText.getText());
+	            saveToDatabaseForLongProgram(
+	                firstNameText.getText(),
+	                lastNameText.getText(),
+	                feeBalance,
+	                startDateText.getText(),
+	                completionDateText.getText(),
+	                attendanceText.getText(),
+	                cohort
+	            );
+	        } catch (NumberFormatException ex) {
+	            JOptionPane.showMessageDialog(null, "Invalid input. Ensure Cohort and Fee Balance are valid integers.");
+	        }
+	    });
+
+	    cancelButton.addActionListener(e -> System.exit(0));
+
+	    clearButton.addActionListener(e -> {
+	        firstNameText.setText("");
+	        lastNameText.setText("");
+	        feeBalanceText.setText("");
+	        startDateText.setText("");
+	        completionDateText.setText("");
+	        attendanceText.setText("");
+	        cohortText.setText("");
+	    });
+		
+	}
+	private static void saveToDatabaseForLongProgram(String firstName, String lastName, int feeBalance, String startDate,
+			String completionDate, String classAttendance, int cohort) {
+		 String url = "jdbc:mysql://localhost:3306/Prototype";
+ 	    String username = "root";
+ 	    String password = "";
+
+ 	    try (Connection connection = DriverManager.getConnection(url, username, password)) {
+ 	        String sql = "INSERT INTO LongProgramStudents (FirstName, LastName, FeeBalance, StartDate, CompletionDate, ClassAttendance, Cohort) VALUES (?, ?, ?, ?, ?, ?, ?)";
+ 	        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+ 	            preparedStatement.setString(1, firstName);
+ 	            preparedStatement.setString(2, lastName);
+ 	            preparedStatement.setInt(3, feeBalance);
+ 	            preparedStatement.setString(4, startDate);
+ 	            preparedStatement.setString(5, completionDate);
+ 	            preparedStatement.setString(6, classAttendance);
+ 	            preparedStatement.setInt(7, cohort);
+
+ 	            int rowsInserted = preparedStatement.executeUpdate();
+ 	            if (rowsInserted > 0) {
+ 	                JOptionPane.showMessageDialog(null, "Student record saved successfully!");
+ 	            }
+ 	        }
+ 	    } catch (SQLException ex) {
+ 	        JOptionPane.showMessageDialog(null, "Error saving student record: " + ex.getMessage());
+ 	    }
+		
+	}
+	// Display for Data Science
     private static void displayStudentManagementSystemDataScience() {
         frame = new JFrame("Data Science");
         frame.setSize(700, 600);
@@ -1866,5 +2018,6 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
 	        JOptionPane.showMessageDialog(null, "Error saving student record: " + ex.getMessage());
 	    }
 	}
+	
 }
 
