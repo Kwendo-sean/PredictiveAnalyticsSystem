@@ -17,8 +17,6 @@ Functionalities:
 
 Register Student/Teacher:
 Collect and save the first name, last name, and course details of students or teachers.
-Search Student/Teacher:
-Allow users to search for student/teacher records based on their name.
 Database Operations:
 Insert, retrieve, and manage data in MySQL using JDBC.
 Technology Stack:
