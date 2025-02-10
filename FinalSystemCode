@@ -24,7 +24,7 @@ public class StudentMnagementSystem{
         String[] courses = {
             "Cyber Security", "Data Science", "PowerBI", "Marketing Analytics", "Sales Analytics",
             "Supply Chain Analytics", "HR Analytics", "Finance Analytics", "Banking Analytics",
-            "Coding for Kids", "Excel", "Data Law and Governance", "Long Program", "Telkom Analytics", "Data Journalism","Robotics and Automation"
+            "Coding for Kids", "Excel", "Data Law and Governance", "Long Program", "Telkom Analytics", "Data Journalism","Robotics and Automation","Location Intelligence and GIS"
         };
         JComboBox<String> courseDropdown = new JComboBox<>(courses);
         courseDropdown.setBounds(200, 70, 250, 25);
@@ -87,6 +87,9 @@ public class StudentMnagementSystem{
                 case "Robotics and Automation":
                 	displayStudentManagementSystemRoboticsAndAutomation();
                 	break;
+                case "Location Intelligence and GIS":
+                	displayStudentManagementSystemLocationIntelligenceAndGis();
+                	break;
                 default:
                     JOptionPane.showMessageDialog(frame, "Invalid course selected. Please select a valid course.");
             }
@@ -94,7 +97,227 @@ public class StudentMnagementSystem{
 
         frame.setVisible(true);
     }
-    private static void displayStudentManagementSystemLongProgram() {
+    private static void displayStudentManagementSystemLocationIntelligenceAndGis() {
+    	 frame = new JFrame("Location Intelligence And GIS");
+         frame.setSize(700, 600);
+         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+         JPanel panel = new JPanel();
+         frame.add(panel);
+
+         placeComponentsForLocationIntelligenceAndGis(panel);
+         frame.setVisible(true);
+		
+	}
+	private static void placeComponentsForLocationIntelligenceAndGis(JPanel panel) {
+		 panel.setLayout(null);
+		  JLabel firstNameLabel = new JLabel("First Name:");
+	        firstNameLabel.setBounds(150, 20, 150, 25);
+	        panel.add(firstNameLabel);
+
+	        JTextField firstNameText = new JTextField(20);
+	        firstNameText.setBounds(310, 20, 200, 25);
+	        panel.add(firstNameText);
+
+	        JLabel lastNameLabel = new JLabel("Last Name:");
+	        lastNameLabel.setBounds(150, 50, 150, 25);
+	        panel.add(lastNameLabel);
+
+	        JTextField lastNameText = new JTextField(20);
+	        lastNameText.setBounds(310, 50, 200, 25);
+	        panel.add(lastNameText);
+
+	        JLabel emailLabel = new JLabel("Email:");
+	        emailLabel.setBounds(150, 80, 150, 25);
+	        panel.add(emailLabel);
+
+	        JTextField emailText = new JTextField(20);
+	        emailText.setBounds(310, 80, 200, 25);
+	        panel.add(emailText);
+
+	        JLabel phoneLabel = new JLabel("Phone Number:");
+	        phoneLabel.setBounds(150, 110, 150, 25);
+	        panel.add(phoneLabel);
+
+	        JTextField phoneText = new JTextField(20);
+	        phoneText.setBounds(310, 110, 200, 25);
+	        panel.add(phoneText);
+
+	        JLabel organisationLabel = new JLabel("Organisation:");
+	        organisationLabel.setBounds(150, 140, 150, 25);
+	        panel.add(organisationLabel);
+
+	        JTextField organisationText = new JTextField(20);
+	        organisationText.setBounds(310, 140, 200, 25);
+	        panel.add(organisationText);
+
+	        JLabel professionLabel = new JLabel("Profession:");
+	        professionLabel.setBounds(150, 170, 150, 25);
+	        panel.add(professionLabel);
+
+	        JTextField professionText = new JTextField(20);
+	        professionText.setBounds(310, 170, 200, 25);
+	        panel.add(professionText);
+
+	        JLabel totalFeeLabel = new JLabel("Total Fee:");
+	        totalFeeLabel.setBounds(150, 200, 150, 25);
+	        panel.add(totalFeeLabel);
+
+	        JTextField totalFeeText = new JTextField(20);
+	        totalFeeText.setBounds(310, 200, 200, 25);
+	        panel.add(totalFeeText);
+
+	        JLabel feePaidLabel = new JLabel("Fee Paid:");
+	        feePaidLabel.setBounds(150, 230, 150, 25);
+	        panel.add(feePaidLabel);
+
+	        JTextField feePaidText = new JTextField(20);
+	        feePaidText.setBounds(310, 230, 200, 25);
+	        panel.add(feePaidText);
+
+	        JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
+	        startDateLabel.setBounds(150, 260, 150, 25);
+	        panel.add(startDateLabel);
+
+	        JTextField startDateText = new JTextField(20);
+	        startDateText.setBounds(310, 260, 200, 25);
+	        panel.add(startDateText);
+
+	        JLabel completionDateLabel = new JLabel("Completion Date (YYYY-MM-DD):");
+	        completionDateLabel.setBounds(150, 290, 150, 25);
+	        panel.add(completionDateLabel);
+
+	        JTextField completionDateText = new JTextField(20);
+	        completionDateText.setBounds(310, 290, 200, 25);
+	        panel.add(completionDateText);
+
+	        JLabel attendanceLabel = new JLabel("Class Attendance:");
+	        attendanceLabel.setBounds(150, 320, 150, 25);
+	        panel.add(attendanceLabel);
+
+	        JTextField attendanceText = new JTextField(20);
+	        attendanceText.setBounds(310, 320, 200, 25);
+	        panel.add(attendanceText);
+
+	        JLabel cohortLabel = new JLabel("Cohort Number:");
+	        cohortLabel.setBounds(150, 350, 150, 25);
+	        panel.add(cohortLabel);
+
+	        JTextField cohortText = new JTextField(20);
+	        cohortText.setBounds(310, 350, 200, 25);
+	        panel.add(cohortText);
+
+	        JLabel commentLabel = new JLabel("Comment:");
+	        commentLabel.setBounds(150, 380, 150, 25); // Fixed spacing issue
+	        panel.add(commentLabel);
+
+	        JTextField commentText = new JTextField(20);
+	        commentText.setBounds(310, 380, 200, 25); // Fixed spacing issue
+	        panel.add(commentText);
+
+	        // Buttons
+	        JButton saveButton = new JButton("Save");
+	        saveButton.setBounds(150, 430, 80, 25);
+	        panel.add(saveButton);
+
+	        JButton cancelButton = new JButton("Cancel");
+	        cancelButton.setBounds(250, 430, 80, 25);
+	        panel.add(cancelButton);
+
+	        JButton clearButton = new JButton("Clear");
+	        clearButton.setBounds(350, 430, 80, 25);
+	        panel.add(clearButton);
+
+	        JButton backButton = new JButton("Back");
+	        backButton.setBounds(450, 430, 80, 25);
+	        panel.add(backButton);
+	        
+		        frame.setVisible(true);
+
+		    // Button Actions
+		    saveButton.addActionListener(e -> {
+		        try {
+		            int cohort = Integer.parseInt(cohortText.getText());
+		            int TotalFee = Integer.parseInt(totalFeeText.getText());
+		            int feepaid = Integer.parseInt(feePaidText.getText());
+		            saveToDatabaseForLocationIntelligenceAndGis(
+		                firstNameText.getText(),
+		                lastNameText.getText(),
+		                emailText.getText(),
+		                phoneText.getText(),
+		                organisationText.getText(),
+		                professionText.getText(),
+		                TotalFee,
+		                feepaid,
+		                startDateText.getText(),
+		                completionDateText.getText(),
+		                attendanceText.getText(),
+		                cohort,
+		                commentText.getText()
+		            );
+		        } catch (NumberFormatException ex) {
+		            JOptionPane.showMessageDialog(null, "Invalid input. Ensure Cohort and Fee Balance are valid integers.");
+		        }
+		    });
+
+		    cancelButton.addActionListener(e -> System.exit(0));
+
+		    clearButton.addActionListener(e -> {
+		        firstNameText.setText("");
+		        lastNameText.setText("");
+		        emailText.setText("");
+		        phoneText.setText("");
+		        organisationText.setText("");
+		        professionText.setText("");
+		        totalFeeText.setText("");
+		        feePaidText.setText("");
+		        startDateText.setText("");
+		        completionDateText.setText("");
+		        attendanceText.setText("");
+		        cohortText.setText("");
+		        commentText.setText("");
+		    });
+
+		 	 backButton.addActionListener(e -> {
+		    	    frame.dispose(); // Close current window
+		    	    main(new String[]{}); // Restart the course selection window
+		    	});
+		 		
+	}
+
+	private static void saveToDatabaseForLocationIntelligenceAndGis(String firstName, String lastName, String email, String phone ,String organisation, String profession, int totalFee,
+   			int feePaid,String startDate, String completionDate, String attendance, int cohort, String comment) {
+   		 String url = "jdbc:mysql://localhost:3306/StudentManagementSystem";
+    	    String username = "root";
+    	    String password = "";
+
+    	    try (Connection connection = DriverManager.getConnection(url, username, password)) {
+    	        String sql = "INSERT INTO LocationIntelligenceAndGisStudents (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort, Comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    	        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+    	            preparedStatement.setString(1, firstName);
+    	            preparedStatement.setString(2, lastName);
+    	            preparedStatement.setString(3, email);
+    	            preparedStatement.setString(4, phone);
+    	            preparedStatement.setString(5, organisation);
+    	            preparedStatement.setString(6, profession);
+    	            preparedStatement.setInt(7, totalFee);
+    	            preparedStatement.setInt(8, feePaid);
+    	            preparedStatement.setString(9, startDate);
+    	            preparedStatement.setString(10, completionDate);
+    	           preparedStatement.setString(11, attendance);
+    	            preparedStatement.setInt(12, cohort);
+    	            preparedStatement.setString(13, comment);
+
+    	            int rowsInserted = preparedStatement.executeUpdate();
+    	            if (rowsInserted > 0) {
+    	                JOptionPane.showMessageDialog(null, "Student record saved successfully!");
+    	            }
+    	        }
+    	    } catch (SQLException ex) {
+    	        JOptionPane.showMessageDialog(null, "Error saving student record: " + ex.getMessage());
+    	    }
+	}
+	private static void displayStudentManagementSystemLongProgram() {
         frame = new JFrame("Long Program");
         frame.setSize(700, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -108,137 +331,152 @@ public class StudentMnagementSystem{
 	}
 	private static void placeComponentsForLongProgram(JPanel panel) {
 		panel.setLayout(null);
-	// First Name
-   	 JLabel firstNameLabel = new JLabel("First Name:");
-   	 firstNameLabel.setBounds(150, 20, 150, 25); // Adjusted width for alignment
-   	 panel.add(firstNameLabel);
+		// First Name
+        JLabel firstNameLabel = new JLabel("First Name:");
+        firstNameLabel.setBounds(150, 20, 150, 25);
+        panel.add(firstNameLabel);
 
-   	 JTextField firstNameText = new JTextField(20);
-   	 firstNameText.setBounds(310, 20, 200, 25); // Aligned with other fields
-   	 panel.add(firstNameText);
+        JTextField firstNameText = new JTextField(20);
+        firstNameText.setBounds(310, 20, 200, 25);
+        panel.add(firstNameText);
 
-   	 // Last Name
-   	 JLabel lastNameLabel = new JLabel("Last Name:");
-   	 lastNameLabel.setBounds(150, 50, 150, 25);
-   	 panel.add(lastNameLabel);
+        // Last Name
+        JLabel lastNameLabel = new JLabel("Last Name:");
+        lastNameLabel.setBounds(150, 50, 150, 25);
+        panel.add(lastNameLabel);
 
-   	 JTextField lastNameText = new JTextField(20);
-   	 lastNameText.setBounds(310, 50, 200, 25);
-   	 panel.add(lastNameText);
+        JTextField lastNameText = new JTextField(20);
+        lastNameText.setBounds(310, 50, 200, 25);
+        panel.add(lastNameText);
 
-   	 // Email
-   	 JLabel emailLabel = new JLabel("Email:");
-   	 emailLabel.setBounds(150, 80, 150, 25);
-   	 panel.add(emailLabel);
+        // Email
+        JLabel emailLabel = new JLabel("Email:");
+        emailLabel.setBounds(150, 80, 150, 25);
+        panel.add(emailLabel);
 
-   	 JTextField emailText = new JTextField(20);
-   	 emailText.setBounds(310, 80, 200, 25);
-   	 panel.add(emailText);
+        JTextField emailText = new JTextField(20);
+        emailText.setBounds(310, 80, 200, 25);
+        panel.add(emailText);
 
-   	 // Phone Number
-   	 JLabel phoneLabel = new JLabel("Phone Number:");
-   	 phoneLabel.setBounds(150, 110, 150, 25);
-   	 panel.add(phoneLabel);
+        // Phone Number
+        JLabel phoneLabel = new JLabel("Phone Number:");
+        phoneLabel.setBounds(150, 110, 150, 25);
+        panel.add(phoneLabel);
 
-   	 JTextField phoneText = new JTextField(20);
-   	 phoneText.setBounds(310, 110, 200, 25);
-   	 panel.add(phoneText);
+        JTextField phoneText = new JTextField(20);
+        phoneText.setBounds(310, 110, 200, 25);
+        panel.add(phoneText);
 
-   	 // Organisation
-   	 JLabel organisationLabel = new JLabel("Organisation:");
-   	 organisationLabel.setBounds(150, 140, 150, 25);
-   	 panel.add(organisationLabel);
+        // Organisation
+        JLabel organisationLabel = new JLabel("Organisation:");
+        organisationLabel.setBounds(150, 140, 150, 25);
+        panel.add(organisationLabel);
 
-   	 JTextField organisationText = new JTextField(20);
-   	 organisationText.setBounds(310, 140, 200, 25);
-   	 panel.add(organisationText);
+        JTextField organisationText = new JTextField(20);
+        organisationText.setBounds(310, 140, 200, 25);
+        panel.add(organisationText);
 
-   	 // Profession
-   	 JLabel professionLabel = new JLabel("Profession:");
-   	 professionLabel.setBounds(150, 170, 150, 25);
-   	 panel.add(professionLabel);
+        // Profession
+        JLabel professionLabel = new JLabel("Profession:");
+        professionLabel.setBounds(150, 170, 150, 25);
+        panel.add(professionLabel);
 
-   	 JTextField professionText = new JTextField(20);
-   	 professionText.setBounds(310, 170, 200, 25);
-   	 panel.add(professionText);
+        JTextField professionText = new JTextField(20);
+        professionText.setBounds(310, 170, 200, 25);
+        panel.add(professionText);
 
-   	 // Total Fee Payable
-   	 JLabel totalFeeLabel = new JLabel("Total Fee:");
-   	 totalFeeLabel.setBounds(150, 200, 150, 25);
-   	 panel.add(totalFeeLabel);
+        // Total Fee Payable
+        JLabel totalFeeLabel = new JLabel("Total Fee:");
+        totalFeeLabel.setBounds(150, 200, 150, 25);
+        panel.add(totalFeeLabel);
 
-   	 JTextField totalFeeText = new JTextField(20);
-   	 totalFeeText.setBounds(310, 200, 200, 25);
-   	 panel.add(totalFeeText);
+        JTextField totalFeeText = new JTextField(20);
+        totalFeeText.setBounds(310, 200, 200, 25);
+        panel.add(totalFeeText);
 
-   	 // Fee Paid
-   	 JLabel feePaidLabel = new JLabel("Fee Paid:");
-   	 feePaidLabel.setBounds(150, 230, 150, 25);
-   	 panel.add(feePaidLabel);
+        // Fee Paid
+        JLabel feePaidLabel = new JLabel("Fee Paid:");
+        feePaidLabel.setBounds(150, 230, 150, 25);
+        panel.add(feePaidLabel);
 
-   	 JTextField feePaidText = new JTextField(20);
-   	 feePaidText.setBounds(310, 230, 200, 25);
-   	 panel.add(feePaidText);
+        JTextField feePaidText = new JTextField(20);
+        feePaidText.setBounds(310, 230, 200, 25);
+        panel.add(feePaidText);
 
-   	 // Start Date
-   	 JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
-   	 startDateLabel.setBounds(150, 260, 150, 25);
-   	 panel.add(startDateLabel);
+        // Start Date
+        JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
+        startDateLabel.setBounds(150, 260, 150, 25);
+        panel.add(startDateLabel);
 
-   	 JTextField startDateText = new JTextField(20);
-   	 startDateText.setBounds(310, 260, 200, 25);
-   	 panel.add(startDateText);
+        JTextField startDateText = new JTextField(20);
+        startDateText.setBounds(310, 260, 200, 25);
+        panel.add(startDateText);
 
-   	 // Completion Date
-   	 JLabel completionDateLabel = new JLabel("Completion Date (YYYY-MM-DD):");
-   	 completionDateLabel.setBounds(150, 290, 150, 25);
-   	 panel.add(completionDateLabel);
+        // Completion Date
+        JLabel completionDateLabel = new JLabel("Completion Date (YYYY-MM-DD):");
+        completionDateLabel.setBounds(150, 290, 150, 25);
+        panel.add(completionDateLabel);
 
-   	 JTextField completionDateText = new JTextField(20);
-   	 completionDateText.setBounds(310, 290, 200, 25);
-   	 panel.add(completionDateText);
+        JTextField completionDateText = new JTextField(20);
+        completionDateText.setBounds(310, 290, 200, 25);
+        panel.add(completionDateText);
 
-   	 // Class Attendance
-   	 JLabel attendanceLabel = new JLabel("Class Attendance:");
-   	 attendanceLabel.setBounds(150, 320, 150, 25);
-   	 panel.add(attendanceLabel);
+        // Class Attendance
+        JLabel attendanceLabel = new JLabel("Class Attendance:");
+        attendanceLabel.setBounds(150, 320, 150, 25);
+        panel.add(attendanceLabel);
 
-   	 JTextField attendanceText = new JTextField(20);
-   	 attendanceText.setBounds(310, 320, 200, 25);
-   	 panel.add(attendanceText);
+        JTextField attendanceText = new JTextField(20);
+        attendanceText.setBounds(310, 320, 200, 25);
+        panel.add(attendanceText);
 
-   	 // Cohort Number
-   	 JLabel cohortLabel = new JLabel("Cohort Number:");
-   	 cohortLabel.setBounds(150, 350, 150, 25);
-   	 panel.add(cohortLabel);
+        // Cohort Number
+        JLabel cohortLabel = new JLabel("Cohort Number:");
+        cohortLabel.setBounds(150, 350, 150, 25);
+        panel.add(cohortLabel);
 
-   	 JTextField cohortText = new JTextField(20);
-   	 cohortText.setBounds(310, 350, 200, 25);
-   	 panel.add(cohortText);
+        JTextField cohortText = new JTextField(20);
+        cohortText.setBounds(310, 350, 200, 25);
+        panel.add(cohortText);
 
-   	 // Module
-   	 JLabel moduleLabel = new JLabel("Module:");
-   	 moduleLabel.setBounds(150, 380, 150, 25);
-   	 panel.add(moduleLabel);
+        // Module
+        JLabel moduleLabel = new JLabel("Module:");
+        moduleLabel.setBounds(150, 380, 150, 25);
+        panel.add(moduleLabel);
 
-   	 JTextField moduleText = new JTextField(20);
-   	 moduleText.setBounds(310, 380, 200, 25);
-   	 panel.add(moduleText);
+        JTextField moduleText = new JTextField(20);
+        moduleText.setBounds(310, 380, 200, 25);
+        panel.add(moduleText);
 
-   	 // Buttons
-   	 JButton saveButton = new JButton("Save");
-   	 saveButton.setBounds(200, 430, 80, 25);
-   	 panel.add(saveButton);
+        //Comment
+        JLabel commentLabel = new JLabel("Comment:");
+        commentLabel.setBounds(150, 410, 150, 25);
+        panel.add(commentLabel);
 
-   	 JButton cancelButton = new JButton("Cancel");
-   	 cancelButton.setBounds(300, 430, 80, 25);
-   	 panel.add(cancelButton);
+        JTextField commentText = new JTextField(20);
+        commentText.setBounds(310, 410, 200, 25);
+        panel.add(commentText);
 
-   	 JButton clearButton = new JButton("Clear");
-   	 clearButton.setBounds(400, 430, 80, 25);
-   	 panel.add(clearButton);
+        // Buttons
+        JButton saveButton = new JButton("Save");
+        saveButton.setBounds(150, 460, 80, 25);
+        panel.add(saveButton);
 
-   	 frame.setVisible(true);
+        JButton cancelButton = new JButton("Cancel");
+        cancelButton.setBounds(250, 460, 80, 25);
+        panel.add(cancelButton);
+
+        JButton clearButton = new JButton("Clear");
+        clearButton.setBounds(350, 460, 80, 25);
+        panel.add(clearButton);
+
+        // Back Button
+        JButton backButton = new JButton("Back");
+        backButton.setBounds(450, 460, 80, 25);
+        panel.add(backButton);
+
+        frame.setVisible(true);
+
 
    	    // Button Actions
    	    saveButton.addActionListener(e -> {
@@ -259,7 +497,8 @@ public class StudentMnagementSystem{
    	                completionDateText.getText(),
    	                attendanceText.getText(),
    	                cohort,
-   	                moduleText.getText()
+   	                moduleText.getText(),
+   	                commentText.getText()
    	            );
    	        } catch (NumberFormatException ex) {
    	            JOptionPane.showMessageDialog(null, "Invalid input. Ensure Cohort and Fee Balance are valid integers.");
@@ -282,18 +521,22 @@ public class StudentMnagementSystem{
    	        attendanceText.setText("");
    	        cohortText.setText("");
    	        moduleText.setText("");
+   	        commentText.setText("");
    	    });
-   		
+   	 backButton.addActionListener(e -> {
+   	    frame.dispose(); // Close current window
+   	    main(new String[]{}); // Restart the course selection window
+   	});
 		
 	}
 	private static void saveToDatabaseForLongProgram(String firstName, String lastName, String email, String phone ,String organisation, String profession, int totalFee,
-    			int feePaid,String startDate, String completionDate, String attendance, int cohort, String module) {
+    			int feePaid,String startDate, String completionDate, String attendance, int cohort, String module, String comment) {
     		 String url = "jdbc:mysql://localhost:3306/StudentManagementSystem";
      	    String username = "root";
      	    String password = "";
 
      	    try (Connection connection = DriverManager.getConnection(url, username, password)) {
-     	        String sql = "INSERT INTO LongProgramStudents (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort, Module) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+     	        String sql = "INSERT INTO LongProgramStudents (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort, Module, Comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
      	        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
      	            preparedStatement.setString(1, firstName);
      	            preparedStatement.setString(2, lastName);
@@ -308,6 +551,7 @@ public class StudentMnagementSystem{
      	           preparedStatement.setString(11, attendance);
      	            preparedStatement.setInt(12, cohort);
      	            preparedStatement.setString(13, module);
+     	            preparedStatement.setString(14, comment);
 
      	            int rowsInserted = preparedStatement.executeUpdate();
      	            if (rowsInserted > 0) {
@@ -334,128 +578,128 @@ public class StudentMnagementSystem{
 	private static void placeComponentsForRoboticsAndAutomation(JPanel panel) {
 		 panel.setLayout(null);
 
-	   	 // First Name
-	     JLabel firstNameLabel = new JLabel("First Name:");
-	     firstNameLabel.setBounds(150, 20, 200, 25);
-	     panel.add(firstNameLabel);
+		  JLabel firstNameLabel = new JLabel("First Name:");
+	        firstNameLabel.setBounds(150, 20, 150, 25);
+	        panel.add(firstNameLabel);
 
-	     JTextField firstNameText = new JTextField(20);
-	     firstNameText.setBounds(350, 20, 200, 25);
-	     panel.add(firstNameText);
+	        JTextField firstNameText = new JTextField(20);
+	        firstNameText.setBounds(310, 20, 200, 25);
+	        panel.add(firstNameText);
 
-	     // Last Name
-	     JLabel lastNameLabel = new JLabel("Last Name:");
-	     lastNameLabel.setBounds(150, 50, 200, 25);
-	     panel.add(lastNameLabel);
+	        JLabel lastNameLabel = new JLabel("Last Name:");
+	        lastNameLabel.setBounds(150, 50, 150, 25);
+	        panel.add(lastNameLabel);
 
-	     JTextField lastNameText = new JTextField(20);
-	     lastNameText.setBounds(350, 50, 200, 25);
-	     panel.add(lastNameText);
+	        JTextField lastNameText = new JTextField(20);
+	        lastNameText.setBounds(310, 50, 200, 25);
+	        panel.add(lastNameText);
 
-	     // Email
-	     JLabel emailLabel = new JLabel("Email:");
-	     emailLabel.setBounds(150, 80, 200, 25);
-	     panel.add(emailLabel);
+	        JLabel emailLabel = new JLabel("Email:");
+	        emailLabel.setBounds(150, 80, 150, 25);
+	        panel.add(emailLabel);
 
-	     JTextField emailText = new JTextField(20);
-	     emailText.setBounds(350, 80, 200, 25);
-	     panel.add(emailText);
+	        JTextField emailText = new JTextField(20);
+	        emailText.setBounds(310, 80, 200, 25);
+	        panel.add(emailText);
 
-	     // Phone Number
-	     JLabel phoneLabel = new JLabel("Phone Number:");
-	     phoneLabel.setBounds(150, 110, 200, 25);
-	     panel.add(phoneLabel);
+	        JLabel phoneLabel = new JLabel("Phone Number:");
+	        phoneLabel.setBounds(150, 110, 150, 25);
+	        panel.add(phoneLabel);
 
-	     JTextField phoneText = new JTextField(20);
-	     phoneText.setBounds(350, 110, 200, 25);
-	     panel.add(phoneText);
+	        JTextField phoneText = new JTextField(20);
+	        phoneText.setBounds(310, 110, 200, 25);
+	        panel.add(phoneText);
 
-	     // Organisation
-	     JLabel organisationLabel = new JLabel("Organisation:");
-	     organisationLabel.setBounds(150, 140, 200, 25);
-	     panel.add(organisationLabel);
+	        JLabel organisationLabel = new JLabel("Organisation:");
+	        organisationLabel.setBounds(150, 140, 150, 25);
+	        panel.add(organisationLabel);
 
-	     JTextField organisationText = new JTextField(20);
-	     organisationText.setBounds(350, 140, 200, 25);
-	     panel.add(organisationText);
+	        JTextField organisationText = new JTextField(20);
+	        organisationText.setBounds(310, 140, 200, 25);
+	        panel.add(organisationText);
 
-	     // Profession
-	     JLabel professionLabel = new JLabel("Profession:");
-	     professionLabel.setBounds(150, 170, 200, 25);
-	     panel.add(professionLabel);
+	        JLabel professionLabel = new JLabel("Profession:");
+	        professionLabel.setBounds(150, 170, 150, 25);
+	        panel.add(professionLabel);
 
-	     JTextField professionText = new JTextField(20);
-	     professionText.setBounds(350, 170, 200, 25);
-	     panel.add(professionText);
+	        JTextField professionText = new JTextField(20);
+	        professionText.setBounds(310, 170, 200, 25);
+	        panel.add(professionText);
 
-	     // Total Fee Payable
-	     JLabel totalFeeLabel = new JLabel("Total Fee:");
-	     totalFeeLabel.setBounds(150, 200, 200, 25);
-	     panel.add(totalFeeLabel);
+	        JLabel totalFeeLabel = new JLabel("Total Fee:");
+	        totalFeeLabel.setBounds(150, 200, 150, 25);
+	        panel.add(totalFeeLabel);
 
-	     JTextField totalFeeText = new JTextField(20);
-	     totalFeeText.setBounds(350, 200, 200, 25);
-	     panel.add(totalFeeText);
+	        JTextField totalFeeText = new JTextField(20);
+	        totalFeeText.setBounds(310, 200, 200, 25);
+	        panel.add(totalFeeText);
 
-	     // Fee Paid
-	     JLabel feePaidLabel = new JLabel("Fee Paid:");
-	     feePaidLabel.setBounds(150, 230, 200, 25);
-	     panel.add(feePaidLabel);
+	        JLabel feePaidLabel = new JLabel("Fee Paid:");
+	        feePaidLabel.setBounds(150, 230, 150, 25);
+	        panel.add(feePaidLabel);
 
-	     JTextField feePaidText = new JTextField(20);
-	     feePaidText.setBounds(350, 230, 200, 25);
-	     panel.add(feePaidText);
+	        JTextField feePaidText = new JTextField(20);
+	        feePaidText.setBounds(310, 230, 200, 25);
+	        panel.add(feePaidText);
 
-	     // Start Date
-	     JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
-	     startDateLabel.setBounds(150, 260, 200, 25);
-	     panel.add(startDateLabel);
+	        JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
+	        startDateLabel.setBounds(150, 260, 150, 25);
+	        panel.add(startDateLabel);
 
-	     JTextField startDateText = new JTextField(20);
-	     startDateText.setBounds(350, 260, 200, 25);
-	     panel.add(startDateText);
+	        JTextField startDateText = new JTextField(20);
+	        startDateText.setBounds(310, 260, 200, 25);
+	        panel.add(startDateText);
 
-	     // Completion Date
-	     JLabel completionDateLabel = new JLabel("Completion Date (YYYY-MM-DD):");
-	     completionDateLabel.setBounds(150, 290, 200, 25);
-	     panel.add(completionDateLabel);
+	        JLabel completionDateLabel = new JLabel("Completion Date (YYYY-MM-DD):");
+	        completionDateLabel.setBounds(150, 290, 150, 25);
+	        panel.add(completionDateLabel);
 
-	     JTextField completionDateText = new JTextField(20);
-	     completionDateText.setBounds(350, 290, 200, 25);
-	     panel.add(completionDateText);
+	        JTextField completionDateText = new JTextField(20);
+	        completionDateText.setBounds(310, 290, 200, 25);
+	        panel.add(completionDateText);
 
-	     // Class Attendance
-	     JLabel attendanceLabel = new JLabel("Class Attendance:");
-	     attendanceLabel.setBounds(150, 320, 200, 25);
-	     panel.add(attendanceLabel);
+	        JLabel attendanceLabel = new JLabel("Class Attendance:");
+	        attendanceLabel.setBounds(150, 320, 150, 25);
+	        panel.add(attendanceLabel);
 
-	     JTextField attendanceText = new JTextField(20);
-	     attendanceText.setBounds(350, 320, 200, 25);
-	     panel.add(attendanceText);
+	        JTextField attendanceText = new JTextField(20);
+	        attendanceText.setBounds(310, 320, 200, 25);
+	        panel.add(attendanceText);
 
-	     // Cohort Number
-	     JLabel cohortLabel = new JLabel("Cohort Number:");
-	     cohortLabel.setBounds(150, 350, 200, 25);
-	     panel.add(cohortLabel);
+	        JLabel cohortLabel = new JLabel("Cohort Number:");
+	        cohortLabel.setBounds(150, 350, 150, 25);
+	        panel.add(cohortLabel);
 
-	     JTextField cohortText = new JTextField(20);
-	     cohortText.setBounds(350, 350, 200, 25);
-	     panel.add(cohortText);
+	        JTextField cohortText = new JTextField(20);
+	        cohortText.setBounds(310, 350, 200, 25);
+	        panel.add(cohortText);
 
-	     // Buttons
-	     JButton saveButton = new JButton("Save");
-	     saveButton.setBounds(200, 400, 80, 25);
-	     panel.add(saveButton);
+	        JLabel commentLabel = new JLabel("Comment:");
+	        commentLabel.setBounds(150, 380, 150, 25); // Fixed spacing issue
+	        panel.add(commentLabel);
 
-	     JButton cancelButton = new JButton("Cancel");
-	     cancelButton.setBounds(300, 400, 80, 25);
-	     panel.add(cancelButton);
+	        JTextField commentText = new JTextField(20);
+	        commentText.setBounds(310, 380, 200, 25); // Fixed spacing issue
+	        panel.add(commentText);
 
-	     JButton clearButton = new JButton("Clear");
-	     clearButton.setBounds(400, 400, 80, 25);
-	     panel.add(clearButton);
+	        // Buttons
+	        JButton saveButton = new JButton("Save");
+	        saveButton.setBounds(150, 430, 80, 25);
+	        panel.add(saveButton);
 
-	     frame.setVisible(true);
+	        JButton cancelButton = new JButton("Cancel");
+	        cancelButton.setBounds(250, 430, 80, 25);
+	        panel.add(cancelButton);
+
+	        JButton clearButton = new JButton("Clear");
+	        clearButton.setBounds(350, 430, 80, 25);
+	        panel.add(clearButton);
+
+	        JButton backButton = new JButton("Back");
+	        backButton.setBounds(450, 430, 80, 25);
+	        panel.add(backButton);
+	        
+		        frame.setVisible(true);
 
 		    // Button Actions
 		    saveButton.addActionListener(e -> {
@@ -475,7 +719,8 @@ public class StudentMnagementSystem{
 		                startDateText.getText(),
 		                completionDateText.getText(),
 		                attendanceText.getText(),
-		                cohort
+		                cohort,
+		                commentText.getText()
 		            );
 		        } catch (NumberFormatException ex) {
 		            JOptionPane.showMessageDialog(null, "Invalid input. Ensure Cohort and Fee Balance are valid integers.");
@@ -497,17 +742,23 @@ public class StudentMnagementSystem{
 		        completionDateText.setText("");
 		        attendanceText.setText("");
 		        cohortText.setText("");
+		        commentText.setText("");
 		    });
+		 	 backButton.addActionListener(e -> {
+		    	    frame.dispose(); // Close current window
+		    	    main(new String[]{}); // Restart the course selection window
+		    	});
+		 		
 		
 	}
 	private static void saveToDatabaseForRoboticsAndAutomation(String firstName, String lastName, String email, String phone ,String organisation, String profession, int totalFee,
-   			int feePaid,String startDate, String completionDate, String attendance, int cohort) {
+   			int feePaid,String startDate, String completionDate, String attendance, int cohort, String comment) {
    		 String url = "jdbc:mysql://localhost:3306/StudentManagementSystem";
     	    String username = "root";
     	    String password = "";
 
     	    try (Connection connection = DriverManager.getConnection(url, username, password)) {
-    	        String sql = "INSERT INTO RoboticsAndAutomationStudents (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    	        String sql = "INSERT INTO RoboticsAndAutomationStudents (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort, Comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
     	        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
     	            preparedStatement.setString(1, firstName);
     	            preparedStatement.setString(2, lastName);
@@ -521,6 +772,7 @@ public class StudentMnagementSystem{
     	            preparedStatement.setString(10, completionDate);
     	           preparedStatement.setString(11, attendance);
     	            preparedStatement.setInt(12, cohort);
+    	            preparedStatement.setString(13, comment);
 
     	            int rowsInserted = preparedStatement.executeUpdate();
     	            if (rowsInserted > 0) {
@@ -547,129 +799,128 @@ public class StudentMnagementSystem{
 	private static void placeComponentsForDataJournalism(JPanel panel) {
 		 panel.setLayout(null);
 
-	   	 // First Name
-	     JLabel firstNameLabel = new JLabel("First Name:");
-	     firstNameLabel.setBounds(150, 20, 200, 25);
-	     panel.add(firstNameLabel);
+		  JLabel firstNameLabel = new JLabel("First Name:");
+	        firstNameLabel.setBounds(150, 20, 150, 25);
+	        panel.add(firstNameLabel);
 
-	     JTextField firstNameText = new JTextField(20);
-	     firstNameText.setBounds(350, 20, 200, 25);
-	     panel.add(firstNameText);
+	        JTextField firstNameText = new JTextField(20);
+	        firstNameText.setBounds(310, 20, 200, 25);
+	        panel.add(firstNameText);
 
-	     // Last Name
-	     JLabel lastNameLabel = new JLabel("Last Name:");
-	     lastNameLabel.setBounds(150, 50, 200, 25);
-	     panel.add(lastNameLabel);
+	        JLabel lastNameLabel = new JLabel("Last Name:");
+	        lastNameLabel.setBounds(150, 50, 150, 25);
+	        panel.add(lastNameLabel);
 
-	     JTextField lastNameText = new JTextField(20);
-	     lastNameText.setBounds(350, 50, 200, 25);
-	     panel.add(lastNameText);
+	        JTextField lastNameText = new JTextField(20);
+	        lastNameText.setBounds(310, 50, 200, 25);
+	        panel.add(lastNameText);
 
-	     // Email
-	     JLabel emailLabel = new JLabel("Email:");
-	     emailLabel.setBounds(150, 80, 200, 25);
-	     panel.add(emailLabel);
+	        JLabel emailLabel = new JLabel("Email:");
+	        emailLabel.setBounds(150, 80, 150, 25);
+	        panel.add(emailLabel);
 
-	     JTextField emailText = new JTextField(20);
-	     emailText.setBounds(350, 80, 200, 25);
-	     panel.add(emailText);
+	        JTextField emailText = new JTextField(20);
+	        emailText.setBounds(310, 80, 200, 25);
+	        panel.add(emailText);
 
-	     // Phone Number
-	     JLabel phoneLabel = new JLabel("Phone Number:");
-	     phoneLabel.setBounds(150, 110, 200, 25);
-	     panel.add(phoneLabel);
+	        JLabel phoneLabel = new JLabel("Phone Number:");
+	        phoneLabel.setBounds(150, 110, 150, 25);
+	        panel.add(phoneLabel);
 
-	     JTextField phoneText = new JTextField(20);
-	     phoneText.setBounds(350, 110, 200, 25);
-	     panel.add(phoneText);
+	        JTextField phoneText = new JTextField(20);
+	        phoneText.setBounds(310, 110, 200, 25);
+	        panel.add(phoneText);
 
-	     // Organisation
-	     JLabel organisationLabel = new JLabel("Organisation:");
-	     organisationLabel.setBounds(150, 140, 200, 25);
-	     panel.add(organisationLabel);
+	        JLabel organisationLabel = new JLabel("Organisation:");
+	        organisationLabel.setBounds(150, 140, 150, 25);
+	        panel.add(organisationLabel);
 
-	     JTextField organisationText = new JTextField(20);
-	     organisationText.setBounds(350, 140, 200, 25);
-	     panel.add(organisationText);
+	        JTextField organisationText = new JTextField(20);
+	        organisationText.setBounds(310, 140, 200, 25);
+	        panel.add(organisationText);
 
-	     // Profession
-	     JLabel professionLabel = new JLabel("Profession:");
-	     professionLabel.setBounds(150, 170, 200, 25);
-	     panel.add(professionLabel);
+	        JLabel professionLabel = new JLabel("Profession:");
+	        professionLabel.setBounds(150, 170, 150, 25);
+	        panel.add(professionLabel);
 
-	     JTextField professionText = new JTextField(20);
-	     professionText.setBounds(350, 170, 200, 25);
-	     panel.add(professionText);
+	        JTextField professionText = new JTextField(20);
+	        professionText.setBounds(310, 170, 200, 25);
+	        panel.add(professionText);
 
-	     // Total Fee Payable
-	     JLabel totalFeeLabel = new JLabel("Total Fee:");
-	     totalFeeLabel.setBounds(150, 200, 200, 25);
-	     panel.add(totalFeeLabel);
+	        JLabel totalFeeLabel = new JLabel("Total Fee:");
+	        totalFeeLabel.setBounds(150, 200, 150, 25);
+	        panel.add(totalFeeLabel);
 
-	     JTextField totalFeeText = new JTextField(20);
-	     totalFeeText.setBounds(350, 200, 200, 25);
-	     panel.add(totalFeeText);
+	        JTextField totalFeeText = new JTextField(20);
+	        totalFeeText.setBounds(310, 200, 200, 25);
+	        panel.add(totalFeeText);
 
-	     // Fee Paid
-	     JLabel feePaidLabel = new JLabel("Fee Paid:");
-	     feePaidLabel.setBounds(150, 230, 200, 25);
-	     panel.add(feePaidLabel);
+	        JLabel feePaidLabel = new JLabel("Fee Paid:");
+	        feePaidLabel.setBounds(150, 230, 150, 25);
+	        panel.add(feePaidLabel);
 
-	     JTextField feePaidText = new JTextField(20);
-	     feePaidText.setBounds(350, 230, 200, 25);
-	     panel.add(feePaidText);
+	        JTextField feePaidText = new JTextField(20);
+	        feePaidText.setBounds(310, 230, 200, 25);
+	        panel.add(feePaidText);
 
-	     // Start Date
-	     JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
-	     startDateLabel.setBounds(150, 260, 200, 25);
-	     panel.add(startDateLabel);
+	        JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
+	        startDateLabel.setBounds(150, 260, 150, 25);
+	        panel.add(startDateLabel);
 
-	     JTextField startDateText = new JTextField(20);
-	     startDateText.setBounds(350, 260, 200, 25);
-	     panel.add(startDateText);
+	        JTextField startDateText = new JTextField(20);
+	        startDateText.setBounds(310, 260, 200, 25);
+	        panel.add(startDateText);
 
-	     // Completion Date
-	     JLabel completionDateLabel = new JLabel("Completion Date (YYYY-MM-DD):");
-	     completionDateLabel.setBounds(150, 290, 200, 25);
-	     panel.add(completionDateLabel);
+	        JLabel completionDateLabel = new JLabel("Completion Date (YYYY-MM-DD):");
+	        completionDateLabel.setBounds(150, 290, 150, 25);
+	        panel.add(completionDateLabel);
 
-	     JTextField completionDateText = new JTextField(20);
-	     completionDateText.setBounds(350, 290, 200, 25);
-	     panel.add(completionDateText);
+	        JTextField completionDateText = new JTextField(20);
+	        completionDateText.setBounds(310, 290, 200, 25);
+	        panel.add(completionDateText);
 
-	     // Class Attendance
-	     JLabel attendanceLabel = new JLabel("Class Attendance:");
-	     attendanceLabel.setBounds(150, 320, 200, 25);
-	     panel.add(attendanceLabel);
+	        JLabel attendanceLabel = new JLabel("Class Attendance:");
+	        attendanceLabel.setBounds(150, 320, 150, 25);
+	        panel.add(attendanceLabel);
 
-	     JTextField attendanceText = new JTextField(20);
-	     attendanceText.setBounds(350, 320, 200, 25);
-	     panel.add(attendanceText);
+	        JTextField attendanceText = new JTextField(20);
+	        attendanceText.setBounds(310, 320, 200, 25);
+	        panel.add(attendanceText);
 
-	     // Cohort Number
-	     JLabel cohortLabel = new JLabel("Cohort Number:");
-	     cohortLabel.setBounds(150, 350, 200, 25);
-	     panel.add(cohortLabel);
+	        JLabel cohortLabel = new JLabel("Cohort Number:");
+	        cohortLabel.setBounds(150, 350, 150, 25);
+	        panel.add(cohortLabel);
 
-	     JTextField cohortText = new JTextField(20);
-	     cohortText.setBounds(350, 350, 200, 25);
-	     panel.add(cohortText);
+	        JTextField cohortText = new JTextField(20);
+	        cohortText.setBounds(310, 350, 200, 25);
+	        panel.add(cohortText);
 
-	     // Buttons
-	     JButton saveButton = new JButton("Save");
-	     saveButton.setBounds(200, 400, 80, 25);
-	     panel.add(saveButton);
+	        JLabel commentLabel = new JLabel("Comment:");
+	        commentLabel.setBounds(150, 380, 150, 25); // Fixed spacing issue
+	        panel.add(commentLabel);
 
-	     JButton cancelButton = new JButton("Cancel");
-	     cancelButton.setBounds(300, 400, 80, 25);
-	     panel.add(cancelButton);
+	        JTextField commentText = new JTextField(20);
+	        commentText.setBounds(310, 380, 200, 25); // Fixed spacing issue
+	        panel.add(commentText);
 
-	     JButton clearButton = new JButton("Clear");
-	     clearButton.setBounds(400, 400, 80, 25);
-	     panel.add(clearButton);
+	        // Buttons
+	        JButton saveButton = new JButton("Save");
+	        saveButton.setBounds(150, 430, 80, 25);
+	        panel.add(saveButton);
 
-	     frame.setVisible(true);
+	        JButton cancelButton = new JButton("Cancel");
+	        cancelButton.setBounds(250, 430, 80, 25);
+	        panel.add(cancelButton);
 
+	        JButton clearButton = new JButton("Clear");
+	        clearButton.setBounds(350, 430, 80, 25);
+	        panel.add(clearButton);
+
+	        JButton backButton = new JButton("Back");
+	        backButton.setBounds(450, 430, 80, 25);
+	        panel.add(backButton);
+	        
+		        frame.setVisible(true);
 		    // Button Actions
 		    saveButton.addActionListener(e -> {
 		        try {
@@ -688,7 +939,8 @@ public class StudentMnagementSystem{
 		                startDateText.getText(),
 		                completionDateText.getText(),
 		                attendanceText.getText(),
-		                cohort
+		                cohort,
+		                commentText.getText()
 		            );
 		        } catch (NumberFormatException ex) {
 		            JOptionPane.showMessageDialog(null, "Invalid input. Ensure Cohort and Fee Balance are valid integers.");
@@ -710,17 +962,22 @@ public class StudentMnagementSystem{
 		        completionDateText.setText("");
 		        attendanceText.setText("");
 		        cohortText.setText("");
+		        commentText.setText("");
 		    });
+		    backButton.addActionListener(e -> {
+		   	    frame.dispose(); // Close current window
+		   	    main(new String[]{}); // Restart the course selection window
+		   	});
 		
 	}
 	private static void saveToDatabaseForDataJournalism(String firstName, String lastName, String email, String phone ,String organisation, String profession, int totalFee,
-   			int feePaid,String startDate, String completionDate, String attendance, int cohort) {
+   			int feePaid,String startDate, String completionDate, String attendance, int cohort, String comment) {
    		 String url = "jdbc:mysql://localhost:3306/StudentManagementSystem";
     	    String username = "root";
     	    String password = "";
 
     	    try (Connection connection = DriverManager.getConnection(url, username, password)) {
-    	        String sql = "INSERT INTO DataJournalismStudents (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    	        String sql = "INSERT INTO DataJournalismStudents (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort, Comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
     	        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
     	            preparedStatement.setString(1, firstName);
     	            preparedStatement.setString(2, lastName);
@@ -734,6 +991,7 @@ public class StudentMnagementSystem{
     	            preparedStatement.setString(10, completionDate);
     	           preparedStatement.setString(11, attendance);
     	            preparedStatement.setInt(12, cohort);
+    	            preparedStatement.setString(13, comment);
 
     	            int rowsInserted = preparedStatement.executeUpdate();
     	            if (rowsInserted > 0) {
@@ -759,129 +1017,129 @@ public class StudentMnagementSystem{
 	private static void placeComponentsForCyberSecurity(JPanel panel) {
    	 panel.setLayout(null);
 
-   	 // First Name
      JLabel firstNameLabel = new JLabel("First Name:");
-     firstNameLabel.setBounds(150, 20, 200, 25);
+     firstNameLabel.setBounds(150, 20, 150, 25);
      panel.add(firstNameLabel);
 
      JTextField firstNameText = new JTextField(20);
-     firstNameText.setBounds(350, 20, 200, 25);
+     firstNameText.setBounds(310, 20, 200, 25);
      panel.add(firstNameText);
 
-     // Last Name
      JLabel lastNameLabel = new JLabel("Last Name:");
-     lastNameLabel.setBounds(150, 50, 200, 25);
+     lastNameLabel.setBounds(150, 50, 150, 25);
      panel.add(lastNameLabel);
 
      JTextField lastNameText = new JTextField(20);
-     lastNameText.setBounds(350, 50, 200, 25);
+     lastNameText.setBounds(310, 50, 200, 25);
      panel.add(lastNameText);
 
-     // Email
      JLabel emailLabel = new JLabel("Email:");
-     emailLabel.setBounds(150, 80, 200, 25);
+     emailLabel.setBounds(150, 80, 150, 25);
      panel.add(emailLabel);
 
      JTextField emailText = new JTextField(20);
-     emailText.setBounds(350, 80, 200, 25);
+     emailText.setBounds(310, 80, 200, 25);
      panel.add(emailText);
 
-     // Phone Number
      JLabel phoneLabel = new JLabel("Phone Number:");
-     phoneLabel.setBounds(150, 110, 200, 25);
+     phoneLabel.setBounds(150, 110, 150, 25);
      panel.add(phoneLabel);
 
      JTextField phoneText = new JTextField(20);
-     phoneText.setBounds(350, 110, 200, 25);
+     phoneText.setBounds(310, 110, 200, 25);
      panel.add(phoneText);
 
-     // Organisation
      JLabel organisationLabel = new JLabel("Organisation:");
-     organisationLabel.setBounds(150, 140, 200, 25);
+     organisationLabel.setBounds(150, 140, 150, 25);
      panel.add(organisationLabel);
 
      JTextField organisationText = new JTextField(20);
-     organisationText.setBounds(350, 140, 200, 25);
+     organisationText.setBounds(310, 140, 200, 25);
      panel.add(organisationText);
 
-     // Profession
      JLabel professionLabel = new JLabel("Profession:");
-     professionLabel.setBounds(150, 170, 200, 25);
+     professionLabel.setBounds(150, 170, 150, 25);
      panel.add(professionLabel);
 
      JTextField professionText = new JTextField(20);
-     professionText.setBounds(350, 170, 200, 25);
+     professionText.setBounds(310, 170, 200, 25);
      panel.add(professionText);
 
-     // Total Fee Payable
      JLabel totalFeeLabel = new JLabel("Total Fee:");
-     totalFeeLabel.setBounds(150, 200, 200, 25);
+     totalFeeLabel.setBounds(150, 200, 150, 25);
      panel.add(totalFeeLabel);
 
      JTextField totalFeeText = new JTextField(20);
-     totalFeeText.setBounds(350, 200, 200, 25);
+     totalFeeText.setBounds(310, 200, 200, 25);
      panel.add(totalFeeText);
 
-     // Fee Paid
      JLabel feePaidLabel = new JLabel("Fee Paid:");
-     feePaidLabel.setBounds(150, 230, 200, 25);
+     feePaidLabel.setBounds(150, 230, 150, 25);
      panel.add(feePaidLabel);
 
      JTextField feePaidText = new JTextField(20);
-     feePaidText.setBounds(350, 230, 200, 25);
+     feePaidText.setBounds(310, 230, 200, 25);
      panel.add(feePaidText);
 
-     // Start Date
      JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
-     startDateLabel.setBounds(150, 260, 200, 25);
+     startDateLabel.setBounds(150, 260, 150, 25);
      panel.add(startDateLabel);
 
      JTextField startDateText = new JTextField(20);
-     startDateText.setBounds(350, 260, 200, 25);
+     startDateText.setBounds(310, 260, 200, 25);
      panel.add(startDateText);
 
-     // Completion Date
      JLabel completionDateLabel = new JLabel("Completion Date (YYYY-MM-DD):");
-     completionDateLabel.setBounds(150, 290, 200, 25);
+     completionDateLabel.setBounds(150, 290, 150, 25);
      panel.add(completionDateLabel);
 
      JTextField completionDateText = new JTextField(20);
-     completionDateText.setBounds(350, 290, 200, 25);
+     completionDateText.setBounds(310, 290, 200, 25);
      panel.add(completionDateText);
 
-     // Class Attendance
      JLabel attendanceLabel = new JLabel("Class Attendance:");
-     attendanceLabel.setBounds(150, 320, 200, 25);
+     attendanceLabel.setBounds(150, 320, 150, 25);
      panel.add(attendanceLabel);
 
      JTextField attendanceText = new JTextField(20);
-     attendanceText.setBounds(350, 320, 200, 25);
+     attendanceText.setBounds(310, 320, 200, 25);
      panel.add(attendanceText);
 
-     // Cohort Number
      JLabel cohortLabel = new JLabel("Cohort Number:");
-     cohortLabel.setBounds(150, 350, 200, 25);
+     cohortLabel.setBounds(150, 350, 150, 25);
      panel.add(cohortLabel);
 
      JTextField cohortText = new JTextField(20);
-     cohortText.setBounds(350, 350, 200, 25);
+     cohortText.setBounds(310, 350, 200, 25);
      panel.add(cohortText);
+
+     JLabel commentLabel = new JLabel("Comment:");
+     commentLabel.setBounds(150, 380, 150, 25); // Fixed spacing issue
+     panel.add(commentLabel);
+
+     JTextField commentText = new JTextField(20);
+     commentText.setBounds(310, 380, 200, 25); // Fixed spacing issue
+     panel.add(commentText);
 
      // Buttons
      JButton saveButton = new JButton("Save");
-     saveButton.setBounds(200, 400, 80, 25);
+     saveButton.setBounds(150, 430, 80, 25);
      panel.add(saveButton);
 
      JButton cancelButton = new JButton("Cancel");
-     cancelButton.setBounds(300, 400, 80, 25);
+     cancelButton.setBounds(250, 430, 80, 25);
      panel.add(cancelButton);
 
      JButton clearButton = new JButton("Clear");
-     clearButton.setBounds(400, 400, 80, 25);
+     clearButton.setBounds(350, 430, 80, 25);
      panel.add(clearButton);
 
-     frame.setVisible(true);
-
+     JButton backButton = new JButton("Back");
+     backButton.setBounds(450, 430, 80, 25);
+     panel.add(backButton);
+     
+	        frame.setVisible(true);
+	        
 	    // Button Actions
 	    saveButton.addActionListener(e -> {
 	        try {
@@ -900,7 +1158,8 @@ public class StudentMnagementSystem{
 	                startDateText.getText(),
 	                completionDateText.getText(),
 	                attendanceText.getText(),
-	                cohort
+	                cohort,
+	                commentText.getText()
 	            );
 	        } catch (NumberFormatException ex) {
 	            JOptionPane.showMessageDialog(null, "Invalid input. Ensure Cohort and Fee Balance are valid integers.");
@@ -922,17 +1181,22 @@ public class StudentMnagementSystem{
 	        completionDateText.setText("");
 	        attendanceText.setText("");
 	        cohortText.setText("");
+	        commentText.setText("");
 	    });
+	    backButton.addActionListener(e -> {
+	   	    frame.dispose(); // Close current window
+	   	    main(new String[]{}); // Restart the course selection window
+	   	});
 		
 	}
 	private static void saveToDatabaseForCyberSecurity(String firstName, String lastName, String email, String phone ,String organisation, String profession, int totalFee,
-			int feePaid,String startDate, String completionDate, String attendance, int cohort) {
+			int feePaid,String startDate, String completionDate, String attendance, int cohort, String comment) {
 		 String url = "jdbc:mysql://localhost:3306/StudentManagementSystem";
  	    String username = "root";
  	    String password = "";
 
  	    try (Connection connection = DriverManager.getConnection(url, username, password)) {
- 	        String sql = "INSERT INTO CyberSecurityStudents (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+ 	        String sql = "INSERT INTO CyberSecurityStudents (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort, Comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
  	        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
  	            preparedStatement.setString(1, firstName);
  	            preparedStatement.setString(2, lastName);
@@ -946,6 +1210,7 @@ public class StudentMnagementSystem{
  	            preparedStatement.setString(10, completionDate);
  	           preparedStatement.setString(11, attendance);
  	            preparedStatement.setInt(12, cohort);
+ 	            preparedStatement.setString(13, comment);
 
  	            int rowsInserted = preparedStatement.executeUpdate();
  	            if (rowsInserted > 0) {
@@ -974,137 +1239,150 @@ public class StudentMnagementSystem{
     	 panel.setLayout(null);
 
     	// First Name
-    	 JLabel firstNameLabel = new JLabel("First Name:");
-    	 firstNameLabel.setBounds(150, 20, 150, 25); // Adjusted width for alignment
-    	 panel.add(firstNameLabel);
+         JLabel firstNameLabel = new JLabel("First Name:");
+         firstNameLabel.setBounds(150, 20, 150, 25);
+         panel.add(firstNameLabel);
 
-    	 JTextField firstNameText = new JTextField(20);
-    	 firstNameText.setBounds(310, 20, 200, 25); // Aligned with other fields
-    	 panel.add(firstNameText);
+         JTextField firstNameText = new JTextField(20);
+         firstNameText.setBounds(310, 20, 200, 25);
+         panel.add(firstNameText);
 
-    	 // Last Name
-    	 JLabel lastNameLabel = new JLabel("Last Name:");
-    	 lastNameLabel.setBounds(150, 50, 150, 25);
-    	 panel.add(lastNameLabel);
+         // Last Name
+         JLabel lastNameLabel = new JLabel("Last Name:");
+         lastNameLabel.setBounds(150, 50, 150, 25);
+         panel.add(lastNameLabel);
 
-    	 JTextField lastNameText = new JTextField(20);
-    	 lastNameText.setBounds(310, 50, 200, 25);
-    	 panel.add(lastNameText);
+         JTextField lastNameText = new JTextField(20);
+         lastNameText.setBounds(310, 50, 200, 25);
+         panel.add(lastNameText);
 
-    	 // Email
-    	 JLabel emailLabel = new JLabel("Email:");
-    	 emailLabel.setBounds(150, 80, 150, 25);
-    	 panel.add(emailLabel);
+         // Email
+         JLabel emailLabel = new JLabel("Email:");
+         emailLabel.setBounds(150, 80, 150, 25);
+         panel.add(emailLabel);
 
-    	 JTextField emailText = new JTextField(20);
-    	 emailText.setBounds(310, 80, 200, 25);
-    	 panel.add(emailText);
+         JTextField emailText = new JTextField(20);
+         emailText.setBounds(310, 80, 200, 25);
+         panel.add(emailText);
 
-    	 // Phone Number
-    	 JLabel phoneLabel = new JLabel("Phone Number:");
-    	 phoneLabel.setBounds(150, 110, 150, 25);
-    	 panel.add(phoneLabel);
+         // Phone Number
+         JLabel phoneLabel = new JLabel("Phone Number:");
+         phoneLabel.setBounds(150, 110, 150, 25);
+         panel.add(phoneLabel);
 
-    	 JTextField phoneText = new JTextField(20);
-    	 phoneText.setBounds(310, 110, 200, 25);
-    	 panel.add(phoneText);
+         JTextField phoneText = new JTextField(20);
+         phoneText.setBounds(310, 110, 200, 25);
+         panel.add(phoneText);
 
-    	 // Organisation
-    	 JLabel organisationLabel = new JLabel("Organisation:");
-    	 organisationLabel.setBounds(150, 140, 150, 25);
-    	 panel.add(organisationLabel);
+         // Organisation
+         JLabel organisationLabel = new JLabel("Organisation:");
+         organisationLabel.setBounds(150, 140, 150, 25);
+         panel.add(organisationLabel);
 
-    	 JTextField organisationText = new JTextField(20);
-    	 organisationText.setBounds(310, 140, 200, 25);
-    	 panel.add(organisationText);
+         JTextField organisationText = new JTextField(20);
+         organisationText.setBounds(310, 140, 200, 25);
+         panel.add(organisationText);
 
-    	 // Profession
-    	 JLabel professionLabel = new JLabel("Profession:");
-    	 professionLabel.setBounds(150, 170, 150, 25);
-    	 panel.add(professionLabel);
+         // Profession
+         JLabel professionLabel = new JLabel("Profession:");
+         professionLabel.setBounds(150, 170, 150, 25);
+         panel.add(professionLabel);
 
-    	 JTextField professionText = new JTextField(20);
-    	 professionText.setBounds(310, 170, 200, 25);
-    	 panel.add(professionText);
+         JTextField professionText = new JTextField(20);
+         professionText.setBounds(310, 170, 200, 25);
+         panel.add(professionText);
 
-    	 // Total Fee Payable
-    	 JLabel totalFeeLabel = new JLabel("Total Fee:");
-    	 totalFeeLabel.setBounds(150, 200, 150, 25);
-    	 panel.add(totalFeeLabel);
+         // Total Fee Payable
+         JLabel totalFeeLabel = new JLabel("Total Fee:");
+         totalFeeLabel.setBounds(150, 200, 150, 25);
+         panel.add(totalFeeLabel);
 
-    	 JTextField totalFeeText = new JTextField(20);
-    	 totalFeeText.setBounds(310, 200, 200, 25);
-    	 panel.add(totalFeeText);
+         JTextField totalFeeText = new JTextField(20);
+         totalFeeText.setBounds(310, 200, 200, 25);
+         panel.add(totalFeeText);
 
-    	 // Fee Paid
-    	 JLabel feePaidLabel = new JLabel("Fee Paid:");
-    	 feePaidLabel.setBounds(150, 230, 150, 25);
-    	 panel.add(feePaidLabel);
+         // Fee Paid
+         JLabel feePaidLabel = new JLabel("Fee Paid:");
+         feePaidLabel.setBounds(150, 230, 150, 25);
+         panel.add(feePaidLabel);
 
-    	 JTextField feePaidText = new JTextField(20);
-    	 feePaidText.setBounds(310, 230, 200, 25);
-    	 panel.add(feePaidText);
+         JTextField feePaidText = new JTextField(20);
+         feePaidText.setBounds(310, 230, 200, 25);
+         panel.add(feePaidText);
 
-    	 // Start Date
-    	 JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
-    	 startDateLabel.setBounds(150, 260, 150, 25);
-    	 panel.add(startDateLabel);
+         // Start Date
+         JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
+         startDateLabel.setBounds(150, 260, 150, 25);
+         panel.add(startDateLabel);
 
-    	 JTextField startDateText = new JTextField(20);
-    	 startDateText.setBounds(310, 260, 200, 25);
-    	 panel.add(startDateText);
+         JTextField startDateText = new JTextField(20);
+         startDateText.setBounds(310, 260, 200, 25);
+         panel.add(startDateText);
 
-    	 // Completion Date
-    	 JLabel completionDateLabel = new JLabel("Completion Date (YYYY-MM-DD):");
-    	 completionDateLabel.setBounds(150, 290, 150, 25);
-    	 panel.add(completionDateLabel);
+         // Completion Date
+         JLabel completionDateLabel = new JLabel("Completion Date (YYYY-MM-DD):");
+         completionDateLabel.setBounds(150, 290, 150, 25);
+         panel.add(completionDateLabel);
 
-    	 JTextField completionDateText = new JTextField(20);
-    	 completionDateText.setBounds(310, 290, 200, 25);
-    	 panel.add(completionDateText);
+         JTextField completionDateText = new JTextField(20);
+         completionDateText.setBounds(310, 290, 200, 25);
+         panel.add(completionDateText);
 
-    	 // Class Attendance
-    	 JLabel attendanceLabel = new JLabel("Class Attendance:");
-    	 attendanceLabel.setBounds(150, 320, 150, 25);
-    	 panel.add(attendanceLabel);
+         // Class Attendance
+         JLabel attendanceLabel = new JLabel("Class Attendance:");
+         attendanceLabel.setBounds(150, 320, 150, 25);
+         panel.add(attendanceLabel);
 
-    	 JTextField attendanceText = new JTextField(20);
-    	 attendanceText.setBounds(310, 320, 200, 25);
-    	 panel.add(attendanceText);
+         JTextField attendanceText = new JTextField(20);
+         attendanceText.setBounds(310, 320, 200, 25);
+         panel.add(attendanceText);
 
-    	 // Cohort Number
-    	 JLabel cohortLabel = new JLabel("Cohort Number:");
-    	 cohortLabel.setBounds(150, 350, 150, 25);
-    	 panel.add(cohortLabel);
+         // Cohort Number
+         JLabel cohortLabel = new JLabel("Cohort Number:");
+         cohortLabel.setBounds(150, 350, 150, 25);
+         panel.add(cohortLabel);
 
-    	 JTextField cohortText = new JTextField(20);
-    	 cohortText.setBounds(310, 350, 200, 25);
-    	 panel.add(cohortText);
+         JTextField cohortText = new JTextField(20);
+         cohortText.setBounds(310, 350, 200, 25);
+         panel.add(cohortText);
 
-    	 // Module
-    	 JLabel moduleLabel = new JLabel("Module:");
-    	 moduleLabel.setBounds(150, 380, 150, 25);
-    	 panel.add(moduleLabel);
+         // Module
+         JLabel moduleLabel = new JLabel("Module:");
+         moduleLabel.setBounds(150, 380, 150, 25);
+         panel.add(moduleLabel);
 
-    	 JTextField moduleText = new JTextField(20);
-    	 moduleText.setBounds(310, 380, 200, 25);
-    	 panel.add(moduleText);
+         JTextField moduleText = new JTextField(20);
+         moduleText.setBounds(310, 380, 200, 25);
+         panel.add(moduleText);
 
-    	 // Buttons
-    	 JButton saveButton = new JButton("Save");
-    	 saveButton.setBounds(200, 430, 80, 25);
-    	 panel.add(saveButton);
+         //Comment
+         JLabel commentLabel = new JLabel("Comment:");
+         commentLabel.setBounds(150, 410, 150, 25);
+         panel.add(commentLabel);
 
-    	 JButton cancelButton = new JButton("Cancel");
-    	 cancelButton.setBounds(300, 430, 80, 25);
-    	 panel.add(cancelButton);
+         JTextField commentText = new JTextField(20);
+         commentText.setBounds(310, 410, 200, 25);
+         panel.add(commentText);
 
-    	 JButton clearButton = new JButton("Clear");
-    	 clearButton.setBounds(400, 430, 80, 25);
-    	 panel.add(clearButton);
+         // Buttons
+         JButton saveButton = new JButton("Save");
+         saveButton.setBounds(150, 460, 80, 25);
+         panel.add(saveButton);
 
-    	 frame.setVisible(true);
+         JButton cancelButton = new JButton("Cancel");
+         cancelButton.setBounds(250, 460, 80, 25);
+         panel.add(cancelButton);
 
+         JButton clearButton = new JButton("Clear");
+         clearButton.setBounds(350, 460, 80, 25);
+         panel.add(clearButton);
+
+         // Back Button
+         JButton backButton = new JButton("Back");
+         backButton.setBounds(450, 460, 80, 25);
+         panel.add(backButton);
+
+         frame.setVisible(true);
 
     	    // Button Actions
     	    saveButton.addActionListener(e -> {
@@ -1125,7 +1403,8 @@ public class StudentMnagementSystem{
     	                completionDateText.getText(),
     	                attendanceText.getText(),
     	                cohort,
-    	                moduleText.getText()
+    	                moduleText.getText(),
+    	                commentText.getText()
     	            );
     	        } catch (NumberFormatException ex) {
     	            JOptionPane.showMessageDialog(null, "Invalid input. Ensure Cohort and Fee Balance are valid integers.");
@@ -1148,17 +1427,23 @@ public class StudentMnagementSystem{
     	        attendanceText.setText("");
     	        cohortText.setText("");
     	        moduleText.setText("");
+    	        commentText.setText("");
     	    });
+    	 	 backButton.addActionListener(e -> {
+    	    	    frame.dispose(); // Close current window
+    	    	    main(new String[]{}); // Restart the course selection window
+    	    	});
+    	 		
     		
     	}
     	private static void saveToDatabaseForDataScience(String firstName, String lastName, String email, String phone ,String organisation, String profession, int totalFee,
-    			int feePaid,String startDate, String completionDate, String attendance, int cohort, String module) {
+    			int feePaid,String startDate, String completionDate, String attendance, int cohort, String module, String comment) {
     		 String url = "jdbc:mysql://localhost:3306/StudentManagementSystem";
      	    String username = "root";
      	    String password = "";
 
      	    try (Connection connection = DriverManager.getConnection(url, username, password)) {
-     	        String sql = "INSERT INTO DataScienceStudents (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort, Module) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+     	        String sql = "INSERT INTO DataScienceStudents (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort, Module, Comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
      	        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
      	            preparedStatement.setString(1, firstName);
      	            preparedStatement.setString(2, lastName);
@@ -1173,6 +1458,7 @@ public class StudentMnagementSystem{
      	           preparedStatement.setString(11, attendance);
      	            preparedStatement.setInt(12, cohort);
      	            preparedStatement.setString(13, module);
+     	            preparedStatement.setString(14, comment);
 
      	            int rowsInserted = preparedStatement.executeUpdate();
      	            if (rowsInserted > 0) {
@@ -1200,128 +1486,129 @@ public class StudentMnagementSystem{
     private static void placeComponentsForTelkomAnalytics(JPanel panel) {
         panel.setLayout(null);
 
-     // First Name
+
         JLabel firstNameLabel = new JLabel("First Name:");
-        firstNameLabel.setBounds(150, 20, 200, 25);
+        firstNameLabel.setBounds(150, 20, 150, 25);
         panel.add(firstNameLabel);
 
         JTextField firstNameText = new JTextField(20);
-        firstNameText.setBounds(350, 20, 200, 25);
+        firstNameText.setBounds(310, 20, 200, 25);
         panel.add(firstNameText);
 
-        // Last Name
         JLabel lastNameLabel = new JLabel("Last Name:");
-        lastNameLabel.setBounds(150, 50, 200, 25);
+        lastNameLabel.setBounds(150, 50, 150, 25);
         panel.add(lastNameLabel);
 
         JTextField lastNameText = new JTextField(20);
-        lastNameText.setBounds(350, 50, 200, 25);
+        lastNameText.setBounds(310, 50, 200, 25);
         panel.add(lastNameText);
 
-        // Email
         JLabel emailLabel = new JLabel("Email:");
-        emailLabel.setBounds(150, 80, 200, 25);
+        emailLabel.setBounds(150, 80, 150, 25);
         panel.add(emailLabel);
 
         JTextField emailText = new JTextField(20);
-        emailText.setBounds(350, 80, 200, 25);
+        emailText.setBounds(310, 80, 200, 25);
         panel.add(emailText);
 
-        // Phone Number
         JLabel phoneLabel = new JLabel("Phone Number:");
-        phoneLabel.setBounds(150, 110, 200, 25);
+        phoneLabel.setBounds(150, 110, 150, 25);
         panel.add(phoneLabel);
 
         JTextField phoneText = new JTextField(20);
-        phoneText.setBounds(350, 110, 200, 25);
+        phoneText.setBounds(310, 110, 200, 25);
         panel.add(phoneText);
 
-        // Organisation
         JLabel organisationLabel = new JLabel("Organisation:");
-        organisationLabel.setBounds(150, 140, 200, 25);
+        organisationLabel.setBounds(150, 140, 150, 25);
         panel.add(organisationLabel);
 
         JTextField organisationText = new JTextField(20);
-        organisationText.setBounds(350, 140, 200, 25);
+        organisationText.setBounds(310, 140, 200, 25);
         panel.add(organisationText);
 
-        // Profession
         JLabel professionLabel = new JLabel("Profession:");
-        professionLabel.setBounds(150, 170, 200, 25);
+        professionLabel.setBounds(150, 170, 150, 25);
         panel.add(professionLabel);
 
         JTextField professionText = new JTextField(20);
-        professionText.setBounds(350, 170, 200, 25);
+        professionText.setBounds(310, 170, 200, 25);
         panel.add(professionText);
 
-        // Total Fee Payable
         JLabel totalFeeLabel = new JLabel("Total Fee:");
-        totalFeeLabel.setBounds(150, 200, 200, 25);
+        totalFeeLabel.setBounds(150, 200, 150, 25);
         panel.add(totalFeeLabel);
 
         JTextField totalFeeText = new JTextField(20);
-        totalFeeText.setBounds(350, 200, 200, 25);
+        totalFeeText.setBounds(310, 200, 200, 25);
         panel.add(totalFeeText);
 
-        // Fee Paid
         JLabel feePaidLabel = new JLabel("Fee Paid:");
-        feePaidLabel.setBounds(150, 230, 200, 25);
+        feePaidLabel.setBounds(150, 230, 150, 25);
         panel.add(feePaidLabel);
 
         JTextField feePaidText = new JTextField(20);
-        feePaidText.setBounds(350, 230, 200, 25);
+        feePaidText.setBounds(310, 230, 200, 25);
         panel.add(feePaidText);
 
-        // Start Date
         JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
-        startDateLabel.setBounds(150, 260, 200, 25);
+        startDateLabel.setBounds(150, 260, 150, 25);
         panel.add(startDateLabel);
 
         JTextField startDateText = new JTextField(20);
-        startDateText.setBounds(350, 260, 200, 25);
+        startDateText.setBounds(310, 260, 200, 25);
         panel.add(startDateText);
 
-        // Completion Date
         JLabel completionDateLabel = new JLabel("Completion Date (YYYY-MM-DD):");
-        completionDateLabel.setBounds(150, 290, 200, 25);
+        completionDateLabel.setBounds(150, 290, 150, 25);
         panel.add(completionDateLabel);
 
         JTextField completionDateText = new JTextField(20);
-        completionDateText.setBounds(350, 290, 200, 25);
+        completionDateText.setBounds(310, 290, 200, 25);
         panel.add(completionDateText);
 
-        // Class Attendance
         JLabel attendanceLabel = new JLabel("Class Attendance:");
-        attendanceLabel.setBounds(150, 320, 200, 25);
+        attendanceLabel.setBounds(150, 320, 150, 25);
         panel.add(attendanceLabel);
 
         JTextField attendanceText = new JTextField(20);
-        attendanceText.setBounds(350, 320, 200, 25);
+        attendanceText.setBounds(310, 320, 200, 25);
         panel.add(attendanceText);
 
-        // Cohort Number
         JLabel cohortLabel = new JLabel("Cohort Number:");
-        cohortLabel.setBounds(150, 350, 200, 25);
+        cohortLabel.setBounds(150, 350, 150, 25);
         panel.add(cohortLabel);
 
         JTextField cohortText = new JTextField(20);
-        cohortText.setBounds(350, 350, 200, 25);
+        cohortText.setBounds(310, 350, 200, 25);
         panel.add(cohortText);
+
+        JLabel commentLabel = new JLabel("Comment:");
+        commentLabel.setBounds(150, 380, 150, 25); // Fixed spacing issue
+        panel.add(commentLabel);
+
+        JTextField commentText = new JTextField(20);
+        commentText.setBounds(310, 380, 200, 25); // Fixed spacing issue
+        panel.add(commentText);
 
         // Buttons
         JButton saveButton = new JButton("Save");
-        saveButton.setBounds(200, 400, 80, 25);
+        saveButton.setBounds(150, 430, 80, 25);
         panel.add(saveButton);
 
         JButton cancelButton = new JButton("Cancel");
-        cancelButton.setBounds(300, 400, 80, 25);
+        cancelButton.setBounds(250, 430, 80, 25);
         panel.add(cancelButton);
 
         JButton clearButton = new JButton("Clear");
-        clearButton.setBounds(400, 400, 80, 25);
+        clearButton.setBounds(350, 430, 80, 25);
         panel.add(clearButton);
 
-        frame.setVisible(true);
+        JButton backButton = new JButton("Back");
+        backButton.setBounds(450, 430, 80, 25);
+        panel.add(backButton);
+        
+	        frame.setVisible(true);
 
    	    // Button Actions
    	    saveButton.addActionListener(e -> {
@@ -1341,7 +1628,8 @@ public class StudentMnagementSystem{
    	                startDateText.getText(),
    	                completionDateText.getText(),
    	                attendanceText.getText(),
-   	                cohort
+   	                cohort,
+   	                commentText.getText()
    	            );
    	        } catch (NumberFormatException ex) {
    	            JOptionPane.showMessageDialog(null, "Invalid input. Ensure Cohort and Fee Balance are valid integers.");
@@ -1363,17 +1651,23 @@ public class StudentMnagementSystem{
    	        completionDateText.setText("");
    	        attendanceText.setText("");
    	        cohortText.setText("");
+   	        commentText.setText("");
    	    });
+    	 backButton.addActionListener(e -> {
+    	   	    frame.dispose(); // Close current window
+    	   	    main(new String[]{}); // Restart the course selection window
+    	   	});
+    			
    		
    	}
    	private static void saveToDatabaseForTelkomAnalytics(String firstName, String lastName, String email, String phone ,String organisation, String profession, int totalFee,
-   			int feePaid,String startDate, String completionDate, String attendance, int cohort) {
+   			int feePaid,String startDate, String completionDate, String attendance, int cohort, String comment) {
    		 String url = "jdbc:mysql://localhost:3306/StudentManagementSystem";
     	    String username = "root";
     	    String password = "";
 
     	    try (Connection connection = DriverManager.getConnection(url, username, password)) {
-    	        String sql = "INSERT INTO TelkomAnalyticsStudents (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    	        String sql = "INSERT INTO TelkomAnalyticsStudents (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort, Comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
     	        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
     	            preparedStatement.setString(1, firstName);
     	            preparedStatement.setString(2, lastName);
@@ -1387,6 +1681,7 @@ public class StudentMnagementSystem{
     	            preparedStatement.setString(10, completionDate);
     	           preparedStatement.setString(11, attendance);
     	            preparedStatement.setInt(12, cohort);
+    	            preparedStatement.setString(13, comment);
 
     	            int rowsInserted = preparedStatement.executeUpdate();
     	            if (rowsInserted > 0) {
@@ -1413,129 +1708,129 @@ public class StudentMnagementSystem{
 
     private static void placeComponentsForPowerBI(JPanel panel) {
         panel.setLayout(null);
-
-     // First Name
+        
         JLabel firstNameLabel = new JLabel("First Name:");
-        firstNameLabel.setBounds(150, 20, 200, 25);
+        firstNameLabel.setBounds(150, 20, 150, 25);
         panel.add(firstNameLabel);
 
         JTextField firstNameText = new JTextField(20);
-        firstNameText.setBounds(350, 20, 200, 25);
+        firstNameText.setBounds(310, 20, 200, 25);
         panel.add(firstNameText);
 
-        // Last Name
         JLabel lastNameLabel = new JLabel("Last Name:");
-        lastNameLabel.setBounds(150, 50, 200, 25);
+        lastNameLabel.setBounds(150, 50, 150, 25);
         panel.add(lastNameLabel);
 
         JTextField lastNameText = new JTextField(20);
-        lastNameText.setBounds(350, 50, 200, 25);
+        lastNameText.setBounds(310, 50, 200, 25);
         panel.add(lastNameText);
 
-        // Email
         JLabel emailLabel = new JLabel("Email:");
-        emailLabel.setBounds(150, 80, 200, 25);
+        emailLabel.setBounds(150, 80, 150, 25);
         panel.add(emailLabel);
 
         JTextField emailText = new JTextField(20);
-        emailText.setBounds(350, 80, 200, 25);
+        emailText.setBounds(310, 80, 200, 25);
         panel.add(emailText);
 
-        // Phone Number
         JLabel phoneLabel = new JLabel("Phone Number:");
-        phoneLabel.setBounds(150, 110, 200, 25);
+        phoneLabel.setBounds(150, 110, 150, 25);
         panel.add(phoneLabel);
 
         JTextField phoneText = new JTextField(20);
-        phoneText.setBounds(350, 110, 200, 25);
+        phoneText.setBounds(310, 110, 200, 25);
         panel.add(phoneText);
 
-        // Organisation
         JLabel organisationLabel = new JLabel("Organisation:");
-        organisationLabel.setBounds(150, 140, 200, 25);
+        organisationLabel.setBounds(150, 140, 150, 25);
         panel.add(organisationLabel);
 
         JTextField organisationText = new JTextField(20);
-        organisationText.setBounds(350, 140, 200, 25);
+        organisationText.setBounds(310, 140, 200, 25);
         panel.add(organisationText);
 
-        // Profession
         JLabel professionLabel = new JLabel("Profession:");
-        professionLabel.setBounds(150, 170, 200, 25);
+        professionLabel.setBounds(150, 170, 150, 25);
         panel.add(professionLabel);
 
         JTextField professionText = new JTextField(20);
-        professionText.setBounds(350, 170, 200, 25);
+        professionText.setBounds(310, 170, 200, 25);
         panel.add(professionText);
 
-        // Total Fee Payable
         JLabel totalFeeLabel = new JLabel("Total Fee:");
-        totalFeeLabel.setBounds(150, 200, 200, 25);
+        totalFeeLabel.setBounds(150, 200, 150, 25);
         panel.add(totalFeeLabel);
 
         JTextField totalFeeText = new JTextField(20);
-        totalFeeText.setBounds(350, 200, 200, 25);
+        totalFeeText.setBounds(310, 200, 200, 25);
         panel.add(totalFeeText);
 
-        // Fee Paid
         JLabel feePaidLabel = new JLabel("Fee Paid:");
-        feePaidLabel.setBounds(150, 230, 200, 25);
+        feePaidLabel.setBounds(150, 230, 150, 25);
         panel.add(feePaidLabel);
 
         JTextField feePaidText = new JTextField(20);
-        feePaidText.setBounds(350, 230, 200, 25);
+        feePaidText.setBounds(310, 230, 200, 25);
         panel.add(feePaidText);
 
-        // Start Date
         JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
-        startDateLabel.setBounds(150, 260, 200, 25);
+        startDateLabel.setBounds(150, 260, 150, 25);
         panel.add(startDateLabel);
 
         JTextField startDateText = new JTextField(20);
-        startDateText.setBounds(350, 260, 200, 25);
+        startDateText.setBounds(310, 260, 200, 25);
         panel.add(startDateText);
 
-        // Completion Date
         JLabel completionDateLabel = new JLabel("Completion Date (YYYY-MM-DD):");
-        completionDateLabel.setBounds(150, 290, 200, 25);
+        completionDateLabel.setBounds(150, 290, 150, 25);
         panel.add(completionDateLabel);
 
         JTextField completionDateText = new JTextField(20);
-        completionDateText.setBounds(350, 290, 200, 25);
+        completionDateText.setBounds(310, 290, 200, 25);
         panel.add(completionDateText);
 
-        // Class Attendance
         JLabel attendanceLabel = new JLabel("Class Attendance:");
-        attendanceLabel.setBounds(150, 320, 200, 25);
+        attendanceLabel.setBounds(150, 320, 150, 25);
         panel.add(attendanceLabel);
 
         JTextField attendanceText = new JTextField(20);
-        attendanceText.setBounds(350, 320, 200, 25);
+        attendanceText.setBounds(310, 320, 200, 25);
         panel.add(attendanceText);
 
-        // Cohort Number
         JLabel cohortLabel = new JLabel("Cohort Number:");
-        cohortLabel.setBounds(150, 350, 200, 25);
+        cohortLabel.setBounds(150, 350, 150, 25);
         panel.add(cohortLabel);
 
         JTextField cohortText = new JTextField(20);
-        cohortText.setBounds(350, 350, 200, 25);
+        cohortText.setBounds(310, 350, 200, 25);
         panel.add(cohortText);
+
+        JLabel commentLabel = new JLabel("Comment:");
+        commentLabel.setBounds(150, 380, 150, 25); 
+        panel.add(commentLabel);
+
+        JTextField commentText = new JTextField(20);
+        commentText.setBounds(310, 380, 200, 25); 
+        panel.add(commentText);
 
         // Buttons
         JButton saveButton = new JButton("Save");
-        saveButton.setBounds(200, 400, 80, 25);
+        saveButton.setBounds(150, 430, 80, 25);
         panel.add(saveButton);
 
         JButton cancelButton = new JButton("Cancel");
-        cancelButton.setBounds(300, 400, 80, 25);
+        cancelButton.setBounds(250, 430, 80, 25);
         panel.add(cancelButton);
 
         JButton clearButton = new JButton("Clear");
-        clearButton.setBounds(400, 400, 80, 25);
+        clearButton.setBounds(350, 430, 80, 25);
         panel.add(clearButton);
 
-        frame.setVisible(true);
+        JButton backButton = new JButton("Back");
+        backButton.setBounds(450, 430, 80, 25);
+        panel.add(backButton);
+        
+	        frame.setVisible(true);
 
    	    // Button Actions
    	    saveButton.addActionListener(e -> {
@@ -1555,7 +1850,8 @@ public class StudentMnagementSystem{
    	                startDateText.getText(),
    	                completionDateText.getText(),
    	                attendanceText.getText(),
-   	                cohort
+   	                cohort,
+   	                commentText.getText()
    	            );
    	        } catch (NumberFormatException ex) {
    	            JOptionPane.showMessageDialog(null, "Invalid input. Ensure Cohort and Fee Balance are valid integers.");
@@ -1577,17 +1873,23 @@ public class StudentMnagementSystem{
    	        completionDateText.setText("");
    	        attendanceText.setText("");
    	        cohortText.setText("");
+   	        commentText.setText("");
    	    });
+    	 backButton.addActionListener(e -> {
+    	   	    frame.dispose(); // Close current window
+    	   	    main(new String[]{}); // Restart the course selection window
+    	   	});
+    			
    		
    	}
    	private static void saveToDatabaseForPowerBI(String firstName, String lastName, String email, String phone ,String organisation, String profession, int totalFee,
-   			int feePaid,String startDate, String completionDate, String attendance, int cohort) {
+   			int feePaid,String startDate, String completionDate, String attendance, int cohort, String comment) {
    		 String url = "jdbc:mysql://localhost:3306/StudentManagementSystem";
     	    String username = "root";
     	    String password = "";
 
     	    try (Connection connection = DriverManager.getConnection(url, username, password)) {
-    	        String sql = "INSERT INTO PowerBIstudents (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    	        String sql = "INSERT INTO PowerBIstudents (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort, Comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
     	        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
     	            preparedStatement.setString(1, firstName);
     	            preparedStatement.setString(2, lastName);
@@ -1601,6 +1903,7 @@ public class StudentMnagementSystem{
     	            preparedStatement.setString(10, completionDate);
     	           preparedStatement.setString(11, attendance);
     	            preparedStatement.setInt(12, cohort);
+    	            preparedStatement.setString(13, comment);
 
     	            int rowsInserted = preparedStatement.executeUpdate();
     	            if (rowsInserted > 0) {
@@ -1627,129 +1930,128 @@ public class StudentMnagementSystem{
     private static void placeComponentsForMarketingAnalytics(JPanel panel) {
         panel.setLayout(null);
 
-     // First Name
         JLabel firstNameLabel = new JLabel("First Name:");
-        firstNameLabel.setBounds(150, 20, 200, 25);
+        firstNameLabel.setBounds(150, 20, 150, 25);
         panel.add(firstNameLabel);
 
         JTextField firstNameText = new JTextField(20);
-        firstNameText.setBounds(350, 20, 200, 25);
+        firstNameText.setBounds(310, 20, 200, 25);
         panel.add(firstNameText);
 
-        // Last Name
         JLabel lastNameLabel = new JLabel("Last Name:");
-        lastNameLabel.setBounds(150, 50, 200, 25);
+        lastNameLabel.setBounds(150, 50, 150, 25);
         panel.add(lastNameLabel);
 
         JTextField lastNameText = new JTextField(20);
-        lastNameText.setBounds(350, 50, 200, 25);
+        lastNameText.setBounds(310, 50, 200, 25);
         panel.add(lastNameText);
 
-        // Email
         JLabel emailLabel = new JLabel("Email:");
-        emailLabel.setBounds(150, 80, 200, 25);
+        emailLabel.setBounds(150, 80, 150, 25);
         panel.add(emailLabel);
 
         JTextField emailText = new JTextField(20);
-        emailText.setBounds(350, 80, 200, 25);
+        emailText.setBounds(310, 80, 200, 25);
         panel.add(emailText);
 
-        // Phone Number
         JLabel phoneLabel = new JLabel("Phone Number:");
-        phoneLabel.setBounds(150, 110, 200, 25);
+        phoneLabel.setBounds(150, 110, 150, 25);
         panel.add(phoneLabel);
 
         JTextField phoneText = new JTextField(20);
-        phoneText.setBounds(350, 110, 200, 25);
+        phoneText.setBounds(310, 110, 200, 25);
         panel.add(phoneText);
 
-        // Organisation
         JLabel organisationLabel = new JLabel("Organisation:");
-        organisationLabel.setBounds(150, 140, 200, 25);
+        organisationLabel.setBounds(150, 140, 150, 25);
         panel.add(organisationLabel);
 
         JTextField organisationText = new JTextField(20);
-        organisationText.setBounds(350, 140, 200, 25);
+        organisationText.setBounds(310, 140, 200, 25);
         panel.add(organisationText);
 
-        // Profession
         JLabel professionLabel = new JLabel("Profession:");
-        professionLabel.setBounds(150, 170, 200, 25);
+        professionLabel.setBounds(150, 170, 150, 25);
         panel.add(professionLabel);
 
         JTextField professionText = new JTextField(20);
-        professionText.setBounds(350, 170, 200, 25);
+        professionText.setBounds(310, 170, 200, 25);
         panel.add(professionText);
 
-        // Total Fee Payable
         JLabel totalFeeLabel = new JLabel("Total Fee:");
-        totalFeeLabel.setBounds(150, 200, 200, 25);
+        totalFeeLabel.setBounds(150, 200, 150, 25);
         panel.add(totalFeeLabel);
 
         JTextField totalFeeText = new JTextField(20);
-        totalFeeText.setBounds(350, 200, 200, 25);
+        totalFeeText.setBounds(310, 200, 200, 25);
         panel.add(totalFeeText);
 
-        // Fee Paid
         JLabel feePaidLabel = new JLabel("Fee Paid:");
-        feePaidLabel.setBounds(150, 230, 200, 25);
+        feePaidLabel.setBounds(150, 230, 150, 25);
         panel.add(feePaidLabel);
 
         JTextField feePaidText = new JTextField(20);
-        feePaidText.setBounds(350, 230, 200, 25);
+        feePaidText.setBounds(310, 230, 200, 25);
         panel.add(feePaidText);
 
-        // Start Date
         JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
-        startDateLabel.setBounds(150, 260, 200, 25);
+        startDateLabel.setBounds(150, 260, 150, 25);
         panel.add(startDateLabel);
 
         JTextField startDateText = new JTextField(20);
-        startDateText.setBounds(350, 260, 200, 25);
+        startDateText.setBounds(310, 260, 200, 25);
         panel.add(startDateText);
 
-        // Completion Date
         JLabel completionDateLabel = new JLabel("Completion Date (YYYY-MM-DD):");
-        completionDateLabel.setBounds(150, 290, 200, 25);
+        completionDateLabel.setBounds(150, 290, 150, 25);
         panel.add(completionDateLabel);
 
         JTextField completionDateText = new JTextField(20);
-        completionDateText.setBounds(350, 290, 200, 25);
+        completionDateText.setBounds(310, 290, 200, 25);
         panel.add(completionDateText);
 
-        // Class Attendance
         JLabel attendanceLabel = new JLabel("Class Attendance:");
-        attendanceLabel.setBounds(150, 320, 200, 25);
+        attendanceLabel.setBounds(150, 320, 150, 25);
         panel.add(attendanceLabel);
 
         JTextField attendanceText = new JTextField(20);
-        attendanceText.setBounds(350, 320, 200, 25);
+        attendanceText.setBounds(310, 320, 200, 25);
         panel.add(attendanceText);
 
-        // Cohort Number
         JLabel cohortLabel = new JLabel("Cohort Number:");
-        cohortLabel.setBounds(150, 350, 200, 25);
+        cohortLabel.setBounds(150, 350, 150, 25);
         panel.add(cohortLabel);
 
         JTextField cohortText = new JTextField(20);
-        cohortText.setBounds(350, 350, 200, 25);
+        cohortText.setBounds(310, 350, 200, 25);
         panel.add(cohortText);
+
+        JLabel commentLabel = new JLabel("Comment:");
+        commentLabel.setBounds(150, 380, 150, 25); // Fixed spacing issue
+        panel.add(commentLabel);
+
+        JTextField commentText = new JTextField(20);
+        commentText.setBounds(310, 380, 200, 25); // Fixed spacing issue
+        panel.add(commentText);
 
         // Buttons
         JButton saveButton = new JButton("Save");
-        saveButton.setBounds(200, 400, 80, 25);
+        saveButton.setBounds(150, 430, 80, 25);
         panel.add(saveButton);
 
         JButton cancelButton = new JButton("Cancel");
-        cancelButton.setBounds(300, 400, 80, 25);
+        cancelButton.setBounds(250, 430, 80, 25);
         panel.add(cancelButton);
 
         JButton clearButton = new JButton("Clear");
-        clearButton.setBounds(400, 400, 80, 25);
+        clearButton.setBounds(350, 430, 80, 25);
         panel.add(clearButton);
 
-        frame.setVisible(true);
-
+        JButton backButton = new JButton("Back");
+        backButton.setBounds(450, 430, 80, 25);
+        panel.add(backButton);
+        
+	        frame.setVisible(true);
    	    // Button Actions
    	    saveButton.addActionListener(e -> {
    	        try {
@@ -1768,7 +2070,8 @@ public class StudentMnagementSystem{
    	                startDateText.getText(),
    	                completionDateText.getText(),
    	                attendanceText.getText(),
-   	                cohort
+   	                cohort,
+   	                commentText.getText()
    	            );
    	        } catch (NumberFormatException ex) {
    	            JOptionPane.showMessageDialog(null, "Invalid input. Ensure Cohort and Fee Balance are valid integers.");
@@ -1790,17 +2093,22 @@ public class StudentMnagementSystem{
    	        completionDateText.setText("");
    	        attendanceText.setText("");
    	        cohortText.setText("");
+   	        commentText.setText("");
    	    });
+   	 backButton.addActionListener(e -> {
+    	    frame.dispose(); // Close current window
+    	    main(new String[]{}); // Restart the course selection window
+    	});
    		
    	}
    	private static void saveToDatabaseForMarketingAnalytics(String firstName, String lastName, String email, String phone ,String organisation, String profession, int totalFee,
-   			int feePaid,String startDate, String completionDate, String attendance, int cohort) {
+   			int feePaid,String startDate, String completionDate, String attendance, int cohort, String comment) {
    		 String url = "jdbc:mysql://localhost:3306/StudentManagementSystem";
     	    String username = "root";
     	    String password = "";
 
     	    try (Connection connection = DriverManager.getConnection(url, username, password)) {
-    	        String sql = "INSERT INTO MarketingAnalyticsMasterClass (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    	        String sql = "INSERT INTO MarketingAnalyticsMasterClass (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort, Comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
     	        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
     	            preparedStatement.setString(1, firstName);
     	            preparedStatement.setString(2, lastName);
@@ -1814,6 +2122,7 @@ public class StudentMnagementSystem{
     	            preparedStatement.setString(10, completionDate);
     	           preparedStatement.setString(11, attendance);
     	            preparedStatement.setInt(12, cohort);
+    	            preparedStatement.setString(13, comment);
 
     	            int rowsInserted = preparedStatement.executeUpdate();
     	            if (rowsInserted > 0) {
@@ -1841,126 +2150,139 @@ public class StudentMnagementSystem{
     private static void placeComponentsForSalesAnalytics(JPanel panel) {
         panel.setLayout(null);
 
-   	 // First Name
         JLabel firstNameLabel = new JLabel("First Name:");
-        firstNameLabel.setBounds(150, 20, 200, 25);
+        firstNameLabel.setBounds(150, 20, 150, 25);
         panel.add(firstNameLabel);
 
         JTextField firstNameText = new JTextField(20);
-        firstNameText.setBounds(350, 20, 200, 25);
+        firstNameText.setBounds(310, 20, 200, 25);
         panel.add(firstNameText);
 
         // Last Name
         JLabel lastNameLabel = new JLabel("Last Name:");
-        lastNameLabel.setBounds(150, 50, 200, 25);
+        lastNameLabel.setBounds(150, 50, 150, 25);
         panel.add(lastNameLabel);
 
         JTextField lastNameText = new JTextField(20);
-        lastNameText.setBounds(350, 50, 200, 25);
+        lastNameText.setBounds(310, 50, 200, 25);
         panel.add(lastNameText);
 
         // Email
         JLabel emailLabel = new JLabel("Email:");
-        emailLabel.setBounds(150, 80, 200, 25);
+        emailLabel.setBounds(150, 80, 150, 25);
         panel.add(emailLabel);
 
         JTextField emailText = new JTextField(20);
-        emailText.setBounds(350, 80, 200, 25);
+        emailText.setBounds(310, 80, 200, 25);
         panel.add(emailText);
 
         // Phone Number
         JLabel phoneLabel = new JLabel("Phone Number:");
-        phoneLabel.setBounds(150, 110, 200, 25);
+        phoneLabel.setBounds(150, 110, 150, 25);
         panel.add(phoneLabel);
 
         JTextField phoneText = new JTextField(20);
-        phoneText.setBounds(350, 110, 200, 25);
+        phoneText.setBounds(310, 110, 200, 25);
         panel.add(phoneText);
 
         // Organisation
         JLabel organisationLabel = new JLabel("Organisation:");
-        organisationLabel.setBounds(150, 140, 200, 25);
+        organisationLabel.setBounds(150, 140, 150, 25);
         panel.add(organisationLabel);
 
         JTextField organisationText = new JTextField(20);
-        organisationText.setBounds(350, 140, 200, 25);
+        organisationText.setBounds(310, 140, 200, 25);
         panel.add(organisationText);
 
         // Profession
         JLabel professionLabel = new JLabel("Profession:");
-        professionLabel.setBounds(150, 170, 200, 25);
+        professionLabel.setBounds(150, 170, 150, 25);
         panel.add(professionLabel);
 
         JTextField professionText = new JTextField(20);
-        professionText.setBounds(350, 170, 200, 25);
+        professionText.setBounds(310, 170, 200, 25);
         panel.add(professionText);
 
         // Total Fee Payable
         JLabel totalFeeLabel = new JLabel("Total Fee:");
-        totalFeeLabel.setBounds(150, 200, 200, 25);
+        totalFeeLabel.setBounds(150, 200, 150, 25);
         panel.add(totalFeeLabel);
 
         JTextField totalFeeText = new JTextField(20);
-        totalFeeText.setBounds(350, 200, 200, 25);
+        totalFeeText.setBounds(310, 200, 200, 25);
         panel.add(totalFeeText);
 
         // Fee Paid
         JLabel feePaidLabel = new JLabel("Fee Paid:");
-        feePaidLabel.setBounds(150, 230, 200, 25);
+        feePaidLabel.setBounds(150, 230, 150, 25);
         panel.add(feePaidLabel);
 
         JTextField feePaidText = new JTextField(20);
-        feePaidText.setBounds(350, 230, 200, 25);
+        feePaidText.setBounds(310, 230, 200, 25);
         panel.add(feePaidText);
 
         // Start Date
         JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
-        startDateLabel.setBounds(150, 260, 200, 25);
+        startDateLabel.setBounds(150, 260, 150, 25);
         panel.add(startDateLabel);
 
         JTextField startDateText = new JTextField(20);
-        startDateText.setBounds(350, 260, 200, 25);
+        startDateText.setBounds(310, 260, 200, 25);
         panel.add(startDateText);
 
         // Completion Date
         JLabel completionDateLabel = new JLabel("Completion Date (YYYY-MM-DD):");
-        completionDateLabel.setBounds(150, 290, 200, 25);
+        completionDateLabel.setBounds(150, 290, 150, 25);
         panel.add(completionDateLabel);
 
         JTextField completionDateText = new JTextField(20);
-        completionDateText.setBounds(350, 290, 200, 25);
+        completionDateText.setBounds(310, 290, 200, 25);
         panel.add(completionDateText);
 
         // Class Attendance
         JLabel attendanceLabel = new JLabel("Class Attendance:");
-        attendanceLabel.setBounds(150, 320, 200, 25);
+        attendanceLabel.setBounds(150, 320, 150, 25);
         panel.add(attendanceLabel);
 
         JTextField attendanceText = new JTextField(20);
-        attendanceText.setBounds(350, 320, 200, 25);
+        attendanceText.setBounds(310, 320, 200, 25);
         panel.add(attendanceText);
 
         // Cohort Number
         JLabel cohortLabel = new JLabel("Cohort Number:");
-        cohortLabel.setBounds(150, 350, 200, 25);
+        cohortLabel.setBounds(150, 350, 150, 25);
         panel.add(cohortLabel);
 
         JTextField cohortText = new JTextField(20);
-        cohortText.setBounds(350, 350, 200, 25);
+        cohortText.setBounds(310, 350, 200, 25);
         panel.add(cohortText);
+
+        //Comment
+        JLabel commentLabel = new JLabel("Comment:");
+        commentLabel.setBounds(150, 410, 150, 25);
+        panel.add(commentLabel);
+
+        JTextField commentText = new JTextField(20);
+        commentText.setBounds(310, 410, 200, 25);
+        panel.add(commentText);
 
         // Buttons
         JButton saveButton = new JButton("Save");
-        saveButton.setBounds(200, 400, 80, 25);
+        saveButton.setBounds(150, 460, 80, 25);
         panel.add(saveButton);
 
         JButton cancelButton = new JButton("Cancel");
-        cancelButton.setBounds(300, 400, 80, 25);
+        cancelButton.setBounds(250, 460, 80, 25);
         panel.add(cancelButton);
 
         JButton clearButton = new JButton("Clear");
-        clearButton.setBounds(400, 400, 80, 25);
+        clearButton.setBounds(350, 460, 80, 25);
         panel.add(clearButton);
+
+        // Back Button
+        JButton backButton = new JButton("Back");
+        backButton.setBounds(450, 460, 80, 25);
+        panel.add(backButton);
 
         frame.setVisible(true);
 
@@ -1982,7 +2304,8 @@ public class StudentMnagementSystem{
    	                startDateText.getText(),
    	                completionDateText.getText(),
    	                attendanceText.getText(),
-   	                cohort
+   	                cohort,
+   	                commentText.getText()
    	            );
    	        } catch (NumberFormatException ex) {
    	            JOptionPane.showMessageDialog(null, "Invalid input. Ensure Cohort and Fee Balance are valid integers.");
@@ -2004,18 +2327,23 @@ public class StudentMnagementSystem{
    	        completionDateText.setText("");
    	        attendanceText.setText("");
    	        cohortText.setText("");
+   	        commentText.setText("");
    	    });
-   		
+   	 backButton.addActionListener(e -> {
+    	    frame.dispose(); // Close current window
+    	    main(new String[]{}); // Restart the course selection window
+    	});
+ 		
    	}
 
 	private static void saveToDatabaseForSalesAnalytics(String firstName, String lastName, String email, String phone ,String organisation, String profession, int totalFee,
-   			int feePaid,String startDate, String completionDate, String attendance, int cohort) {
+   			int feePaid,String startDate, String completionDate, String attendance, int cohort, String comment) {
    		 String url = "jdbc:mysql://localhost:3306/StudentManagementSystem";
     	    String username = "root";
     	    String password = "";
 
     	    try (Connection connection = DriverManager.getConnection(url, username, password)) {
-    	        String sql = "INSERT INTO SalesAnalyticsMasterclass (FirstName, LastName, Email, Phone, Organisation, profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    	        String sql = "INSERT INTO SalesAnalyticsMasterclass (FirstName, LastName, Email, Phone, Organisation, profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort, Comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
     	        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
     	            preparedStatement.setString(1, firstName);
     	            preparedStatement.setString(2, lastName);
@@ -2029,6 +2357,7 @@ public class StudentMnagementSystem{
     	            preparedStatement.setString(10, completionDate);
     	           preparedStatement.setString(11, attendance);
     	            preparedStatement.setInt(12, cohort);
+    	            preparedStatement.setString(13, comment);
 
     	            int rowsInserted = preparedStatement.executeUpdate();
     	            if (rowsInserted > 0) {
@@ -2056,128 +2385,141 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
         panel.setLayout(null);
 
 
-      	 // First Name
-           JLabel firstNameLabel = new JLabel("First Name:");
-           firstNameLabel.setBounds(150, 20, 200, 25);
-           panel.add(firstNameLabel);
+        JLabel firstNameLabel = new JLabel("First Name:");
+        firstNameLabel.setBounds(150, 20, 150, 25);
+        panel.add(firstNameLabel);
 
-           JTextField firstNameText = new JTextField(20);
-           firstNameText.setBounds(350, 20, 200, 25);
-           panel.add(firstNameText);
+        JTextField firstNameText = new JTextField(20);
+        firstNameText.setBounds(310, 20, 200, 25);
+        panel.add(firstNameText);
 
-           // Last Name
-           JLabel lastNameLabel = new JLabel("Last Name:");
-           lastNameLabel.setBounds(150, 50, 200, 25);
-           panel.add(lastNameLabel);
+        // Last Name
+        JLabel lastNameLabel = new JLabel("Last Name:");
+        lastNameLabel.setBounds(150, 50, 150, 25);
+        panel.add(lastNameLabel);
 
-           JTextField lastNameText = new JTextField(20);
-           lastNameText.setBounds(350, 50, 200, 25);
-           panel.add(lastNameText);
+        JTextField lastNameText = new JTextField(20);
+        lastNameText.setBounds(310, 50, 200, 25);
+        panel.add(lastNameText);
 
-           // Email
-           JLabel emailLabel = new JLabel("Email:");
-           emailLabel.setBounds(150, 80, 200, 25);
-           panel.add(emailLabel);
+        // Email
+        JLabel emailLabel = new JLabel("Email:");
+        emailLabel.setBounds(150, 80, 150, 25);
+        panel.add(emailLabel);
 
-           JTextField emailText = new JTextField(20);
-           emailText.setBounds(350, 80, 200, 25);
-           panel.add(emailText);
+        JTextField emailText = new JTextField(20);
+        emailText.setBounds(310, 80, 200, 25);
+        panel.add(emailText);
 
-           // Phone Number
-           JLabel phoneLabel = new JLabel("Phone Number:");
-           phoneLabel.setBounds(150, 110, 200, 25);
-           panel.add(phoneLabel);
+        // Phone Number
+        JLabel phoneLabel = new JLabel("Phone Number:");
+        phoneLabel.setBounds(150, 110, 150, 25);
+        panel.add(phoneLabel);
 
-           JTextField phoneText = new JTextField(20);
-           phoneText.setBounds(350, 110, 200, 25);
-           panel.add(phoneText);
+        JTextField phoneText = new JTextField(20);
+        phoneText.setBounds(310, 110, 200, 25);
+        panel.add(phoneText);
 
-           // Organisation
-           JLabel organisationLabel = new JLabel("Organisation:");
-           organisationLabel.setBounds(150, 140, 200, 25);
-           panel.add(organisationLabel);
+        // Organisation
+        JLabel organisationLabel = new JLabel("Organisation:");
+        organisationLabel.setBounds(150, 140, 150, 25);
+        panel.add(organisationLabel);
 
-           JTextField organisationText = new JTextField(20);
-           organisationText.setBounds(350, 140, 200, 25);
-           panel.add(organisationText);
+        JTextField organisationText = new JTextField(20);
+        organisationText.setBounds(310, 140, 200, 25);
+        panel.add(organisationText);
 
-           // Profession
-           JLabel professionLabel = new JLabel("Profession:");
-           professionLabel.setBounds(150, 170, 200, 25);
-           panel.add(professionLabel);
+        // Profession
+        JLabel professionLabel = new JLabel("Profession:");
+        professionLabel.setBounds(150, 170, 150, 25);
+        panel.add(professionLabel);
 
-           JTextField professionText = new JTextField(20);
-           professionText.setBounds(350, 170, 200, 25);
-           panel.add(professionText);
+        JTextField professionText = new JTextField(20);
+        professionText.setBounds(310, 170, 200, 25);
+        panel.add(professionText);
 
-           // Total Fee Payable
-           JLabel totalFeeLabel = new JLabel("Total Fee:");
-           totalFeeLabel.setBounds(150, 200, 200, 25);
-           panel.add(totalFeeLabel);
+        // Total Fee Payable
+        JLabel totalFeeLabel = new JLabel("Total Fee:");
+        totalFeeLabel.setBounds(150, 200, 150, 25);
+        panel.add(totalFeeLabel);
 
-           JTextField totalFeeText = new JTextField(20);
-           totalFeeText.setBounds(350, 200, 200, 25);
-           panel.add(totalFeeText);
+        JTextField totalFeeText = new JTextField(20);
+        totalFeeText.setBounds(310, 200, 200, 25);
+        panel.add(totalFeeText);
 
-           // Fee Paid
-           JLabel feePaidLabel = new JLabel("Fee Paid:");
-           feePaidLabel.setBounds(150, 230, 200, 25);
-           panel.add(feePaidLabel);
+        // Fee Paid
+        JLabel feePaidLabel = new JLabel("Fee Paid:");
+        feePaidLabel.setBounds(150, 230, 150, 25);
+        panel.add(feePaidLabel);
 
-           JTextField feePaidText = new JTextField(20);
-           feePaidText.setBounds(350, 230, 200, 25);
-           panel.add(feePaidText);
+        JTextField feePaidText = new JTextField(20);
+        feePaidText.setBounds(310, 230, 200, 25);
+        panel.add(feePaidText);
 
-           // Start Date
-           JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
-           startDateLabel.setBounds(150, 260, 200, 25);
-           panel.add(startDateLabel);
+        // Start Date
+        JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
+        startDateLabel.setBounds(150, 260, 150, 25);
+        panel.add(startDateLabel);
 
-           JTextField startDateText = new JTextField(20);
-           startDateText.setBounds(350, 260, 200, 25);
-           panel.add(startDateText);
+        JTextField startDateText = new JTextField(20);
+        startDateText.setBounds(310, 260, 200, 25);
+        panel.add(startDateText);
 
-           // Completion Date
-           JLabel completionDateLabel = new JLabel("Completion Date (YYYY-MM-DD):");
-           completionDateLabel.setBounds(150, 290, 200, 25);
-           panel.add(completionDateLabel);
+        // Completion Date
+        JLabel completionDateLabel = new JLabel("Completion Date (YYYY-MM-DD):");
+        completionDateLabel.setBounds(150, 290, 150, 25);
+        panel.add(completionDateLabel);
 
-           JTextField completionDateText = new JTextField(20);
-           completionDateText.setBounds(350, 290, 200, 25);
-           panel.add(completionDateText);
+        JTextField completionDateText = new JTextField(20);
+        completionDateText.setBounds(310, 290, 200, 25);
+        panel.add(completionDateText);
 
-           // Class Attendance
-           JLabel attendanceLabel = new JLabel("Class Attendance:");
-           attendanceLabel.setBounds(150, 320, 200, 25);
-           panel.add(attendanceLabel);
+        // Class Attendance
+        JLabel attendanceLabel = new JLabel("Class Attendance:");
+        attendanceLabel.setBounds(150, 320, 150, 25);
+        panel.add(attendanceLabel);
 
-           JTextField attendanceText = new JTextField(20);
-           attendanceText.setBounds(350, 320, 200, 25);
-           panel.add(attendanceText);
+        JTextField attendanceText = new JTextField(20);
+        attendanceText.setBounds(310, 320, 200, 25);
+        panel.add(attendanceText);
 
-           // Cohort Number
-           JLabel cohortLabel = new JLabel("Cohort Number:");
-           cohortLabel.setBounds(150, 350, 200, 25);
-           panel.add(cohortLabel);
+        // Cohort Number
+        JLabel cohortLabel = new JLabel("Cohort Number:");
+        cohortLabel.setBounds(150, 350, 150, 25);
+        panel.add(cohortLabel);
 
-           JTextField cohortText = new JTextField(20);
-           cohortText.setBounds(350, 350, 200, 25);
-           panel.add(cohortText);
+        JTextField cohortText = new JTextField(20);
+        cohortText.setBounds(310, 350, 200, 25);
+        panel.add(cohortText);
 
-           // Buttons
-           JButton saveButton = new JButton("Save");
-           saveButton.setBounds(200, 400, 80, 25);
-           panel.add(saveButton);
+        //Comment
+        JLabel commentLabel = new JLabel("Comment:");
+        commentLabel.setBounds(150, 410, 150, 25);
+        panel.add(commentLabel);
 
-           JButton cancelButton = new JButton("Cancel");
-           cancelButton.setBounds(300, 400, 80, 25);
-           panel.add(cancelButton);
+        JTextField commentText = new JTextField(20);
+        commentText.setBounds(310, 410, 200, 25);
+        panel.add(commentText);
 
-           JButton clearButton = new JButton("Clear");
-           clearButton.setBounds(400, 400, 80, 25);
-           panel.add(clearButton);
+        // Buttons
+        JButton saveButton = new JButton("Save");
+        saveButton.setBounds(150, 460, 80, 25);
+        panel.add(saveButton);
 
-           frame.setVisible(true);
+        JButton cancelButton = new JButton("Cancel");
+        cancelButton.setBounds(250, 460, 80, 25);
+        panel.add(cancelButton);
+
+        JButton clearButton = new JButton("Clear");
+        clearButton.setBounds(350, 460, 80, 25);
+        panel.add(clearButton);
+
+        // Back Button
+        JButton backButton = new JButton("Back");
+        backButton.setBounds(450, 460, 80, 25);
+        panel.add(backButton);
+
+        frame.setVisible(true);
 
       	    // Button Actions
       	    saveButton.addActionListener(e -> {
@@ -2197,7 +2539,8 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
       	                startDateText.getText(),
       	                completionDateText.getText(),
       	                attendanceText.getText(),
-      	                cohort
+      	                cohort,
+      	                commentText.getText()
       	            );
       	        } catch (NumberFormatException ex) {
       	            JOptionPane.showMessageDialog(null, "Invalid input. Ensure Cohort and Fee Balance are valid integers.");
@@ -2219,17 +2562,23 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
       	        completionDateText.setText("");
       	        attendanceText.setText("");
       	        cohortText.setText("");
+      	        commentText.setText("");
       	    });
+      		 backButton.addActionListener(e -> {
+      	   	    frame.dispose(); // Close current window
+      	   	    main(new String[]{}); // Restart the course selection window
+      	   	});
+      			
 	}
 
 	private static void saveToDatabaseForSupplyChainAnalytics(String firstName, String lastName, String email, String phone ,String organisation, String profession, int totalFee,
-   			int feePaid,String startDate, String completionDate, String attendance, int cohort) {
+   			int feePaid,String startDate, String completionDate, String attendance, int cohort, String comment) {
    		 String url = "jdbc:mysql://localhost:3306/StudentManagementSystem";
     	    String username = "root";
     	    String password = "";
 
     	    try (Connection connection = DriverManager.getConnection(url, username, password)) {
-    	        String sql = "INSERT INTO SupplyChainMasterclass (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    	        String sql = "INSERT INTO SupplyChainMasterclass (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort, Comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
     	        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
     	            preparedStatement.setString(1, firstName);
     	            preparedStatement.setString(2, lastName);
@@ -2243,6 +2592,7 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
     	            preparedStatement.setString(10, completionDate);
     	           preparedStatement.setString(11, attendance);
     	            preparedStatement.setInt(12, cohort);
+    	            preparedStatement.setString(13, comment);
 
     	            int rowsInserted = preparedStatement.executeUpdate();
     	            if (rowsInserted > 0) {
@@ -2271,129 +2621,128 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
         panel.setLayout(null);
 
 
-      	 // First Name
-           JLabel firstNameLabel = new JLabel("First Name:");
-           firstNameLabel.setBounds(150, 20, 200, 25);
-           panel.add(firstNameLabel);
+        JLabel firstNameLabel = new JLabel("First Name:");
+        firstNameLabel.setBounds(150, 20, 150, 25);
+        panel.add(firstNameLabel);
 
-           JTextField firstNameText = new JTextField(20);
-           firstNameText.setBounds(350, 20, 200, 25);
-           panel.add(firstNameText);
+        JTextField firstNameText = new JTextField(20);
+        firstNameText.setBounds(310, 20, 200, 25);
+        panel.add(firstNameText);
 
-           // Last Name
-           JLabel lastNameLabel = new JLabel("Last Name:");
-           lastNameLabel.setBounds(150, 50, 200, 25);
-           panel.add(lastNameLabel);
+        JLabel lastNameLabel = new JLabel("Last Name:");
+        lastNameLabel.setBounds(150, 50, 150, 25);
+        panel.add(lastNameLabel);
 
-           JTextField lastNameText = new JTextField(20);
-           lastNameText.setBounds(350, 50, 200, 25);
-           panel.add(lastNameText);
+        JTextField lastNameText = new JTextField(20);
+        lastNameText.setBounds(310, 50, 200, 25);
+        panel.add(lastNameText);
 
-           // Email
-           JLabel emailLabel = new JLabel("Email:");
-           emailLabel.setBounds(150, 80, 200, 25);
-           panel.add(emailLabel);
+        JLabel emailLabel = new JLabel("Email:");
+        emailLabel.setBounds(150, 80, 150, 25);
+        panel.add(emailLabel);
 
-           JTextField emailText = new JTextField(20);
-           emailText.setBounds(350, 80, 200, 25);
-           panel.add(emailText);
+        JTextField emailText = new JTextField(20);
+        emailText.setBounds(310, 80, 200, 25);
+        panel.add(emailText);
 
-           // Phone Number
-           JLabel phoneLabel = new JLabel("Phone Number:");
-           phoneLabel.setBounds(150, 110, 200, 25);
-           panel.add(phoneLabel);
+        JLabel phoneLabel = new JLabel("Phone Number:");
+        phoneLabel.setBounds(150, 110, 150, 25);
+        panel.add(phoneLabel);
 
-           JTextField phoneText = new JTextField(20);
-           phoneText.setBounds(350, 110, 200, 25);
-           panel.add(phoneText);
+        JTextField phoneText = new JTextField(20);
+        phoneText.setBounds(310, 110, 200, 25);
+        panel.add(phoneText);
 
-           // Organisation
-           JLabel organisationLabel = new JLabel("Organisation:");
-           organisationLabel.setBounds(150, 140, 200, 25);
-           panel.add(organisationLabel);
+        JLabel organisationLabel = new JLabel("Organisation:");
+        organisationLabel.setBounds(150, 140, 150, 25);
+        panel.add(organisationLabel);
 
-           JTextField organisationText = new JTextField(20);
-           organisationText.setBounds(350, 140, 200, 25);
-           panel.add(organisationText);
+        JTextField organisationText = new JTextField(20);
+        organisationText.setBounds(310, 140, 200, 25);
+        panel.add(organisationText);
 
-           // Profession
-           JLabel professionLabel = new JLabel("Profession:");
-           professionLabel.setBounds(150, 170, 200, 25);
-           panel.add(professionLabel);
+        JLabel professionLabel = new JLabel("Profession:");
+        professionLabel.setBounds(150, 170, 150, 25);
+        panel.add(professionLabel);
 
-           JTextField professionText = new JTextField(20);
-           professionText.setBounds(350, 170, 200, 25);
-           panel.add(professionText);
+        JTextField professionText = new JTextField(20);
+        professionText.setBounds(310, 170, 200, 25);
+        panel.add(professionText);
 
-           // Total Fee Payable
-           JLabel totalFeeLabel = new JLabel("Total Fee:");
-           totalFeeLabel.setBounds(150, 200, 200, 25);
-           panel.add(totalFeeLabel);
+        JLabel totalFeeLabel = new JLabel("Total Fee:");
+        totalFeeLabel.setBounds(150, 200, 150, 25);
+        panel.add(totalFeeLabel);
 
-           JTextField totalFeeText = new JTextField(20);
-           totalFeeText.setBounds(350, 200, 200, 25);
-           panel.add(totalFeeText);
+        JTextField totalFeeText = new JTextField(20);
+        totalFeeText.setBounds(310, 200, 200, 25);
+        panel.add(totalFeeText);
 
-           // Fee Paid
-           JLabel feePaidLabel = new JLabel("Fee Paid:");
-           feePaidLabel.setBounds(150, 230, 200, 25);
-           panel.add(feePaidLabel);
+        JLabel feePaidLabel = new JLabel("Fee Paid:");
+        feePaidLabel.setBounds(150, 230, 150, 25);
+        panel.add(feePaidLabel);
 
-           JTextField feePaidText = new JTextField(20);
-           feePaidText.setBounds(350, 230, 200, 25);
-           panel.add(feePaidText);
+        JTextField feePaidText = new JTextField(20);
+        feePaidText.setBounds(310, 230, 200, 25);
+        panel.add(feePaidText);
 
-           // Start Date
-           JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
-           startDateLabel.setBounds(150, 260, 200, 25);
-           panel.add(startDateLabel);
+        JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
+        startDateLabel.setBounds(150, 260, 150, 25);
+        panel.add(startDateLabel);
 
-           JTextField startDateText = new JTextField(20);
-           startDateText.setBounds(350, 260, 200, 25);
-           panel.add(startDateText);
+        JTextField startDateText = new JTextField(20);
+        startDateText.setBounds(310, 260, 200, 25);
+        panel.add(startDateText);
 
-           // Completion Date
-           JLabel completionDateLabel = new JLabel("Completion Date (YYYY-MM-DD):");
-           completionDateLabel.setBounds(150, 290, 200, 25);
-           panel.add(completionDateLabel);
+        JLabel completionDateLabel = new JLabel("Completion Date (YYYY-MM-DD):");
+        completionDateLabel.setBounds(150, 290, 150, 25);
+        panel.add(completionDateLabel);
 
-           JTextField completionDateText = new JTextField(20);
-           completionDateText.setBounds(350, 290, 200, 25);
-           panel.add(completionDateText);
+        JTextField completionDateText = new JTextField(20);
+        completionDateText.setBounds(310, 290, 200, 25);
+        panel.add(completionDateText);
 
-           // Class Attendance
-           JLabel attendanceLabel = new JLabel("Class Attendance:");
-           attendanceLabel.setBounds(150, 320, 200, 25);
-           panel.add(attendanceLabel);
+        JLabel attendanceLabel = new JLabel("Class Attendance:");
+        attendanceLabel.setBounds(150, 320, 150, 25);
+        panel.add(attendanceLabel);
 
-           JTextField attendanceText = new JTextField(20);
-           attendanceText.setBounds(350, 320, 200, 25);
-           panel.add(attendanceText);
+        JTextField attendanceText = new JTextField(20);
+        attendanceText.setBounds(310, 320, 200, 25);
+        panel.add(attendanceText);
 
-           // Cohort Number
-           JLabel cohortLabel = new JLabel("Cohort Number:");
-           cohortLabel.setBounds(150, 350, 200, 25);
-           panel.add(cohortLabel);
+        JLabel cohortLabel = new JLabel("Cohort Number:");
+        cohortLabel.setBounds(150, 350, 150, 25);
+        panel.add(cohortLabel);
 
-           JTextField cohortText = new JTextField(20);
-           cohortText.setBounds(350, 350, 200, 25);
-           panel.add(cohortText);
+        JTextField cohortText = new JTextField(20);
+        cohortText.setBounds(310, 350, 200, 25);
+        panel.add(cohortText);
 
-           // Buttons
-           JButton saveButton = new JButton("Save");
-           saveButton.setBounds(200, 400, 80, 25);
-           panel.add(saveButton);
+        JLabel commentLabel = new JLabel("Comment:");
+        commentLabel.setBounds(150, 380, 150, 25); // Fixed spacing issue
+        panel.add(commentLabel);
 
-           JButton cancelButton = new JButton("Cancel");
-           cancelButton.setBounds(300, 400, 80, 25);
-           panel.add(cancelButton);
+        JTextField commentText = new JTextField(20);
+        commentText.setBounds(310, 380, 200, 25); // Fixed spacing issue
+        panel.add(commentText);
 
-           JButton clearButton = new JButton("Clear");
-           clearButton.setBounds(400, 400, 80, 25);
-           panel.add(clearButton);
+        // Buttons
+        JButton saveButton = new JButton("Save");
+        saveButton.setBounds(150, 430, 80, 25);
+        panel.add(saveButton);
 
-           frame.setVisible(true);
+        JButton cancelButton = new JButton("Cancel");
+        cancelButton.setBounds(250, 430, 80, 25);
+        panel.add(cancelButton);
 
+        JButton clearButton = new JButton("Clear");
+        clearButton.setBounds(350, 430, 80, 25);
+        panel.add(clearButton);
+
+        JButton backButton = new JButton("Back");
+        backButton.setBounds(450, 430, 80, 25);
+        panel.add(backButton);
+        
+	        frame.setVisible(true);
       	    // Button Actions
       	    saveButton.addActionListener(e -> {
       	        try {
@@ -2412,7 +2761,8 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
       	                startDateText.getText(),
       	                completionDateText.getText(),
       	                attendanceText.getText(),
-      	                cohort
+      	                cohort,
+      	                commentText.getText()
       	            );
       	        } catch (NumberFormatException ex) {
       	            JOptionPane.showMessageDialog(null, "Invalid input. Ensure Cohort and Fee Balance are valid integers.");
@@ -2434,17 +2784,22 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
       	        completionDateText.setText("");
       	        attendanceText.setText("");
       	        cohortText.setText("");
+      	        commentText.setText("");
       	    });
+      	  backButton.addActionListener(e -> {
+         	    frame.dispose(); // Close current window
+         	    main(new String[]{}); // Restart the course selection window
+         	});
       	    
     }
 	private static void saveToDatabaseForHR_Analytics(String firstName, String lastName, String email, String phone ,String organisation, String profession, int totalFee,
-   			int feePaid,String startDate, String completionDate, String attendance, int cohort) {
+   			int feePaid,String startDate, String completionDate, String attendance, int cohort, String comment) {
    		 String url = "jdbc:mysql://localhost:3306/StudentManagementSystem";
     	    String username = "root";
     	    String password = "";
 
     	    try (Connection connection = DriverManager.getConnection(url, username, password)) {
-    	        String sql = "INSERT INTO HRAnalyticsMasterclass (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    	        String sql = "INSERT INTO HRAnalyticsMasterclass (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort, Comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
     	        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
     	            preparedStatement.setString(1, firstName);
     	            preparedStatement.setString(2, lastName);
@@ -2458,6 +2813,7 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
     	            preparedStatement.setString(10, completionDate);
     	           preparedStatement.setString(11, attendance);
     	            preparedStatement.setInt(12, cohort);
+    	            preparedStatement.setString(13, comment);
 
     	            int rowsInserted = preparedStatement.executeUpdate();
     	            if (rowsInserted > 0) {
@@ -2485,128 +2841,129 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
     private static void placeComponentsForFinanceAnalytics(JPanel panel) {
         panel.setLayout(null);
 
-        // First Name
+
         JLabel firstNameLabel = new JLabel("First Name:");
-        firstNameLabel.setBounds(150, 20, 200, 25);
+        firstNameLabel.setBounds(150, 20, 150, 25);
         panel.add(firstNameLabel);
 
         JTextField firstNameText = new JTextField(20);
-        firstNameText.setBounds(350, 20, 200, 25);
+        firstNameText.setBounds(310, 20, 200, 25);
         panel.add(firstNameText);
 
-        // Last Name
         JLabel lastNameLabel = new JLabel("Last Name:");
-        lastNameLabel.setBounds(150, 50, 200, 25);
+        lastNameLabel.setBounds(150, 50, 150, 25);
         panel.add(lastNameLabel);
 
         JTextField lastNameText = new JTextField(20);
-        lastNameText.setBounds(350, 50, 200, 25);
+        lastNameText.setBounds(310, 50, 200, 25);
         panel.add(lastNameText);
 
-        // Email
         JLabel emailLabel = new JLabel("Email:");
-        emailLabel.setBounds(150, 80, 200, 25);
+        emailLabel.setBounds(150, 80, 150, 25);
         panel.add(emailLabel);
 
         JTextField emailText = new JTextField(20);
-        emailText.setBounds(350, 80, 200, 25);
+        emailText.setBounds(310, 80, 200, 25);
         panel.add(emailText);
 
-        // Phone Number
         JLabel phoneLabel = new JLabel("Phone Number:");
-        phoneLabel.setBounds(150, 110, 200, 25);
+        phoneLabel.setBounds(150, 110, 150, 25);
         panel.add(phoneLabel);
 
         JTextField phoneText = new JTextField(20);
-        phoneText.setBounds(350, 110, 200, 25);
+        phoneText.setBounds(310, 110, 200, 25);
         panel.add(phoneText);
 
-        // Organisation
         JLabel organisationLabel = new JLabel("Organisation:");
-        organisationLabel.setBounds(150, 140, 200, 25);
+        organisationLabel.setBounds(150, 140, 150, 25);
         panel.add(organisationLabel);
 
         JTextField organisationText = new JTextField(20);
-        organisationText.setBounds(350, 140, 200, 25);
+        organisationText.setBounds(310, 140, 200, 25);
         panel.add(organisationText);
 
-        // Profession
         JLabel professionLabel = new JLabel("Profession:");
-        professionLabel.setBounds(150, 170, 200, 25);
+        professionLabel.setBounds(150, 170, 150, 25);
         panel.add(professionLabel);
 
         JTextField professionText = new JTextField(20);
-        professionText.setBounds(350, 170, 200, 25);
+        professionText.setBounds(310, 170, 200, 25);
         panel.add(professionText);
 
-        // Total Fee Payable
         JLabel totalFeeLabel = new JLabel("Total Fee:");
-        totalFeeLabel.setBounds(150, 200, 200, 25);
+        totalFeeLabel.setBounds(150, 200, 150, 25);
         panel.add(totalFeeLabel);
 
         JTextField totalFeeText = new JTextField(20);
-        totalFeeText.setBounds(350, 200, 200, 25);
+        totalFeeText.setBounds(310, 200, 200, 25);
         panel.add(totalFeeText);
 
-        // Fee Paid
         JLabel feePaidLabel = new JLabel("Fee Paid:");
-        feePaidLabel.setBounds(150, 230, 200, 25);
+        feePaidLabel.setBounds(150, 230, 150, 25);
         panel.add(feePaidLabel);
 
         JTextField feePaidText = new JTextField(20);
-        feePaidText.setBounds(350, 230, 200, 25);
+        feePaidText.setBounds(310, 230, 200, 25);
         panel.add(feePaidText);
 
-        // Start Date
         JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
-        startDateLabel.setBounds(150, 260, 200, 25);
+        startDateLabel.setBounds(150, 260, 150, 25);
         panel.add(startDateLabel);
 
         JTextField startDateText = new JTextField(20);
-        startDateText.setBounds(350, 260, 200, 25);
+        startDateText.setBounds(310, 260, 200, 25);
         panel.add(startDateText);
 
-        // Completion Date
         JLabel completionDateLabel = new JLabel("Completion Date (YYYY-MM-DD):");
-        completionDateLabel.setBounds(150, 290, 200, 25);
+        completionDateLabel.setBounds(150, 290, 150, 25);
         panel.add(completionDateLabel);
 
         JTextField completionDateText = new JTextField(20);
-        completionDateText.setBounds(350, 290, 200, 25);
+        completionDateText.setBounds(310, 290, 200, 25);
         panel.add(completionDateText);
 
-        // Class Attendance
         JLabel attendanceLabel = new JLabel("Class Attendance:");
-        attendanceLabel.setBounds(150, 320, 200, 25);
+        attendanceLabel.setBounds(150, 320, 150, 25);
         panel.add(attendanceLabel);
 
         JTextField attendanceText = new JTextField(20);
-        attendanceText.setBounds(350, 320, 200, 25);
+        attendanceText.setBounds(310, 320, 200, 25);
         panel.add(attendanceText);
 
-        // Cohort Number
         JLabel cohortLabel = new JLabel("Cohort Number:");
-        cohortLabel.setBounds(150, 350, 200, 25);
+        cohortLabel.setBounds(150, 350, 150, 25);
         panel.add(cohortLabel);
 
         JTextField cohortText = new JTextField(20);
-        cohortText.setBounds(350, 350, 200, 25);
+        cohortText.setBounds(310, 350, 200, 25);
         panel.add(cohortText);
+
+        JLabel commentLabel = new JLabel("Comment:");
+        commentLabel.setBounds(150, 380, 150, 25); // Fixed spacing issue
+        panel.add(commentLabel);
+
+        JTextField commentText = new JTextField(20);
+        commentText.setBounds(310, 380, 200, 25); // Fixed spacing issue
+        panel.add(commentText);
 
         // Buttons
         JButton saveButton = new JButton("Save");
-        saveButton.setBounds(200, 400, 80, 25);
+        saveButton.setBounds(150, 430, 80, 25);
         panel.add(saveButton);
 
         JButton cancelButton = new JButton("Cancel");
-        cancelButton.setBounds(300, 400, 80, 25);
+        cancelButton.setBounds(250, 430, 80, 25);
         panel.add(cancelButton);
 
         JButton clearButton = new JButton("Clear");
-        clearButton.setBounds(400, 400, 80, 25);
+        clearButton.setBounds(350, 430, 80, 25);
         panel.add(clearButton);
 
-        frame.setVisible(true);
+        JButton backButton = new JButton("Back");
+        backButton.setBounds(450, 430, 80, 25);
+        panel.add(backButton);
+        
+	        frame.setVisible(true);
 
    	    // Button Actions
    	    saveButton.addActionListener(e -> {
@@ -2626,7 +2983,8 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
    	                startDateText.getText(),
    	                completionDateText.getText(),
    	                attendanceText.getText(),
-   	                cohort
+   	                cohort,
+   	                commentText.getText()
    	            );
    	        } catch (NumberFormatException ex) {
    	            JOptionPane.showMessageDialog(null, "Invalid input. Ensure Cohort and Fee Balance are valid integers.");
@@ -2648,17 +3006,24 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
    	        completionDateText.setText("");
    	        attendanceText.setText("");
    	        cohortText.setText("");
+   	        commentText.setText("");
    	    });
+    	 backButton.addActionListener(e -> {
+    	   	    frame.dispose(); // Close current window
+    	   	    main(new String[]{}); // Restart the course selection window
+    	   	});
+    			
+    			
 	}
 
 	private static void saveToDatabaseForFinanceAnalytics(String firstName, String lastName, String email, String phone ,String organisation, String profession, int totalFee,
-   			int feePaid,String startDate, String completionDate, String attendance, int cohort) {
+   			int feePaid,String startDate, String completionDate, String attendance, int cohort, String comment) {
    		 String url = "jdbc:mysql://localhost:3306/StudentManagementSystem";
     	    String username = "root";
     	    String password = "";
 
     	    try (Connection connection = DriverManager.getConnection(url, username, password)) {
-    	        String sql = "INSERT INTO FinanceAnalyticsMasterclass (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    	        String sql = "INSERT INTO FinanceAnalyticsMasterclass (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort, Comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
     	        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
     	            preparedStatement.setString(1, firstName);
     	            preparedStatement.setString(2, lastName);
@@ -2672,6 +3037,7 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
     	            preparedStatement.setString(10, completionDate);
     	           preparedStatement.setString(11, attendance);
     	            preparedStatement.setInt(12, cohort);
+    	            preparedStatement.setString(13, comment);
 
     	            int rowsInserted = preparedStatement.executeUpdate();
     	            if (rowsInserted > 0) {
@@ -2697,128 +3063,129 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
 
     private static void placeComponentsForBankingAnalytics(JPanel panel) {
         panel.setLayout(null);
-        // First Name
+
         JLabel firstNameLabel = new JLabel("First Name:");
-        firstNameLabel.setBounds(150, 20, 200, 25);
+        firstNameLabel.setBounds(150, 20, 150, 25);
         panel.add(firstNameLabel);
 
         JTextField firstNameText = new JTextField(20);
-        firstNameText.setBounds(350, 20, 200, 25);
+        firstNameText.setBounds(310, 20, 200, 25);
         panel.add(firstNameText);
 
-        // Last Name
         JLabel lastNameLabel = new JLabel("Last Name:");
-        lastNameLabel.setBounds(150, 50, 200, 25);
+        lastNameLabel.setBounds(150, 50, 150, 25);
         panel.add(lastNameLabel);
 
         JTextField lastNameText = new JTextField(20);
-        lastNameText.setBounds(350, 50, 200, 25);
+        lastNameText.setBounds(310, 50, 200, 25);
         panel.add(lastNameText);
 
-        // Email
         JLabel emailLabel = new JLabel("Email:");
-        emailLabel.setBounds(150, 80, 200, 25);
+        emailLabel.setBounds(150, 80, 150, 25);
         panel.add(emailLabel);
 
         JTextField emailText = new JTextField(20);
-        emailText.setBounds(350, 80, 200, 25);
+        emailText.setBounds(310, 80, 200, 25);
         panel.add(emailText);
 
-        // Phone Number
         JLabel phoneLabel = new JLabel("Phone Number:");
-        phoneLabel.setBounds(150, 110, 200, 25);
+        phoneLabel.setBounds(150, 110, 150, 25);
         panel.add(phoneLabel);
 
         JTextField phoneText = new JTextField(20);
-        phoneText.setBounds(350, 110, 200, 25);
+        phoneText.setBounds(310, 110, 200, 25);
         panel.add(phoneText);
 
-        // Organisation
         JLabel organisationLabel = new JLabel("Organisation:");
-        organisationLabel.setBounds(150, 140, 200, 25);
+        organisationLabel.setBounds(150, 140, 150, 25);
         panel.add(organisationLabel);
 
         JTextField organisationText = new JTextField(20);
-        organisationText.setBounds(350, 140, 200, 25);
+        organisationText.setBounds(310, 140, 200, 25);
         panel.add(organisationText);
 
-        // Profession
         JLabel professionLabel = new JLabel("Profession:");
-        professionLabel.setBounds(150, 170, 200, 25);
+        professionLabel.setBounds(150, 170, 150, 25);
         panel.add(professionLabel);
 
         JTextField professionText = new JTextField(20);
-        professionText.setBounds(350, 170, 200, 25);
+        professionText.setBounds(310, 170, 200, 25);
         panel.add(professionText);
 
-        // Total Fee Payable
         JLabel totalFeeLabel = new JLabel("Total Fee:");
-        totalFeeLabel.setBounds(150, 200, 200, 25);
+        totalFeeLabel.setBounds(150, 200, 150, 25);
         panel.add(totalFeeLabel);
 
         JTextField totalFeeText = new JTextField(20);
-        totalFeeText.setBounds(350, 200, 200, 25);
+        totalFeeText.setBounds(310, 200, 200, 25);
         panel.add(totalFeeText);
 
-        // Fee Paid
         JLabel feePaidLabel = new JLabel("Fee Paid:");
-        feePaidLabel.setBounds(150, 230, 200, 25);
+        feePaidLabel.setBounds(150, 230, 150, 25);
         panel.add(feePaidLabel);
 
         JTextField feePaidText = new JTextField(20);
-        feePaidText.setBounds(350, 230, 200, 25);
+        feePaidText.setBounds(310, 230, 200, 25);
         panel.add(feePaidText);
 
-        // Start Date
         JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
-        startDateLabel.setBounds(150, 260, 200, 25);
+        startDateLabel.setBounds(150, 260, 150, 25);
         panel.add(startDateLabel);
 
         JTextField startDateText = new JTextField(20);
-        startDateText.setBounds(350, 260, 200, 25);
+        startDateText.setBounds(310, 260, 200, 25);
         panel.add(startDateText);
 
-        // Completion Date
         JLabel completionDateLabel = new JLabel("Completion Date (YYYY-MM-DD):");
-        completionDateLabel.setBounds(150, 290, 200, 25);
+        completionDateLabel.setBounds(150, 290, 150, 25);
         panel.add(completionDateLabel);
 
         JTextField completionDateText = new JTextField(20);
-        completionDateText.setBounds(350, 290, 200, 25);
+        completionDateText.setBounds(310, 290, 200, 25);
         panel.add(completionDateText);
 
-        // Class Attendance
         JLabel attendanceLabel = new JLabel("Class Attendance:");
-        attendanceLabel.setBounds(150, 320, 200, 25);
+        attendanceLabel.setBounds(150, 320, 150, 25);
         panel.add(attendanceLabel);
 
         JTextField attendanceText = new JTextField(20);
-        attendanceText.setBounds(350, 320, 200, 25);
+        attendanceText.setBounds(310, 320, 200, 25);
         panel.add(attendanceText);
 
-        // Cohort Number
         JLabel cohortLabel = new JLabel("Cohort Number:");
-        cohortLabel.setBounds(150, 350, 200, 25);
+        cohortLabel.setBounds(150, 350, 150, 25);
         panel.add(cohortLabel);
 
         JTextField cohortText = new JTextField(20);
-        cohortText.setBounds(350, 350, 200, 25);
+        cohortText.setBounds(310, 350, 200, 25);
         panel.add(cohortText);
+
+        JLabel commentLabel = new JLabel("Comment:");
+        commentLabel.setBounds(150, 380, 150, 25);
+        panel.add(commentLabel);
+
+        JTextField commentText = new JTextField(20);
+        commentText.setBounds(310, 380, 200, 25); 
+        panel.add(commentText);
 
         // Buttons
         JButton saveButton = new JButton("Save");
-        saveButton.setBounds(200, 400, 80, 25);
+        saveButton.setBounds(150, 430, 80, 25);
         panel.add(saveButton);
 
         JButton cancelButton = new JButton("Cancel");
-        cancelButton.setBounds(300, 400, 80, 25);
+        cancelButton.setBounds(250, 430, 80, 25);
         panel.add(cancelButton);
 
         JButton clearButton = new JButton("Clear");
-        clearButton.setBounds(400, 400, 80, 25);
+        clearButton.setBounds(350, 430, 80, 25);
         panel.add(clearButton);
 
-        frame.setVisible(true);
+        JButton backButton = new JButton("Back");
+        backButton.setBounds(450, 430, 80, 25);
+        panel.add(backButton);
+        
+	        frame.setVisible(true);
 
    	    // Button Actions
    	    saveButton.addActionListener(e -> {
@@ -2838,7 +3205,8 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
    	                startDateText.getText(),
    	                completionDateText.getText(),
    	                attendanceText.getText(),
-   	                cohort
+   	                cohort,
+   	                commentText.getText()
    	            );
    	        } catch (NumberFormatException ex) {
    	            JOptionPane.showMessageDialog(null, "Invalid input. Ensure Cohort and Fee Balance are valid integers.");
@@ -2860,17 +3228,23 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
    	        completionDateText.setText("");
    	        attendanceText.setText("");
    	        cohortText.setText("");
+   	        commentText.setText("");
    	    });
+    	 backButton.addActionListener(e -> {
+    	   	    frame.dispose(); // Close current window
+    	   	    main(new String[]{}); // Restart the course selection window
+    	   	});
 	}
+    
 
 	private static void saveToDatabaseForBankingAnalytics(String firstName, String lastName, String email, String phone ,String organisation, String profession, int totalFee,
-   			int feePaid,String startDate, String completionDate, String attendance, int cohort) {
+   			int feePaid,String startDate, String completionDate, String attendance, int cohort, String comment) {
    		 String url = "jdbc:mysql://localhost:3306/StudentManagementSystem";
     	    String username = "root";
     	    String password = "";
 
     	    try (Connection connection = DriverManager.getConnection(url, username, password)) {
-    	        String sql = "INSERT INTO BankingAnalyticsMasterclass (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    	        String sql = "INSERT INTO BankingAnalyticsMasterclass (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort, Comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
     	        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
     	            preparedStatement.setString(1, firstName);
     	            preparedStatement.setString(2, lastName);
@@ -2884,6 +3258,7 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
     	            preparedStatement.setString(10, completionDate);
     	           preparedStatement.setString(11, attendance);
     	            preparedStatement.setInt(12, cohort);
+    	            preparedStatement.setString(13, comment);
 
     	            int rowsInserted = preparedStatement.executeUpdate();
     	            if (rowsInserted > 0) {
@@ -2909,128 +3284,128 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
     private static void placeComponentsForCodingForKids(JPanel panel) {
         panel.setLayout(null);
 
-        // First Name
         JLabel firstNameLabel = new JLabel("First Name:");
-        firstNameLabel.setBounds(150, 20, 200, 25);
+        firstNameLabel.setBounds(150, 20, 150, 25);
         panel.add(firstNameLabel);
 
         JTextField firstNameText = new JTextField(20);
-        firstNameText.setBounds(350, 20, 200, 25);
+        firstNameText.setBounds(310, 20, 200, 25);
         panel.add(firstNameText);
 
-        // Last Name
         JLabel lastNameLabel = new JLabel("Last Name:");
-        lastNameLabel.setBounds(150, 50, 200, 25);
+        lastNameLabel.setBounds(150, 50, 150, 25);
         panel.add(lastNameLabel);
 
         JTextField lastNameText = new JTextField(20);
-        lastNameText.setBounds(350, 50, 200, 25);
+        lastNameText.setBounds(310, 50, 200, 25);
         panel.add(lastNameText);
 
-        // Email
         JLabel emailLabel = new JLabel("Email:");
-        emailLabel.setBounds(150, 80, 200, 25);
+        emailLabel.setBounds(150, 80, 150, 25);
         panel.add(emailLabel);
 
         JTextField emailText = new JTextField(20);
-        emailText.setBounds(350, 80, 200, 25);
+        emailText.setBounds(310, 80, 200, 25);
         panel.add(emailText);
 
-        // Phone Number
         JLabel phoneLabel = new JLabel("Phone Number:");
-        phoneLabel.setBounds(150, 110, 200, 25);
+        phoneLabel.setBounds(150, 110, 150, 25);
         panel.add(phoneLabel);
 
         JTextField phoneText = new JTextField(20);
-        phoneText.setBounds(350, 110, 200, 25);
+        phoneText.setBounds(310, 110, 200, 25);
         panel.add(phoneText);
 
-        // Organisation
         JLabel organisationLabel = new JLabel("Organisation:");
-        organisationLabel.setBounds(150, 140, 200, 25);
+        organisationLabel.setBounds(150, 140, 150, 25);
         panel.add(organisationLabel);
 
         JTextField organisationText = new JTextField(20);
-        organisationText.setBounds(350, 140, 200, 25);
+        organisationText.setBounds(310, 140, 200, 25);
         panel.add(organisationText);
 
-        // Profession
         JLabel professionLabel = new JLabel("Profession:");
-        professionLabel.setBounds(150, 170, 200, 25);
+        professionLabel.setBounds(150, 170, 150, 25);
         panel.add(professionLabel);
 
         JTextField professionText = new JTextField(20);
-        professionText.setBounds(350, 170, 200, 25);
+        professionText.setBounds(310, 170, 200, 25);
         panel.add(professionText);
 
-        // Total Fee Payable
         JLabel totalFeeLabel = new JLabel("Total Fee:");
-        totalFeeLabel.setBounds(150, 200, 200, 25);
+        totalFeeLabel.setBounds(150, 200, 150, 25);
         panel.add(totalFeeLabel);
 
         JTextField totalFeeText = new JTextField(20);
-        totalFeeText.setBounds(350, 200, 200, 25);
+        totalFeeText.setBounds(310, 200, 200, 25);
         panel.add(totalFeeText);
 
-        // Fee Paid
         JLabel feePaidLabel = new JLabel("Fee Paid:");
-        feePaidLabel.setBounds(150, 230, 200, 25);
+        feePaidLabel.setBounds(150, 230, 150, 25);
         panel.add(feePaidLabel);
 
         JTextField feePaidText = new JTextField(20);
-        feePaidText.setBounds(350, 230, 200, 25);
+        feePaidText.setBounds(310, 230, 200, 25);
         panel.add(feePaidText);
 
-        // Start Date
         JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
-        startDateLabel.setBounds(150, 260, 200, 25);
+        startDateLabel.setBounds(150, 260, 150, 25);
         panel.add(startDateLabel);
 
         JTextField startDateText = new JTextField(20);
-        startDateText.setBounds(350, 260, 200, 25);
+        startDateText.setBounds(310, 260, 200, 25);
         panel.add(startDateText);
 
-        // Completion Date
         JLabel completionDateLabel = new JLabel("Completion Date (YYYY-MM-DD):");
-        completionDateLabel.setBounds(150, 290, 200, 25);
+        completionDateLabel.setBounds(150, 290, 150, 25);
         panel.add(completionDateLabel);
 
         JTextField completionDateText = new JTextField(20);
-        completionDateText.setBounds(350, 290, 200, 25);
+        completionDateText.setBounds(310, 290, 200, 25);
         panel.add(completionDateText);
 
-        // Class Attendance
         JLabel attendanceLabel = new JLabel("Class Attendance:");
-        attendanceLabel.setBounds(150, 320, 200, 25);
+        attendanceLabel.setBounds(150, 320, 150, 25);
         panel.add(attendanceLabel);
 
         JTextField attendanceText = new JTextField(20);
-        attendanceText.setBounds(350, 320, 200, 25);
+        attendanceText.setBounds(310, 320, 200, 25);
         panel.add(attendanceText);
 
-        // Cohort Number
         JLabel cohortLabel = new JLabel("Cohort Number:");
-        cohortLabel.setBounds(150, 350, 200, 25);
+        cohortLabel.setBounds(150, 350, 150, 25);
         panel.add(cohortLabel);
 
         JTextField cohortText = new JTextField(20);
-        cohortText.setBounds(350, 350, 200, 25);
+        cohortText.setBounds(310, 350, 200, 25);
         panel.add(cohortText);
+
+        JLabel commentLabel = new JLabel("Comment:");
+        commentLabel.setBounds(150, 380, 150, 25); 
+        panel.add(commentLabel);
+
+        JTextField commentText = new JTextField(20);
+        commentText.setBounds(310, 380, 200, 25); 
+        panel.add(commentText);
 
         // Buttons
         JButton saveButton = new JButton("Save");
-        saveButton.setBounds(200, 400, 80, 25);
+        saveButton.setBounds(150, 430, 80, 25);
         panel.add(saveButton);
 
         JButton cancelButton = new JButton("Cancel");
-        cancelButton.setBounds(300, 400, 80, 25);
+        cancelButton.setBounds(250, 430, 80, 25);
         panel.add(cancelButton);
 
         JButton clearButton = new JButton("Clear");
-        clearButton.setBounds(400, 400, 80, 25);
+        clearButton.setBounds(350, 430, 80, 25);
         panel.add(clearButton);
 
-        frame.setVisible(true);
+        JButton backButton = new JButton("Back");
+        backButton.setBounds(450, 430, 80, 25);
+        panel.add(backButton);
+        
+	        frame.setVisible(true);
 
    	    // Button Actions
    	    saveButton.addActionListener(e -> {
@@ -3050,7 +3425,8 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
    	                startDateText.getText(),
    	                completionDateText.getText(),
    	                attendanceText.getText(),
-   	                cohort
+   	                cohort,
+   	                commentText.getText()
    	            );
    	        } catch (NumberFormatException ex) {
    	            JOptionPane.showMessageDialog(null, "Invalid input. Ensure Cohort and Fee Balance are valid integers.");
@@ -3072,17 +3448,23 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
    	        completionDateText.setText("");
    	        attendanceText.setText("");
    	        cohortText.setText("");
+   	        commentText.setText("");
    	    });
+    	 backButton.addActionListener(e -> {
+    	   	    frame.dispose(); // Close current window
+    	   	    main(new String[]{}); // Restart the course selection window
+    	   	});
+    			
 	}
 
 	private static void saveToDatabaseForCodingForKids(String firstName, String lastName, String email, String phone ,String organisation, String profession, int totalFee,
-   			int feePaid,String startDate, String completionDate, String attendance, int cohort) {
+   			int feePaid,String startDate, String completionDate, String attendance, int cohort, String comment) {
    		 String url = "jdbc:mysql://localhost:3306/StudentManagementSystem";
     	    String username = "root";
     	    String password = "";
 
     	    try (Connection connection = DriverManager.getConnection(url, username, password)) {
-    	        String sql = "INSERT INTO CodingStudents (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    	        String sql = "INSERT INTO CodingStudents (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort, Comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
     	        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
     	            preparedStatement.setString(1, firstName);
     	            preparedStatement.setString(2, lastName);
@@ -3096,6 +3478,7 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
     	            preparedStatement.setString(10, completionDate);
     	           preparedStatement.setString(11, attendance);
     	            preparedStatement.setInt(12, cohort);
+    	            preparedStatement.setString(13, comment);
 
     	            int rowsInserted = preparedStatement.executeUpdate();
     	            if (rowsInserted > 0) {
@@ -3122,128 +3505,128 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
     private static void placeComponentsForExcel(JPanel panel) {
         panel.setLayout(null);
 
-        // First Name
         JLabel firstNameLabel = new JLabel("First Name:");
-        firstNameLabel.setBounds(150, 20, 200, 25);
+        firstNameLabel.setBounds(150, 20, 150, 25);
         panel.add(firstNameLabel);
 
         JTextField firstNameText = new JTextField(20);
-        firstNameText.setBounds(350, 20, 200, 25);
+        firstNameText.setBounds(310, 20, 200, 25);
         panel.add(firstNameText);
 
-        // Last Name
         JLabel lastNameLabel = new JLabel("Last Name:");
-        lastNameLabel.setBounds(150, 50, 200, 25);
+        lastNameLabel.setBounds(150, 50, 150, 25);
         panel.add(lastNameLabel);
 
         JTextField lastNameText = new JTextField(20);
-        lastNameText.setBounds(350, 50, 200, 25);
+        lastNameText.setBounds(310, 50, 200, 25);
         panel.add(lastNameText);
 
-        // Email
         JLabel emailLabel = new JLabel("Email:");
-        emailLabel.setBounds(150, 80, 200, 25);
+        emailLabel.setBounds(150, 80, 150, 25);
         panel.add(emailLabel);
 
         JTextField emailText = new JTextField(20);
-        emailText.setBounds(350, 80, 200, 25);
+        emailText.setBounds(310, 80, 200, 25);
         panel.add(emailText);
 
-        // Phone Number
         JLabel phoneLabel = new JLabel("Phone Number:");
-        phoneLabel.setBounds(150, 110, 200, 25);
+        phoneLabel.setBounds(150, 110, 150, 25);
         panel.add(phoneLabel);
 
         JTextField phoneText = new JTextField(20);
-        phoneText.setBounds(350, 110, 200, 25);
+        phoneText.setBounds(310, 110, 200, 25);
         panel.add(phoneText);
 
-        // Organisation
         JLabel organisationLabel = new JLabel("Organisation:");
-        organisationLabel.setBounds(150, 140, 200, 25);
+        organisationLabel.setBounds(150, 140, 150, 25);
         panel.add(organisationLabel);
 
         JTextField organisationText = new JTextField(20);
-        organisationText.setBounds(350, 140, 200, 25);
+        organisationText.setBounds(310, 140, 200, 25);
         panel.add(organisationText);
 
-        // Profession
         JLabel professionLabel = new JLabel("Profession:");
-        professionLabel.setBounds(150, 170, 200, 25);
+        professionLabel.setBounds(150, 170, 150, 25);
         panel.add(professionLabel);
 
         JTextField professionText = new JTextField(20);
-        professionText.setBounds(350, 170, 200, 25);
+        professionText.setBounds(310, 170, 200, 25);
         panel.add(professionText);
 
-        // Total Fee Payable
         JLabel totalFeeLabel = new JLabel("Total Fee:");
-        totalFeeLabel.setBounds(150, 200, 200, 25);
+        totalFeeLabel.setBounds(150, 200, 150, 25);
         panel.add(totalFeeLabel);
 
         JTextField totalFeeText = new JTextField(20);
-        totalFeeText.setBounds(350, 200, 200, 25);
+        totalFeeText.setBounds(310, 200, 200, 25);
         panel.add(totalFeeText);
 
-        // Fee Paid
         JLabel feePaidLabel = new JLabel("Fee Paid:");
-        feePaidLabel.setBounds(150, 230, 200, 25);
+        feePaidLabel.setBounds(150, 230, 150, 25);
         panel.add(feePaidLabel);
 
         JTextField feePaidText = new JTextField(20);
-        feePaidText.setBounds(350, 230, 200, 25);
+        feePaidText.setBounds(310, 230, 200, 25);
         panel.add(feePaidText);
 
-        // Start Date
         JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
-        startDateLabel.setBounds(150, 260, 200, 25);
+        startDateLabel.setBounds(150, 260, 150, 25);
         panel.add(startDateLabel);
 
         JTextField startDateText = new JTextField(20);
-        startDateText.setBounds(350, 260, 200, 25);
+        startDateText.setBounds(310, 260, 200, 25);
         panel.add(startDateText);
 
-        // Completion Date
         JLabel completionDateLabel = new JLabel("Completion Date (YYYY-MM-DD):");
-        completionDateLabel.setBounds(150, 290, 200, 25);
+        completionDateLabel.setBounds(150, 290, 150, 25);
         panel.add(completionDateLabel);
 
         JTextField completionDateText = new JTextField(20);
-        completionDateText.setBounds(350, 290, 200, 25);
+        completionDateText.setBounds(310, 290, 200, 25);
         panel.add(completionDateText);
 
-        // Class Attendance
         JLabel attendanceLabel = new JLabel("Class Attendance:");
-        attendanceLabel.setBounds(150, 320, 200, 25);
+        attendanceLabel.setBounds(150, 320, 150, 25);
         panel.add(attendanceLabel);
 
         JTextField attendanceText = new JTextField(20);
-        attendanceText.setBounds(350, 320, 200, 25);
+        attendanceText.setBounds(310, 320, 200, 25);
         panel.add(attendanceText);
 
-        // Cohort Number
         JLabel cohortLabel = new JLabel("Cohort Number:");
-        cohortLabel.setBounds(150, 350, 200, 25);
+        cohortLabel.setBounds(150, 350, 150, 25);
         panel.add(cohortLabel);
 
         JTextField cohortText = new JTextField(20);
-        cohortText.setBounds(350, 350, 200, 25);
+        cohortText.setBounds(310, 350, 200, 25);
         panel.add(cohortText);
+
+        JLabel commentLabel = new JLabel("Comment:");
+        commentLabel.setBounds(150, 380, 150, 25); 
+        panel.add(commentLabel);
+
+        JTextField commentText = new JTextField(20);
+        commentText.setBounds(310, 380, 200, 25); 
+        panel.add(commentText);
 
         // Buttons
         JButton saveButton = new JButton("Save");
-        saveButton.setBounds(200, 400, 80, 25);
+        saveButton.setBounds(150, 430, 80, 25);
         panel.add(saveButton);
 
         JButton cancelButton = new JButton("Cancel");
-        cancelButton.setBounds(300, 400, 80, 25);
+        cancelButton.setBounds(250, 430, 80, 25);
         panel.add(cancelButton);
 
         JButton clearButton = new JButton("Clear");
-        clearButton.setBounds(400, 400, 80, 25);
+        clearButton.setBounds(350, 430, 80, 25);
         panel.add(clearButton);
 
-        frame.setVisible(true);
+        JButton backButton = new JButton("Back");
+        backButton.setBounds(450, 430, 80, 25);
+        panel.add(backButton);
+        
+	        frame.setVisible(true);
 
    	    // Button Actions
    	    saveButton.addActionListener(e -> {
@@ -3263,11 +3646,13 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
    	                startDateText.getText(),
    	                completionDateText.getText(),
    	                attendanceText.getText(),
-   	                cohort
+   	                cohort,
+   	                commentText.getText()
    	            );
    	        } catch (NumberFormatException ex) {
    	            JOptionPane.showMessageDialog(null, "Invalid input. Ensure Cohort and Fee Balance are valid integers.");
    	        }
+   	        
    	    });
 
    	    cancelButton.addActionListener(e -> System.exit(0));
@@ -3285,17 +3670,24 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
    	        completionDateText.setText("");
    	        attendanceText.setText("");
    	        cohortText.setText("");
+   	        commentText.setText("");
    	    });
+   	    
+   	 backButton.addActionListener(e -> {
+    	    frame.dispose(); // Close current window
+    	    main(new String[]{}); // Restart the course selection window
+    	});
+ 		
 	}
 
 	private static void saveToDatabaseForExcel(String firstName, String lastName, String email, String phone ,String organisation, String profession, int totalFee,
-   			int feePaid,String startDate, String completionDate, String attendance, int cohort) {
+   			int feePaid,String startDate, String completionDate, String attendance, int cohort, String comment) {
    		 String url = "jdbc:mysql://localhost:3306/StudentManagementSystem";
     	    String username = "root";
     	    String password = "";
 
     	    try (Connection connection = DriverManager.getConnection(url, username, password)) {
-    	        String sql = "INSERT INTO ExcelForDataAnalysis (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    	        String sql = "INSERT INTO ExcelForDataAnalysis (FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort, Comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
     	        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
     	            preparedStatement.setString(1, firstName);
     	            preparedStatement.setString(2, lastName);
@@ -3309,6 +3701,7 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
     	            preparedStatement.setString(10, completionDate);
     	           preparedStatement.setString(11, attendance);
     	            preparedStatement.setInt(12, cohort);
+    	            preparedStatement.setString(13, comment);
 
     	            int rowsInserted = preparedStatement.executeUpdate();
     	            if (rowsInserted > 0) {
@@ -3334,128 +3727,128 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
     private static void placeComponentsForDataLawAndGov(JPanel panel) {
         panel.setLayout(null);
 
-        // First Name
         JLabel firstNameLabel = new JLabel("First Name:");
-        firstNameLabel.setBounds(150, 20, 200, 25);
+        firstNameLabel.setBounds(150, 20, 150, 25);
         panel.add(firstNameLabel);
 
         JTextField firstNameText = new JTextField(20);
-        firstNameText.setBounds(350, 20, 200, 25);
+        firstNameText.setBounds(310, 20, 200, 25);
         panel.add(firstNameText);
 
-        // Last Name
         JLabel lastNameLabel = new JLabel("Last Name:");
-        lastNameLabel.setBounds(150, 50, 200, 25);
+        lastNameLabel.setBounds(150, 50, 150, 25);
         panel.add(lastNameLabel);
 
         JTextField lastNameText = new JTextField(20);
-        lastNameText.setBounds(350, 50, 200, 25);
+        lastNameText.setBounds(310, 50, 200, 25);
         panel.add(lastNameText);
 
-        // Email
         JLabel emailLabel = new JLabel("Email:");
-        emailLabel.setBounds(150, 80, 200, 25);
+        emailLabel.setBounds(150, 80, 150, 25);
         panel.add(emailLabel);
 
         JTextField emailText = new JTextField(20);
-        emailText.setBounds(350, 80, 200, 25);
+        emailText.setBounds(310, 80, 200, 25);
         panel.add(emailText);
 
-        // Phone Number
         JLabel phoneLabel = new JLabel("Phone Number:");
-        phoneLabel.setBounds(150, 110, 200, 25);
+        phoneLabel.setBounds(150, 110, 150, 25);
         panel.add(phoneLabel);
 
         JTextField phoneText = new JTextField(20);
-        phoneText.setBounds(350, 110, 200, 25);
+        phoneText.setBounds(310, 110, 200, 25);
         panel.add(phoneText);
 
-        // Organisation
         JLabel organisationLabel = new JLabel("Organisation:");
-        organisationLabel.setBounds(150, 140, 200, 25);
+        organisationLabel.setBounds(150, 140, 150, 25);
         panel.add(organisationLabel);
 
         JTextField organisationText = new JTextField(20);
-        organisationText.setBounds(350, 140, 200, 25);
+        organisationText.setBounds(310, 140, 200, 25);
         panel.add(organisationText);
 
-        // Profession
         JLabel professionLabel = new JLabel("Profession:");
-        professionLabel.setBounds(150, 170, 200, 25);
+        professionLabel.setBounds(150, 170, 150, 25);
         panel.add(professionLabel);
 
         JTextField professionText = new JTextField(20);
-        professionText.setBounds(350, 170, 200, 25);
+        professionText.setBounds(310, 170, 200, 25);
         panel.add(professionText);
 
-        // Total Fee Payable
         JLabel totalFeeLabel = new JLabel("Total Fee:");
-        totalFeeLabel.setBounds(150, 200, 200, 25);
+        totalFeeLabel.setBounds(150, 200, 150, 25);
         panel.add(totalFeeLabel);
 
         JTextField totalFeeText = new JTextField(20);
-        totalFeeText.setBounds(350, 200, 200, 25);
+        totalFeeText.setBounds(310, 200, 200, 25);
         panel.add(totalFeeText);
 
-        // Fee Paid
         JLabel feePaidLabel = new JLabel("Fee Paid:");
-        feePaidLabel.setBounds(150, 230, 200, 25);
+        feePaidLabel.setBounds(150, 230, 150, 25);
         panel.add(feePaidLabel);
 
         JTextField feePaidText = new JTextField(20);
-        feePaidText.setBounds(350, 230, 200, 25);
+        feePaidText.setBounds(310, 230, 200, 25);
         panel.add(feePaidText);
 
-        // Start Date
         JLabel startDateLabel = new JLabel("Start Date (YYYY-MM-DD):");
-        startDateLabel.setBounds(150, 260, 200, 25);
+        startDateLabel.setBounds(150, 260, 150, 25);
         panel.add(startDateLabel);
 
         JTextField startDateText = new JTextField(20);
-        startDateText.setBounds(350, 260, 200, 25);
+        startDateText.setBounds(310, 260, 200, 25);
         panel.add(startDateText);
 
-        // Completion Date
         JLabel completionDateLabel = new JLabel("Completion Date (YYYY-MM-DD):");
-        completionDateLabel.setBounds(150, 290, 200, 25);
+        completionDateLabel.setBounds(150, 290, 150, 25);
         panel.add(completionDateLabel);
 
         JTextField completionDateText = new JTextField(20);
-        completionDateText.setBounds(350, 290, 200, 25);
+        completionDateText.setBounds(310, 290, 200, 25);
         panel.add(completionDateText);
 
-        // Class Attendance
         JLabel attendanceLabel = new JLabel("Class Attendance:");
-        attendanceLabel.setBounds(150, 320, 200, 25);
+        attendanceLabel.setBounds(150, 320, 150, 25);
         panel.add(attendanceLabel);
 
         JTextField attendanceText = new JTextField(20);
-        attendanceText.setBounds(350, 320, 200, 25);
+        attendanceText.setBounds(310, 320, 200, 25);
         panel.add(attendanceText);
 
-        // Cohort Number
         JLabel cohortLabel = new JLabel("Cohort Number:");
-        cohortLabel.setBounds(150, 350, 200, 25);
+        cohortLabel.setBounds(150, 350, 150, 25);
         panel.add(cohortLabel);
 
         JTextField cohortText = new JTextField(20);
-        cohortText.setBounds(350, 350, 200, 25);
+        cohortText.setBounds(310, 350, 200, 25);
         panel.add(cohortText);
+
+        JLabel commentLabel = new JLabel("Comment:");
+        commentLabel.setBounds(150, 380, 150, 25); // Fixed spacing issue
+        panel.add(commentLabel);
+
+        JTextField commentText = new JTextField(20);
+        commentText.setBounds(310, 380, 200, 25); // Fixed spacing issue
+        panel.add(commentText);
 
         // Buttons
         JButton saveButton = new JButton("Save");
-        saveButton.setBounds(200, 400, 80, 25);
+        saveButton.setBounds(150, 430, 80, 25);
         panel.add(saveButton);
 
         JButton cancelButton = new JButton("Cancel");
-        cancelButton.setBounds(300, 400, 80, 25);
+        cancelButton.setBounds(250, 430, 80, 25);
         panel.add(cancelButton);
 
         JButton clearButton = new JButton("Clear");
-        clearButton.setBounds(400, 400, 80, 25);
+        clearButton.setBounds(350, 430, 80, 25);
         panel.add(clearButton);
 
-        frame.setVisible(true);
+        JButton backButton = new JButton("Back");
+        backButton.setBounds(450, 430, 80, 25);
+        panel.add(backButton);
+        
+	        frame.setVisible(true);
 
    	    // Button Actions
    	    saveButton.addActionListener(e -> {
@@ -3475,7 +3868,8 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
    	                startDateText.getText(),
    	                completionDateText.getText(),
    	                attendanceText.getText(),
-   	                cohort
+   	                cohort,
+   	                commentText.getText()
    	            );
    	        } catch (NumberFormatException ex) {
    	            JOptionPane.showMessageDialog(null, "Invalid input. Ensure Cohort and Fee Balance are valid integers.");
@@ -3497,17 +3891,23 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
    	        completionDateText.setText("");
    	        attendanceText.setText("");
    	        cohortText.setText("");
+   	        commentText.setText("");
    	    });
+   	 backButton.addActionListener(e -> {
+    	    frame.dispose(); // Close current window
+    	    main(new String[]{}); // Restart the course selection window
+    	});
+ 		
 	}
 
 	private static void saveToDatabaseForDataLawAndGov(String firstName, String lastName, String email, String phone ,String organisation, String profession, int totalFee,
-   			int feePaid,String startDate, String completionDate, String attendance, int cohort) {
+   			int feePaid,String startDate, String completionDate, String attendance, int cohort, String comment) {
    		 String url = "jdbc:mysql://localhost:3306/StudentManagementSystem";
     	    String username = "root";
     	    String password = "";
 
     	    try (Connection connection = DriverManager.getConnection(url, username, password)) {
-    	        String sql = "INSERT INTO DataLawAndGov(FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    	        String sql = "INSERT INTO DataLawAndGov(FirstName, LastName, Email, Phone, Organisation, Profession, TotalFee, FeePaid, StartDate, CompletionDate, Attendance ,Cohort, Comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
     	        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
     	            preparedStatement.setString(1, firstName);
     	            preparedStatement.setString(2, lastName);
@@ -3521,6 +3921,7 @@ private static void displayStudentManagementSystemSupplyChainAnalytics() {
     	            preparedStatement.setString(10, completionDate);
     	           preparedStatement.setString(11, attendance);
     	            preparedStatement.setInt(12, cohort);
+    	            preparedStatement.setString(13, comment);
 
     	            int rowsInserted = preparedStatement.executeUpdate();
     	            if (rowsInserted > 0) {
